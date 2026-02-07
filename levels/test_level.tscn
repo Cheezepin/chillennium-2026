@@ -1,3 +1,74 @@
 [gd_scene format=3 uid="uid://dkx6g3xegqdpa"]
 
+[ext_resource type="Material" uid="uid://btnk6cus0thwa" path="res://vismat.tres" id="1_x25rp"]
+[ext_resource type="ArrayMesh" uid="uid://q3c0p03wjo20" path="res://testmesh.tres" id="2_gmgay"]
+[ext_resource type="PackedScene" uid="uid://bs6iu1w23yrgq" path="res://ImageToStl_com_TennaBlender.fbx" id="3_gmgay"]
+
 [node name="Scene" type="Node3D" unique_id=479021836]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1173415847]
+material = ExtResource("1_x25rp")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=47159442]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.0311948)
+light_color = Color(0, 1, 1, 1)
+spot_range = 15.66
+spot_attenuation = 4.35
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1553731422]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, -3.004708, 0, 1.0993917)
+mesh = ExtResource("2_gmgay")
+surface_material_override/0 = ExtResource("1_x25rp")
+
+[node name="ImageToStl_com_TennaBlender" parent="." unique_id=354189784 instance=ExtResource("3_gmgay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4026604, 0, -2.4523168)
+
+[node name="Skeleton3D" parent="ImageToStl_com_TennaBlender/TennaSkeleton" parent_id_path=PackedInt32Array(354189784, 1828167579) index="1" unique_id=551594320]
+bones/1/rotation = Quaternion(0.7070933, 0.0043710214, -0.70709324, -0.0043713977)
+bones/12/rotation = Quaternion(0.24280848, 0.14133511, -0.46003026, 0.84228307)
+bones/13/rotation = Quaternion(-0.0110593345, 0.016776394, -0.6315459, 0.7750781)
+bones/14/rotation = Quaternion(0.018933212, -0.0039099087, -0.6676318, 0.74424064)
+bones/16/rotation = Quaternion(-0.3234043, -0.50716287, -0.49684235, 0.62557435)
+bones/17/rotation = Quaternion(0.30613425, 0.12940252, -0.08688071, 0.93914247)
+bones/18/rotation = Quaternion(0.20501931, -0.06678986, -0.04596367, 0.975394)
+bones/20/rotation = Quaternion(-0.023374747, -0.040765345, 0.027711697, 0.99851084)
+bones/21/rotation = Quaternion(0.0031125965, -0.025120098, 0.020883022, 0.99946153)
+bones/22/rotation = Quaternion(-0.0019909297, 0.014401689, 0.0696332, 0.99746674)
+bones/24/rotation = Quaternion(0.019085366, -0.0209544, -0.49254936, 0.8698228)
+bones/25/rotation = Quaternion(-0.0044044233, 0.010439404, -0.63217235, 0.77474505)
+bones/26/rotation = Quaternion(0.00047126398, 0.0011072275, -0.6689968, 0.7432644)
+bones/28/rotation = Quaternion(0.092815146, 0.06402856, -0.48242283, 0.8686507)
+bones/29/rotation = Quaternion(0.011401517, -0.009544522, -0.6318683, 0.7749331)
+bones/30/rotation = Quaternion(-0.010958848, 0.023195246, -0.668467, 0.74329925)
+bones/44/rotation = Quaternion(-0.16630219, 0.48597914, 0.52479196, 0.6787941)
+bones/45/rotation = Quaternion(0.30613425, -0.1294025, 0.08688072, 0.93914247)
+bones/46/rotation = Quaternion(0.20501928, 0.06678986, 0.045963667, 0.97539407)
+bones/48/rotation = Quaternion(-0.31083703, 0.047032837, -0.01475341, 0.9491842)
+bones/49/rotation = Quaternion(0.0031126165, 0.025120111, -0.020883005, 0.99946153)
+bones/50/rotation = Quaternion(-0.0019909048, -0.014401706, -0.069633186, 0.99746674)
+bones/52/rotation = Quaternion(-0.026675869, 0.02737233, 0.007255515, 0.999243)
+bones/53/rotation = Quaternion(0.002990681, -0.010928669, 0.018041937, 0.9997731)
+bones/54/rotation = Quaternion(0.0011218281, -0.00043534473, -0.06529672, 0.99786526)
+bones/56/rotation = Quaternion(0.09281514, -0.06402857, 0.48242277, 0.8686507)
+bones/57/rotation = Quaternion(-0.015299961, -0.01930748, 0.6621771, 0.7489424)
+bones/58/rotation = Quaternion(-0.010958831, -0.023195256, 0.668467, 0.74329925)
+bones/60/rotation = Quaternion(0.2428085, -0.1413351, 0.4600302, 0.84228307)
+bones/61/rotation = Quaternion(-0.011059331, -0.016776398, 0.6315459, 0.7750781)
+bones/62/rotation = Quaternion(0.01893324, 0.0039098635, 0.6676316, 0.7442408)
+bones/64/rotation = Quaternion(0.97439307, -2.6804388e-08, 1.1615671e-07, -0.22485141)
+bones/71/rotation = Quaternion(-0.6000279, -0.013165477, 0.79856884, -0.04561857)
+bones/75/rotation = Quaternion(0.7070933, -0.0043710214, 0.70709324, -0.0043713977)
+
+[node name="Microphone_Right" parent="ImageToStl_com_TennaBlender/TennaSkeleton/Skeleton3D" index="0" unique_id=1775859654]
+transform = Transform3D(1.5421426e-09, 0.9999996, 1.8626451e-09, -1.9844799e-07, 0, -0.9999995, -1, -4.4705517e-11, 1.9843233e-07, 0.023131408, -0.0034348385, -0.0028870108)
+bone_idx = 11
+
+[node name="Hat" parent="ImageToStl_com_TennaBlender/TennaSkeleton/Skeleton3D" index="1" unique_id=1062519748]
+transform = Transform3D(1, 0, 0, 0, -1.1920928e-07, -0.9999999, 0, 0.9999999, -1.1920928e-07, 0, -0.0034348387, 0.0005672467)
+bone_idx = 32
+
+[node name="Microphone_Left" parent="ImageToStl_com_TennaBlender/TennaSkeleton/Skeleton3D" index="2" unique_id=661619308]
+transform = Transform3D(1.5421426e-09, -0.9999996, -1.8626451e-09, 1.9844799e-07, 0, -0.9999995, 1, -4.4705517e-11, 1.9843233e-07, -0.023131408, -0.0034348385, -0.0028870108)
+bone_idx = 43
+
+[editable path="ImageToStl_com_TennaBlender"]
