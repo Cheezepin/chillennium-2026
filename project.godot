@@ -10,14 +10,21 @@ config_version=5
 
 [application]
 
-config/name="chillennium-testing"
-run/main_scene="uid://dkx6g3xegqdpa"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/name="Chillennium 2026 Game"
+config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [dotnet]
 
 project/assembly_name="chillennium-testing"
+
+[editor_plugins]
+
+enabled=PackedStringArray()
+
+[hego]
+
+houdini_installation_path="C:/Program Files/Side Effects Software/Houdini 20.5.654"
 
 [physics]
 
