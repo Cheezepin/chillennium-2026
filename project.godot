@@ -39,6 +39,10 @@ project/assembly_name="chillennium-testing"
 
 enabled=PackedStringArray()
 
+[filesystem]
+
+import/blender/enabled=false
+
 [hego]
 
 houdini_installation_path="C:/Program Files/Side Effects Software/Houdini 20.5.654"

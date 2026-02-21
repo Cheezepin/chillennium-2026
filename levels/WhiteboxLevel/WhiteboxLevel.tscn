@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bdwnl84n4djrt" path="res://entities/sabotage_props/SabotageProp.cs" id="4_2h4ru"]
 [ext_resource type="Script" uid="uid://botpfiw828nfc" path="res://global/Hand.cs" id="4_feq8d"]
 [ext_resource type="Script" uid="uid://blcjnt6tvmjwp" path="res://entities/npc/NPC.cs" id="6_i7juc"]
+[ext_resource type="PackedScene" uid="uid://bp8vw4ygb6b3c" path="res://models/water/water_plane.glb" id="8_dqbfd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_red06"]
 albedo_color = Color(0, 0.34901962, 0, 1)
@@ -117,6 +118,9 @@ script = ExtResource("4_feq8d")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=360804522]
 environment = SubResource("Environment_dqbfd")
+
+[node name="water_plane" parent="." unique_id=1475975502 instance=ExtResource("8_dqbfd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.042, -19.68607)
 
 [connection signal="input_event" from="Objects/SampleProp" to="Objects/SampleProp" method="OnInputEvent"]
 [connection signal="mouse_entered" from="Objects/SampleProp" to="Objects/SampleProp" method="OnMouseEnter"]

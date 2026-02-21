@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dt4gntpuwsw6p"]
+
+[ext_resource type="Shader" uid="uid://c24kg2txk6mq7" path="res://models/water/Water.gdshader" id="1_g1gho"]
+[ext_resource type="Texture2D" uid="uid://b6ig1muvh2wqq" path="res://models/water/w1.png" id="2_oxhmy"]
+[ext_resource type="Texture2D" uid="uid://kknf8lnuswdn" path="res://models/water/w2.png" id="3_61a5n"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_g1gho")
+shader_parameter/baseColor = Color(0.34509805, 0.8901961, 1, 1)
+shader_parameter/tex0 = ExtResource("2_oxhmy")
+shader_parameter/tex1 = ExtResource("3_61a5n")
+shader_parameter/scroll0 = Vector2(0.01, 0.002)
+shader_parameter/scroll1 = Vector2(-0.004, 0.014)
+shader_parameter/rot0 = 15.0
+shader_parameter/rot1 = 0.0
