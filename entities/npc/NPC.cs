@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Data;
 using static Global;
 using static NPCSpeechBubble;
 
@@ -74,25 +75,38 @@ public partial class NPC : CharacterBody3D
         GD.Print("My total is ",hand.runningTotal," and my confidence is ",confidence);
         if(rng.Randfn(0, 0.999f) < confidence) // basically [0, 1)
         {
+            SetDialogState(DialogState.Hit);
             GD.Print("I'm gonna hit!");
             // Hit
             hand.Hit();
+        } else
+        {
+            SetDialogState(DialogState.Stand);
+            // Stand
+            GD.Print("I'm standing!");
+            isStanding = true;
+        }
+    }
 
+    public void ReactToBJDecision()
+    {
+        if(isStanding)
+        {
+            
+        } else
+        {
             if(hand.runningTotal == 21)
             {
                 // Blackjack!
+                SetDialogState(DialogState.Blackjack);
                 GD.Print("I'm Rich?!");
             }
             if(hand.runningTotal > 21)
             {
                 // Bust
+                SetDialogState(DialogState.Bust);
                 GD.Print("FUCK ME!!!!!");
             }
-        } else
-        {
-            // Stand
-            GD.Print("I'm standing!");
-            isStanding = true;
         }
     }
 
@@ -153,7 +167,7 @@ public partial class NPC : CharacterBody3D
             case Personality.Skittish: bet = rng.RandiRange(0, 15) < 1 ? rng.RandiRange(200, 250) : rng.RandiRange(50, 125); break;
             case Personality.Lazy:     bet = rng.RandiRange(20, 250); break;
         }
-        dialogState = DialogState.Betting;
+        SetDialogState(DialogState.Betting);
         GD.Print("Okay! I bet ",bet);
     }
 
@@ -170,7 +184,7 @@ public partial class NPC : CharacterBody3D
             case Personality.Lazy:     time += 0.8; break;
         }
 
-        return time * 2.0;
+        return time * 2.5;
     }
 
     public bool HandOver()
@@ -181,6 +195,16 @@ public partial class NPC : CharacterBody3D
     public void SitAtTable()
     {
         // Put HAND ID assigning stuff here
-        dialogState = DialogState.SittingDown;
+        SetDialogState(DialogState.SittingDown);
+    }
+
+    [Export]public SpeechBubbleSprite speechBubbleSprite;
+    public void SetDialogState(DialogState newState)
+    {
+        if(dialogState != newState)
+        {
+            dialogState = newState;
+            speechBubbleSprite.dialogTimer = 0;
+        }
     }
 }

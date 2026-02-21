@@ -53,12 +53,23 @@ public partial class BlackjackHandler : Node
 
     public void BettingState(double delta)
     {
-        foreach(NPC npc in npcs)
-        {
-            npc.Bet(dealerBJ);
+        switch(substate) {
+            case 0:
+                foreach(NPC npc in npcs)
+                {
+                    npc.Bet(dealerBJ);
+                }
+                timer = 0;
+                ++substate;
+                break;
+            case 1:
+                timer += delta;
+                if(timer > 1.5) {
+                    ChangeState(BlackjackState.Dealing);
+                    AlertStatus("Dealing cards...", 2.0);
+                }
+                break;
         }
-        ChangeState(BlackjackState.Dealing);
-        AlertStatus("Dealing cards...", 2.0);
     }
 
     public bool HandleDealerBJ()
@@ -79,7 +90,7 @@ public partial class BlackjackHandler : Node
                 DealCard(hands[i + 1], true);
                 DealCard(hands[i + 1], true);
                 npc.Bet(true);
-                npc.dialogState = DialogState.DoublingDown;
+                npc.SetDialogState(DialogState.DoublingDown);
             }
         }
     }
@@ -144,23 +155,46 @@ public partial class BlackjackHandler : Node
     public void RoundState(double delta)
     {
         timer += delta;
-        int playerID = substate % 3;
+        int playerID = (substate/3 % 3);
         NPC npc = npcs[playerID];
-        if(timer > npcs[playerID].ThinkingTime()) {
-            timer = 0;
-            if(!npc.HandOver() && npc.stunTimer <= 0 && npc.distractionTimer <= 0) {
-                npc.MakeBJDecision();
-                npc.CalculateConfidence();
-            }
-            ++substate;
-            if(npcs[0].HandOver() && npcs[1].HandOver() && npcs[2].HandOver())
-                ChangeState(BlackjackState.Conclusion);
-        } else
-        {
-            // npcs[playerID].dialogState = DialogState.Thinking;
-            if(npcs[playerID].confidence > 0.8f) npcs[playerID].dialogState = DialogState.ConfidentHand;
-            else if(npcs[playerID].confidence < 0.3f) npcs[playerID].dialogState = DialogState.UnconfidentHand;
-            else npcs[playerID].dialogState = DialogState.MiddlingHand;
+        switch(substate % 3) {
+            case 0:
+                if(timer > npcs[playerID].ThinkingTime()) {
+                    if(!npc.HandOver() && npc.stunTimer <= 0 && npc.distractionTimer <= 0) {
+                        npc.MakeBJDecision();
+                        npc.CalculateConfidence();
+                    } else
+                    {
+                        timer = 0;
+                        substate += 3;
+                    }
+                    ++substate;
+                    timer = 0;
+                } else
+                {
+                    // npcs[playerID].SetDialogState(DialogState.Thinking;
+                    if(npcs[playerID].confidence > 0.8f) npcs[playerID].SetDialogState(DialogState.ConfidentHand);
+                    else if(npcs[playerID].confidence < 0.3f) npcs[playerID].SetDialogState(DialogState.UnconfidentHand);
+                    else npcs[playerID].SetDialogState(DialogState.MiddlingHand);
+                }
+                break;
+            case 1:
+                if(timer > 0.8 || npc.isStanding)
+                {
+                    npc.ReactToBJDecision();
+                    ++substate;
+                    timer = 0;
+                }
+                break;
+            case 2:
+                if(timer > 1.5)
+                {
+                    ++substate;
+                    timer = 0;
+                    if(npcs[0].HandOver() && npcs[1].HandOver() && npcs[2].HandOver())
+                        ChangeState(BlackjackState.Conclusion);
+                }
+                break;
         }
     }
 
@@ -195,7 +229,7 @@ public partial class BlackjackHandler : Node
                     GD.Print("Dealer win!! Take everyone's bet!!");
                     foreach(NPC npc in npcs)
                     {
-                        npc.dialogState = DialogState.Lose;
+                        npc.SetDialogState(DialogState.Lose);
                         money += npc.bet;
                     }
                 } else if(dealerHand.runningTotal > 21)
@@ -203,7 +237,7 @@ public partial class BlackjackHandler : Node
                     GD.Print("Dealer bust!! Everyone wins their bet!!");
                     foreach(NPC npc in npcs)
                     {
-                        npc.dialogState = DialogState.Win;
+                        npc.SetDialogState(DialogState.Win);
                         money -= npc.has21 ? (int)(npc.bet*1.5f) : npc.bet;
                     }
                 } else
@@ -212,18 +246,18 @@ public partial class BlackjackHandler : Node
                     {
                         if(npc.has21)
                         {
-                            npc.dialogState = DialogState.Blackjack;
+                            npc.SetDialogState(DialogState.Blackjack);
                             GD.Print(npc.Name, " EPIC win!!");
                             money -= (int)(npc.bet*1.5f);
                         }
                         if(!npc.busted && npc.hand.runningTotal > dealerHand.runningTotal)
                         {
-                            npc.dialogState = DialogState.Win;
+                            npc.SetDialogState(DialogState.Win);
                             GD.Print(npc.Name, " win!!");
                             money -= npc.bet;
                         } else
                         {
-                            npc.dialogState = DialogState.Lose;
+                            npc.SetDialogState(DialogState.Lose);
                             GD.Print(npc.Name, " lose!!");
                             money += npc.bet;
                         }

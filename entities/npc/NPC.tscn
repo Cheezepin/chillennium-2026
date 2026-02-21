@@ -3,26 +3,28 @@
 [ext_resource type="Script" uid="uid://blcjnt6tvmjwp" path="res://entities/npc/NPC.cs" id="1_dqo36"]
 [ext_resource type="Script" uid="uid://botpfiw828nfc" path="res://global/Hand.cs" id="2_fq5x3"]
 [ext_resource type="PackedScene" uid="uid://658buqrne63l" path="res://entities/npc/NPCSpeechBubble.tscn" id="3_fq5x3"]
+[ext_resource type="Script" uid="uid://b4m5ch5xlgxfd" path="res://entities/npc/SpeechBubbleSprite.cs" id="4_x8luf"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_feq8d"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fq5x3"]
 radius = 0.35
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_i7juc"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_x8luf"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_l1kps"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_fq5x3"]
 size = Vector3(1, 0.6, 0.05)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_fq5x3"]
 viewport_path = NodePath("SubViewport")
 
-[node name="NPC" type="CharacterBody3D" unique_id=747487254]
+[node name="NPC" type="CharacterBody3D" unique_id=747487254 node_paths=PackedStringArray("speechBubbleSprite")]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 script = ExtResource("1_dqo36")
 handID = 1
+speechBubbleSprite = NodePath("SpeechBubbleSprite")
 
 [node name="CollisionBox" type="CollisionShape3D" parent="." unique_id=624112433]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CylinderShape3D_feq8d")
+shape = SubResource("CylinderShape3D_fq5x3")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=1543571324]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -31,17 +33,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=489823220]
-shape = SubResource("CylinderShape3D_i7juc")
+shape = SubResource("CylinderShape3D_x8luf")
 
 [node name="Hand" type="Node3D" parent="." unique_id=578049173]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.277, 1.228)
+transform = Transform3D(0.99999964, 0, 0, 0, 0.49999988, 0.8660254, 0, -0.86602503, 0.49999988, 0, 1.1815875, 1.2279994)
 script = ExtResource("2_fq5x3")
 handID = 2
 
 [node name="Area3D" type="Area3D" parent="Hand" unique_id=1070455888]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hand/Area3D" unique_id=1824910747]
-shape = SubResource("BoxShape3D_l1kps")
+shape = SubResource("BoxShape3D_fq5x3")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1715892597]
 disable_3d = true
@@ -53,14 +55,15 @@ size = Vector2i(400, 350)
 [node name="Speech Bubble" parent="SubViewport" unique_id=1843639644 node_paths=PackedStringArray("npc") instance=ExtResource("3_fq5x3")]
 npc = NodePath("../..")
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1603437472]
-transform = Transform3D(0.099999994, 0, 0, 0, 0.1, 0, 0, 0, 0.099999994, 0, 2.0305035, 0)
+[node name="SpeechBubbleSprite" type="Sprite3D" parent="." unique_id=1603437472]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 2.0305035, 0)
 centered = false
 offset = Vector2(-200, 0)
-billboard = 2
+billboard = 1
 double_sided = false
 fixed_size = true
 texture = SubResource("ViewportTexture_fq5x3")
+script = ExtResource("4_x8luf")
 
 [connection signal="body_entered" from="Hitbox" to="." method="OnBodyEntered"]
 [connection signal="input_event" from="Hand/Area3D" to="Hand" method="OnInputEvent"]

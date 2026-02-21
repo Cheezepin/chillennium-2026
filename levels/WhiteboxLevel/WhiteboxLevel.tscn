@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b2uma8vuxptkp"]
 
+[ext_resource type="PackedScene" uid="uid://dsiduv5kuh4kk" path="res://models/jason_whiteboxes/halftable.glb" id="1_7fr32"]
 [ext_resource type="PackedScene" uid="uid://cphpytkah8a7" path="res://ui/ui.tscn" id="1_lj2dc"]
 [ext_resource type="Script" uid="uid://qlcxn8xra4yy" path="res://entities/player/Player.cs" id="2_red06"]
 [ext_resource type="Script" uid="uid://clstsmfijjar1" path="res://global/Camera.cs" id="3_ly3lm"]
@@ -44,15 +45,19 @@ material = SubResource("StandardMaterial3D_red06")
 
 [node name="Table" type="CSGCylinder3D" parent="Env" unique_id=1712506394]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9518583, -2.5943594)
+visible = false
 radius = 2.0
 height = 0.1
 sides = 16
 material = SubResource("StandardMaterial3D_lj2dc")
 
+[node name="halftable" parent="Env" unique_id=1257731531 instance=ExtResource("1_7fr32")]
+transform = Transform3D(1, 0, 0, 0, 0.25, 0, 0, 0, 1, 0, 0.8740455, -0.43054628)
+
 [node name="UI" parent="." unique_id=1425285729 instance=ExtResource("1_lj2dc")]
 
 [node name="DealerHand" type="Node3D" parent="." unique_id=599761734]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.0262716, -1.197)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.0262716, -0.8114425)
 script = ExtResource("4_feq8d")
 
 [node name="Area3D" type="Area3D" parent="DealerHand" unique_id=2018757505]
@@ -61,10 +66,11 @@ script = ExtResource("4_feq8d")
 shape = SubResource("BoxShape3D_l1kps")
 
 [node name="Player" type="Node3D" parent="." unique_id=1696744575]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6142715, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.714, 0.51)
 script = ExtResource("2_red06")
 
 [node name="Camera3D" type="Camera3D" parent="Player" unique_id=307989853]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0.56526005, 0)
 far = 400.0
 script = ExtResource("3_ly3lm")
 
@@ -81,42 +87,44 @@ shadow_enabled = true
 [node name="Objects" type="Node3D" parent="." unique_id=539665658]
 
 [node name="BaseProp" parent="Objects" unique_id=1238349591 instance=ExtResource("5_5bwm8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.69506574, -3.3537593)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.69506574, -1.4405456)
 
 [node name="BaseProp2" parent="Objects" unique_id=1710011116 instance=ExtResource("5_5bwm8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7225009, 0.69506574, -3.2553062)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3118747, 0.69506574, -1.2637782)
 
 [node name="BaseProp3" parent="Objects" unique_id=1597650270 instance=ExtResource("5_5bwm8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.81556624, 0.69506574, -2.6607382)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.81556624, 0.69506574, -0.7475245)
 
 [node name="BaseProp4" parent="Objects" unique_id=328626326 instance=ExtResource("5_5bwm8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8376971, 0.69506574, -3.8071952)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8376971, 0.69506574, -1.8939815)
 
 [node name="BaseProp5" parent="Objects" unique_id=1567774903 instance=ExtResource("5_5bwm8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5160999, 0.695066, -2.698839)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5160999, 0.695066, -0.7856252)
 
 [node name="NPCs" type="Node3D" parent="." unique_id=536264414]
 
 [node name="Left NPC" parent="NPCs" unique_id=747487254 instance=ExtResource("6_5bwm8")]
-transform = Transform3D(0.49999994, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, 0.49999994, -2.289239, 0, -3.9440818)
+transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, -2, 0, -2)
 
 [node name="Middle NPC" parent="NPCs" unique_id=1386858959 instance=ExtResource("6_5bwm8")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, -5.1581182)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, -2.989279)
 handID = 2
+personality = 1
 
 [node name="Right NPC" parent="NPCs" unique_id=537468967 instance=ExtResource("6_5bwm8")]
-transform = Transform3D(0.49999994, 0, -0.8660254, 0, 1, 0, 0.8660254, 0, 0.49999994, 2.289, 0, -3.944)
+transform = Transform3D(0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, 0.7071067, 2, 0, -2)
 handID = 3
+personality = 2
 
 [node name="Deck" type="Node3D" parent="." unique_id=173381474]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6935791, 1.0805373, -1.9732447)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7406484, 1.0805373, -0.67815816)
 script = ExtResource("8_l1kps")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Deck" unique_id=80353012]
 size = Vector3(0.3, 0.15, 0.45)
 
 [node name="Discard" type="Node3D" parent="." unique_id=680652010]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35865837, 1.020208, -1.9732447)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7061847, 1.020208, -0.7106398)
 script = ExtResource("9_mcbbh")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Discard" unique_id=340182761]

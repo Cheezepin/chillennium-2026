@@ -54,7 +54,7 @@ public partial class Hand : Node3D
         for(int i = 0; i < cards.Count; ++i)
         {
             Card card = cards[i];
-            Vector3 cardTargetPos = 0.5f*new Vector3((float)i - centerOffset, 0, 0);
+            Vector3 cardTargetPos = 0.4f*new Vector3((float)i - centerOffset, 0, 0);
             card.Position = AsymptoticApproach(card.Position, cardTargetPos, 10.0f*(float)delta);
 
             card.useHandColor = (Player.Instance.frontHandHeld != this);
@@ -76,7 +76,7 @@ public partial class Hand : Node3D
         }
 
         BoxShape3D cardSelectBox = GetChild(0).GetChild<CollisionShape3D>(0).Shape as BoxShape3D;
-        cardSelectBox.Size = new Vector3((float)cards.Count*0.5f, cardSelectBox.Size.Y, cardSelectBox.Size.Z);
+        cardSelectBox.Size = new Vector3((float)cards.Count*0.4f, cardSelectBox.Size.Y, cardSelectBox.Size.Z);
 
         if(parent != null)
         {

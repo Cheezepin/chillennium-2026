@@ -64,7 +64,7 @@ public partial class NPCSpeechBubble : Control
             TextBox.Text = dialogLists[0][npc.dialogState];
             if((npc.dialogState == DialogState.Betting || npc.dialogState == DialogState.DoublingDown) && TextBox.Text.Contains('$'))
             {
-                TextBox.Text.Insert(TextBox.Text.IndexOf('$'), npc.bet.ToString());
+                TextBox.Text = TextBox.Text.Insert(TextBox.Text.IndexOf('$')+1, npc.bet.ToString());
             }
         } else
         {
@@ -73,4 +73,5 @@ public partial class NPCSpeechBubble : Control
         base._Process(delta);
     }
 
+    
 }
