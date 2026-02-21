@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cphpytkah8a7"]
+
+[ext_resource type="Shader" uid="uid://12wjfmnawkfd" path="res://ui/ScreenSpaceShader.gdshader" id="1_nb4k0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ks8t7"]
+shader = ExtResource("1_nb4k0")
+
+[node name="UI" type="CanvasLayer" unique_id=1425285729]
+
+[node name="ScreenSpaceShader" type="ColorRect" parent="." unique_id=1237238534]
+visible = false
+material = SubResource("ShaderMaterial_ks8t7")
+offset_right = 1920.0
+offset_bottom = 1080.0

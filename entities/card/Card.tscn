@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c2t2fuiaaa4iu"]
+
+[ext_resource type="Texture2D" uid="uid://efvxgrhgersu" path="res://entities/card/Atlasnye_playing_cards_deck.png" id="1_2iqqd"]
+[ext_resource type="Script" uid="uid://cuf8aojg1rtf5" path="res://entities/card/Card.cs" id="2_he7hl"]
+[ext_resource type="Texture2D" uid="uid://bs500i07u3vad" path="res://icon.svg" id="3_o04fy"]
+
+[node name="Card" type="Sprite3D" unique_id=1019558591]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+double_sided = false
+texture = ExtResource("1_2iqqd")
+region_enabled = true
+region_rect = Rect2(32, 32, 785, 1155)
+script = ExtResource("2_he7hl")
+
+[node name="Back" type="Sprite3D" parent="." unique_id=1776387956]
+transform = Transform3D(7.0791388, 0, -8.742272e-08, 0, 9.3642235, 0, -6.18878e-07, 0, -0.99999934, 0, 0, 0)
+double_sided = false
+texture = ExtResource("3_o04fy")
+region_enabled = true
+region_rect = Rect2(7.8187256, 5.567322, 111.27161, 122.68402)
