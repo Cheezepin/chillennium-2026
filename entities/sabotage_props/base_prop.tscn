@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://g7j7gocimef8"]
+
+[ext_resource type="Script" uid="uid://bdwnl84n4djrt" path="res://entities/sabotage_props/SabotageProp.cs" id="1_hsh1c"]
+[ext_resource type="Shader" uid="uid://bhij7kfi6mnu4" path="res://global/global_shaders/InverseHull.gdshader" id="2_n2yce"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hsh1c"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_n2yce")
+shader_parameter/outlineWidth = 1.5
+shader_parameter/outlineAlbedo = Color(0.3182579, 0.37044558, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n2yce"]
+resource_local_to_scene = true
+next_pass = SubResource("ShaderMaterial_hsh1c")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6dmnd"]
+radius = 0.2
+
+[node name="BaseProp" type="RigidBody3D" unique_id=1238349591]
+freeze = true
+script = ExtResource("1_hsh1c")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=1868927271]
+radius = 0.2
+material = SubResource("StandardMaterial3D_n2yce")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2036687242]
+shape = SubResource("SphereShape3D_6dmnd")
+
+[connection signal="input_event" from="." to="." method="OnInputEvent"]
+[connection signal="mouse_entered" from="." to="." method="OnMouseEnter"]
+[connection signal="mouse_exited" from="." to="." method="OnMouseExit"]

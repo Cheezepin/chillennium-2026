@@ -13,18 +13,21 @@ public partial class Player : Node3D
 
 	public SabotageProp rhandProp;
 	public Node3D rhandAnchor;
+    public Hand frontHandHeld;
+    public Node3D frontAnchor;
 	public override void _Ready()
     {
         homePos = Position;
 		Instance = this;
 
 		rhandAnchor = GetNode<Node3D>("RHandAnchor");
+        frontAnchor = GetNode<Node3D>("FrontAnchor");
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
     {
-        if(Input.IsActionPressed("ui_accept"))
+        if(Input.IsActionPressed("ui_accept") && frontHandHeld == null)
         {
             targetPos.Y = homePos.Y - 0.8f;
         } else
@@ -33,5 +36,10 @@ public partial class Player : Node3D
         }
 
 		Position = new Vector3(Position.X, AsymptoticApproach(Position.Y, targetPos.Y, 10.0f*(float)delta), Position.Z);
+
+        if(frontHandHeld != null && Input.IsActionJustPressed("ui_accept"))
+        {
+            frontHandHeld.RemoveAnchorToHand();
+        }
     }
 }

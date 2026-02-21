@@ -1,14 +1,35 @@
 [gd_scene format=3 uid="uid://cphpytkah8a7"]
 
+[ext_resource type="Script" uid="uid://b5drt275sbb1d" path="res://ui/UI.cs" id="1_ks8t7"]
 [ext_resource type="Shader" uid="uid://12wjfmnawkfd" path="res://ui/ScreenSpaceShader.gdshader" id="1_nb4k0"]
+[ext_resource type="Theme" uid="uid://cnuu5cksgqbp5" path="res://ui/StatusAlert.tres" id="3_wl5ax"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ks8t7"]
 shader = ExtResource("1_nb4k0")
 
 [node name="UI" type="CanvasLayer" unique_id=1425285729]
+script = ExtResource("1_ks8t7")
 
 [node name="ScreenSpaceShader" type="ColorRect" parent="." unique_id=1237238534]
 visible = false
 material = SubResource("ShaderMaterial_ks8t7")
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
+
+[node name="Money" type="RichTextLabel" parent="." unique_id=2107481317]
+offset_right = 241.0
+offset_bottom = 74.0
+mouse_filter = 2
+text = "1000 / 0000"
+
+[node name="Status Alert" type="RichTextLabel" parent="." unique_id=763157327]
+offset_left = 240.0
+offset_top = 100.0
+offset_right = 1680.0
+offset_bottom = 400.0
+mouse_filter = 2
+theme = ExtResource("3_wl5ax")
+text = "Round Over!!!"
+horizontal_alignment = 1
+vertical_alignment = 1

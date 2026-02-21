@@ -5,19 +5,27 @@ using static Global;
 public partial class SabotageProp : RigidBody3D
 {
 	// Called when the node enters the scene tree for the first time.
-	CsgSphere3D mesh;
+	public CsgSphere3D mesh;
+	public CollisionShape3D col;
 	ShaderMaterial outlineMaterial;
 	float targetOutlineWidth = 0.9f;
+
+	public bool selectable = true;
+	
+	public double distractionBaseTime = 1.0;
 
 	public override void _Ready()
     {
 		mesh = GetNode<CsgSphere3D>("CSGSphere3D");
+		col = GetNode<CollisionShape3D>("CollisionShape3D");
         outlineMaterial = (ShaderMaterial)mesh.Material.NextPass;
+		selectable = true;
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
     {
+		if(!selectable) targetOutlineWidth = 0.9f;
         outlineMaterial.SetShaderParameter("outlineWidth", 
 			AsymptoticApproach((float)outlineMaterial.GetShaderParameter("outlineWidth"), targetOutlineWidth, 40.0f*(float)delta));
 
@@ -25,7 +33,7 @@ public partial class SabotageProp : RigidBody3D
         {
             GlobalPosition = Player.Instance.rhandAnchor.GlobalPosition;
 
-			if(Input.IsMouseButtonPressed(MouseButton.Right))
+			if(mouseClicked)
             {
                 Vector3 camDir = Camera.Instance.ProjectRayNormal(GetViewport().GetMousePosition());
 				Vector3 dir = camDir.Normalized();
@@ -65,6 +73,9 @@ public partial class SabotageProp : RigidBody3D
 				if(((inputEvent as InputEventMouseButton).ButtonMask & MouseButtonMask.Left) != 0)
 				{
 					AnchorToHand();
+					mouseClicked = false;
+					mouseHeld = true;
+					selectable = false;
 				}
 			}
         }

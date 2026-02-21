@@ -2,12 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://cphpytkah8a7" path="res://ui/ui.tscn" id="1_lj2dc"]
 [ext_resource type="Script" uid="uid://qlcxn8xra4yy" path="res://entities/player/Player.cs" id="2_red06"]
-[ext_resource type="Shader" uid="uid://bhij7kfi6mnu4" path="res://global/global_shaders/InverseHull.gdshader" id="3_6dmnd"]
 [ext_resource type="Script" uid="uid://clstsmfijjar1" path="res://global/Camera.cs" id="3_ly3lm"]
-[ext_resource type="Script" uid="uid://bdwnl84n4djrt" path="res://entities/sabotage_props/SabotageProp.cs" id="4_2h4ru"]
 [ext_resource type="Script" uid="uid://botpfiw828nfc" path="res://global/Hand.cs" id="4_feq8d"]
-[ext_resource type="Script" uid="uid://blcjnt6tvmjwp" path="res://entities/npc/NPC.cs" id="6_i7juc"]
+[ext_resource type="PackedScene" uid="uid://g7j7gocimef8" path="res://entities/sabotage_props/base_prop.tscn" id="5_5bwm8"]
+[ext_resource type="PackedScene" uid="uid://fs6ys0sijvlm" path="res://entities/npc/NPC.tscn" id="6_5bwm8"]
 [ext_resource type="PackedScene" uid="uid://bp8vw4ygb6b3c" path="res://models/water/water_plane.glb" id="8_dqbfd"]
+[ext_resource type="Script" uid="uid://j6enoe10dcyy" path="res://global/Deck.cs" id="8_l1kps"]
+[ext_resource type="Script" uid="uid://jojgsem7mb7e" path="res://global/Discard.cs" id="9_mcbbh"]
+[ext_resource type="Script" uid="uid://c0fu6qxjbljkb" path="res://levels/DistractionZone.cs" id="11_5bwm8"]
+[ext_resource type="Script" uid="uid://cdnytelyn12bo" path="res://global/BlackjackHandler.cs" id="12_7fr32"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_red06"]
 albedo_color = Color(0, 0.34901962, 0, 1)
@@ -15,23 +18,8 @@ albedo_color = Color(0, 0.34901962, 0, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lj2dc"]
 albedo_color = Color(0.64804476, 0.32772115, 0.09066401, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2h4ru"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("3_6dmnd")
-shader_parameter/outlineWidth = 1.5
-shader_parameter/outlineAlbedo = Color(0.3182579, 0.37044558, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ly3lm"]
-next_pass = SubResource("ShaderMaterial_2h4ru")
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_6dmnd"]
-radius = 0.2
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_feq8d"]
-radius = 0.35
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_i7juc"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_l1kps"]
+size = Vector3(1, 0.6, 0.05)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i7juc"]
 
@@ -41,6 +29,9 @@ sky_material = SubResource("ProceduralSkyMaterial_i7juc")
 [sub_resource type="Environment" id="Environment_dqbfd"]
 background_mode = 2
 sky = SubResource("Sky_feq8d")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5bwm8"]
+size = Vector3(49.95072, 37.43744, 13.73761)
 
 [node name="WhiteboxLevel" type="Node3D" unique_id=1721237249]
 
@@ -60,6 +51,15 @@ material = SubResource("StandardMaterial3D_lj2dc")
 
 [node name="UI" parent="." unique_id=1425285729 instance=ExtResource("1_lj2dc")]
 
+[node name="DealerHand" type="Node3D" parent="." unique_id=599761734]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.0262716, -1.197)
+script = ExtResource("4_feq8d")
+
+[node name="Area3D" type="Area3D" parent="DealerHand" unique_id=2018757505]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DealerHand/Area3D" unique_id=292126623]
+shape = SubResource("BoxShape3D_l1kps")
+
 [node name="Player" type="Node3D" parent="." unique_id=1696744575]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6142715, 0)
 script = ExtResource("2_red06")
@@ -71,9 +71,8 @@ script = ExtResource("3_ly3lm")
 [node name="RHandAnchor" type="Node3D" parent="Player" unique_id=305670240]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.3, -0.5)
 
-[node name="Hand" type="Node3D" parent="Player" unique_id=599761734]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.588, -1.197)
-script = ExtResource("4_feq8d")
+[node name="FrontAnchor" type="Node3D" parent="Player" unique_id=628989949]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.046376)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=133779659]
 transform = Transform3D(1, 0, 0, 0, 0.6374105, 0.7705244, 0, -0.7705244, 0.6374105, 0, 3.0277464, 0)
@@ -81,40 +80,47 @@ shadow_enabled = true
 
 [node name="Objects" type="Node3D" parent="." unique_id=539665658]
 
-[node name="SampleProp" type="RigidBody3D" parent="Objects" unique_id=758566186]
+[node name="BaseProp" parent="Objects" unique_id=1238349591 instance=ExtResource("5_5bwm8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.69506574, -3.3537593)
-freeze = true
-script = ExtResource("4_2h4ru")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Objects/SampleProp" unique_id=38271468]
-radius = 0.2
-material = SubResource("StandardMaterial3D_ly3lm")
+[node name="BaseProp2" parent="Objects" unique_id=1710011116 instance=ExtResource("5_5bwm8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7225009, 0.69506574, -3.2553062)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/SampleProp" unique_id=1610272219]
-shape = SubResource("SphereShape3D_6dmnd")
+[node name="BaseProp3" parent="Objects" unique_id=1597650270 instance=ExtResource("5_5bwm8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.81556624, 0.69506574, -2.6607382)
+
+[node name="BaseProp4" parent="Objects" unique_id=328626326 instance=ExtResource("5_5bwm8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8376971, 0.69506574, -3.8071952)
+
+[node name="BaseProp5" parent="Objects" unique_id=1567774903 instance=ExtResource("5_5bwm8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5160999, 0.695066, -2.698839)
 
 [node name="NPCs" type="Node3D" parent="." unique_id=536264414]
 
-[node name="Fish NPC" type="CharacterBody3D" parent="NPCs" unique_id=837649412]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.5)
-script = ExtResource("6_i7juc")
+[node name="Left NPC" parent="NPCs" unique_id=747487254 instance=ExtResource("6_5bwm8")]
+transform = Transform3D(0.49999994, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, 0.49999994, -2.289239, 0, -3.9440818)
 
-[node name="CollisionBox" type="CollisionShape3D" parent="NPCs/Fish NPC" unique_id=1858253696]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CylinderShape3D_feq8d")
+[node name="Middle NPC" parent="NPCs" unique_id=1386858959 instance=ExtResource("6_5bwm8")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, -5.1581182)
+handID = 2
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="NPCs/Fish NPC" unique_id=2076231645]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="Right NPC" parent="NPCs" unique_id=537468967 instance=ExtResource("6_5bwm8")]
+transform = Transform3D(0.49999994, 0, -0.8660254, 0, 1, 0, 0.8660254, 0, 0.49999994, 2.289, 0, -3.944)
+handID = 3
 
-[node name="Hitbox" type="Area3D" parent="NPCs/Fish NPC" unique_id=138445475]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="Deck" type="Node3D" parent="." unique_id=173381474]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6935791, 1.0805373, -1.9732447)
+script = ExtResource("8_l1kps")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NPCs/Fish NPC/Hitbox" unique_id=1353830960]
-shape = SubResource("CylinderShape3D_i7juc")
+[node name="CSGBox3D" type="CSGBox3D" parent="Deck" unique_id=80353012]
+size = Vector3(0.3, 0.15, 0.45)
 
-[node name="Hand" type="Node3D" parent="NPCs/Fish NPC" unique_id=577375663]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.277, 1.228)
-script = ExtResource("4_feq8d")
+[node name="Discard" type="Node3D" parent="." unique_id=680652010]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35865837, 1.020208, -1.9732447)
+script = ExtResource("9_mcbbh")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Discard" unique_id=340182761]
+size = Vector3(0.3, 0.02, 0.45)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=360804522]
 environment = SubResource("Environment_dqbfd")
@@ -122,7 +128,18 @@ environment = SubResource("Environment_dqbfd")
 [node name="water_plane" parent="." unique_id=1475975502 instance=ExtResource("8_dqbfd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.042, -19.68607)
 
-[connection signal="input_event" from="Objects/SampleProp" to="Objects/SampleProp" method="OnInputEvent"]
-[connection signal="mouse_entered" from="Objects/SampleProp" to="Objects/SampleProp" method="OnMouseEnter"]
-[connection signal="mouse_exited" from="Objects/SampleProp" to="Objects/SampleProp" method="OnMouseExit"]
-[connection signal="body_entered" from="NPCs/Fish NPC/Hitbox" to="NPCs/Fish NPC" method="OnBodyEntered"]
+[node name="DistractionZone" type="Area3D" parent="." unique_id=1206204365 node_paths=PackedStringArray("npcs")]
+script = ExtResource("11_5bwm8")
+npcs = NodePath("../NPCs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DistractionZone" unique_id=1403119665]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0441017, -1.8099556, -13.776703)
+shape = SubResource("BoxShape3D_5bwm8")
+
+[node name="Blackjack Simulator" type="Node" parent="." unique_id=74933002 node_paths=PackedStringArray("NPCParent")]
+script = ExtResource("12_7fr32")
+NPCParent = NodePath("../NPCs")
+
+[connection signal="mouse_entered" from="DealerHand/Area3D" to="DealerHand" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="DealerHand/Area3D" to="DealerHand" method="OnMouseExit"]
+[connection signal="body_entered" from="DistractionZone" to="DistractionZone" method="OnBodyEntered"]

@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://658buqrne63l"]
+
+[ext_resource type="Texture2D" uid="uid://veixwcvt71ur" path="res://entities/npc/speech_bubble_default.png" id="1_t3uxi"]
+[ext_resource type="Script" uid="uid://pa0hc3cnikjq" path="res://entities/npc/NPCSpeechBubble.cs" id="2_r5vlq"]
+[ext_resource type="Theme" uid="uid://ydqiig0e1vje" path="res://ui/NPCDialog.tres" id="2_xv58l"]
+
+[node name="Speech Bubble" type="Control" unique_id=1843639644]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 400.0
+offset_bottom = 375.0
+script = ExtResource("2_r5vlq")
+
+[node name="Base" type="TextureRect" parent="." unique_id=264761206]
+layout_mode = 0
+offset_left = 39.532867
+offset_top = -20.786674
+offset_right = 439.53287
+offset_bottom = 354.21332
+rotation = -0.16101444
+pivot_offset = Vector2(200, 375)
+mouse_filter = 2
+texture = ExtResource("1_t3uxi")
+
+[node name="Text" type="RichTextLabel" parent="." unique_id=83054304]
+layout_mode = 0
+offset_left = 20.532837
+offset_top = 5.213295
+offset_right = 372.53284
+offset_bottom = 257.2133
+mouse_filter = 2
+theme = ExtResource("2_xv58l")
+text = "This is a test!! I love being a sprite in a 3D environment!"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1

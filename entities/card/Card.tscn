@@ -4,17 +4,30 @@
 [ext_resource type="Script" uid="uid://cuf8aojg1rtf5" path="res://entities/card/Card.cs" id="2_he7hl"]
 [ext_resource type="Texture2D" uid="uid://bs500i07u3vad" path="res://icon.svg" id="3_o04fy"]
 
-[node name="Card" type="Sprite3D" unique_id=1019558591]
+[sub_resource type="BoxShape3D" id="BoxShape3D_o04fy"]
+size = Vector3(0.4, 0.6, 0.02)
+
+[node name="Card" type="Area3D" unique_id=1493185060]
+script = ExtResource("2_he7hl")
+
+[node name="Front" type="Sprite3D" parent="." unique_id=1019558591]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
 double_sided = false
 texture = ExtResource("1_2iqqd")
 region_enabled = true
 region_rect = Rect2(32, 32, 785, 1155)
-script = ExtResource("2_he7hl")
 
 [node name="Back" type="Sprite3D" parent="." unique_id=1776387956]
-transform = Transform3D(7.0791388, 0, -8.742272e-08, 0, 9.3642235, 0, -6.18878e-07, 0, -0.99999934, 0, 0, 0)
+transform = Transform3D(0.35395694, 0, -4.371136e-09, 0, 0.46821117, 0, -3.09439e-08, 0, -0.049999967, 0, 0, 0)
 double_sided = false
 texture = ExtResource("3_o04fy")
 region_enabled = true
 region_rect = Rect2(7.8187256, 5.567322, 111.27161, 122.68402)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=662566046]
+shape = SubResource("BoxShape3D_o04fy")
+debug_color = Color(0.86489606, 0.35590076, 0.07262098, 0.41960785)
+
+[connection signal="input_event" from="." to="." method="OnInputEvent"]
+[connection signal="mouse_entered" from="." to="." method="OnMouseEnter"]
+[connection signal="mouse_exited" from="." to="." method="OnMouseExit"]
