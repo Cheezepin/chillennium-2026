@@ -1,6 +1,6 @@
 [gd_resource type="ORMMaterial3D" format=3 uid="uid://7jqtyo0xjjbf"]
 
-[ext_resource type="Texture2D" uid="uid://dsnaga4l7gg" path="res://models/cat/S_Cat_Retop_M_Cat_03_BaseColor.1001.png" id="1_41gp2"]
+[ext_resource type="Texture2D" uid="uid://b0gvf022b7lb1" path="res://models/cat/S_FinalCatModel_M_Cat_03_BaseColor.1001.png" id="1_41gp2"]
 [ext_resource type="Texture2D" uid="uid://f36dayww1t3d" path="res://models/cat/S_Cat_Retop_M_Cat_03_Normal.1001.png" id="2_4pyy0"]
 [ext_resource type="Texture2D" uid="uid://i5oqfbsas8cw" path="res://models/cat/S_Cat_Retop_M_Cat_03_OcclusionRoughnessMetallic.1001.png" id="3_7lgti"]
 

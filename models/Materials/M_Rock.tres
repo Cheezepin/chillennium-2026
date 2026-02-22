@@ -2,8 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://dng3v1rcrx5rm" path="res://models/Textures/T_Rock/S_Rock_M_Rock_BaseColor.1001.png" id="1_0lmmq"]
 [ext_resource type="Texture2D" uid="uid://cr2hkkfciblmy" path="res://models/Textures/T_Rock/S_Rock_M_Rock_OcclusionRoughnessMetallic.1001.png" id="2_qy6nx"]
+[ext_resource type="Material" uid="uid://bv22igm4kwbv7" path="res://global/global_shaders/Outline.tres" id="3_qy6nx"]
 
 [resource]
+resource_local_to_scene = true
+next_pass = ExtResource("3_qy6nx")
 albedo_texture = ExtResource("1_0lmmq")
 metallic = 1.0
 metallic_texture = ExtResource("2_qy6nx")

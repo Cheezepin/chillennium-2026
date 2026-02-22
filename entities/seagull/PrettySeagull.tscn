@@ -18,9 +18,10 @@ size = Vector3(1, 0.6, 0.05)
 [sub_resource type="ViewportTexture" id="ViewportTexture_fq5x3"]
 viewport_path = NodePath("SubViewport")
 
-[node name="Pretty Seagull" type="CharacterBody3D" unique_id=747487254 node_paths=PackedStringArray("animPlayer", "eyes", "speechBubbleSprite")]
+[node name="Pretty Seagull" type="CharacterBody3D" unique_id=747487254 node_paths=PackedStringArray("model", "animPlayer", "eyes", "speechBubbleSprite")]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 script = ExtResource("1_aayg4")
+model = NodePath("Seagull Pretty Model")
 handID = 1
 animPlayer = NodePath("Seagull Pretty Model/AnimationPlayer")
 species = 1
@@ -68,7 +69,7 @@ texture = SubResource("ViewportTexture_fq5x3")
 script = ExtResource("4_20d3a")
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="." unique_id=642707125]
-resources = [PackedStringArray("FishAttack"), [ExtResource("5_cpu31")]]
+resources = [PackedStringArray("Attack"), [ExtResource("5_cpu31")]]
 
 [node name="Seagull Pretty Model" parent="." unique_id=1914600575 instance=ExtResource("6_wgrkh")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)

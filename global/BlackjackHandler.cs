@@ -168,6 +168,7 @@ public partial class BlackjackHandler : Node
         NPC npc = npcs[playerID];
         switch(substate % 3) {
             case 0:
+                if(npc.isStanding) {substate += 2; timer = 1.5;}
                 if(timer > npcs[playerID].ThinkingTime()) {
                     if(!npc.HandOver() && npc.stunTimer <= 0 && npc.distractionTimer <= 0) {
                         npc.MakeBJDecision();
@@ -188,7 +189,7 @@ public partial class BlackjackHandler : Node
                 }
                 break;
             case 1:
-                if(timer > 0.8 || npc.isStanding)
+                if(timer > 0.8)
                 {
                     npc.ReactToBJDecision();
                     ++substate;
@@ -225,17 +226,19 @@ public partial class BlackjackHandler : Node
                 if(timer < 1.7) break;
                 if(timer > 2.2)
                 {
-                    timer -= 0.5;
+                    timer -= 1.0;
                     if(dealerHand.runningTotal < 17)
                     {
                         DealCard(dealerHand, true);
                     } else
                     {
                         ++substate;
+                        timer = 0;
                     }
                 }
                 break;
             case 2:
+                int init = money;
                 if(Player.Instance.frontHandHeld != null)
                 {
                     Player.Instance.frontHandHeld.RemoveAnchorToHand();
@@ -289,17 +292,19 @@ public partial class BlackjackHandler : Node
                 }
                 money += sum;
                 ++substate;
-                timer += delta;
+                timer = 0;
                 switch(round)
                 {
                     case 1: dayMover.Play("day2sunset"); break;
                     case 2: dayMover.Play("sunset2night"); break;
-                    case 3: GetTree().Quit(); break;
+                    case 3: GetTree().ChangeSceneToFile("levels/EndScreen.tscn"); break;
                 }
+
+                GetNode<AudioStreamPlayer>(money > init ? "GOOD" : "BAD").Play();
                 break;
             case 3:
                 timer += delta;
-                if(timer > 2.0) ChangeState(BlackjackState.Idle);
+                if(timer > 5.0) ChangeState(BlackjackState.Idle);
                 break;
         }
     }
@@ -347,7 +352,7 @@ public partial class BlackjackHandler : Node
             }
         }
         timer += delta;
-        if(timer > 2.0) ChangeState(BlackjackState.Betting);
+        if(timer > 6.0) ChangeState(BlackjackState.Betting);
     }
 
     public double freezeTimer = 0;
@@ -392,6 +397,8 @@ public partial class BlackjackHandler : Node
 
     public void InterruptBJ()
     {
-        if(hands[0].runningTotal >= 21) ChangeState(BlackjackState.Conclusion);
+        GD.Print(hands[0].runningTotal);
+        if(hands[0].runningTotal >= 21) 
+                ChangeState(BlackjackState.Conclusion);
     }
 }

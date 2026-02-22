@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ksyo8h44umc"]
+
+[ext_resource type="Texture2D" uid="uid://crllfu068nqc8" path="res://models/chip/pockerChip_UVSnapshot (1).png" id="1_841ir"]
+
+[resource]
+albedo_texture = ExtResource("1_841ir")

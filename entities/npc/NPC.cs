@@ -10,6 +10,8 @@ public partial class NPC : CharacterBody3D
 
     public DialogState dialogState;
 
+    [Export]public Node3D model;
+
     [Export]public HandID handID;
 
     public ResourcePreloader resourcePreloader;
@@ -55,7 +57,7 @@ public partial class NPC : CharacterBody3D
 
     public void PlayAnimation(Anims anim)
     {
-        Position = Vector3.Zero;
+        model.Position = Vector3.Zero;
         switch(anim)
         {
             case Anims.Idle:
@@ -65,7 +67,7 @@ public partial class NPC : CharacterBody3D
                     case Species.Seagull: animPlayer.Play("Seagull Anims/BirdIdle"); break;
                     case Species.Cat:     animPlayer.Play("Cat Anims/CatIdle"); break;
                 }
-                if(species != Species.Fish) Position = Vector3.Up*0.5f;
+                if(species != Species.Fish) model.Position = Vector3.Up*0.5f;
                 break;
             case Anims.Distracted:
                 switch(species)
@@ -74,7 +76,7 @@ public partial class NPC : CharacterBody3D
                     case Species.Seagull: animPlayer.Play("Seagull Anims/BirdIdle"); break;
                     case Species.Cat:     animPlayer.Play("Cat Anims/CatIdle"); break;
                 }
-                if(species != Species.Fish) Position = Vector3.Up*0.5f;
+                if(species != Species.Fish) model.Position = Vector3.Up*0.5f;
                 break;
             case Anims.Dizzy:
                 switch(species)
@@ -220,11 +222,41 @@ public partial class NPC : CharacterBody3D
         atk.spawner = this;
         atk.GlobalPosition = GlobalPosition + Vector3.Up*1.5f;
         atk.GlobalPosition += atk.GlobalPosition.DirectionTo(targetPos)*2.0f;
-        atk.ApplyCentralImpulse(8.0f*atk.GlobalPosition.DirectionTo(targetPos));
+        atk.ApplyCentralImpulse(6.0f*atk.GlobalPosition.DirectionTo(targetPos));
+        atk.ApplyTorqueImpulse(3.0f*atk.GlobalPosition.DirectionTo(targetPos));
+        atk.GetNode<AudioStreamPlayer>("Whoosh").Play();
     }
 
     public override void _Process(double delta)
     {
+        string side = handID == HandID.LeftNPC ? "Left" : (handID == HandID.MiddleNPC ? "Middle" : "Right");
+        Node3D chipAnchor = GetTree().CurrentScene.GetNode("Chip Anchors").GetNode<Node3D>(side);
+        if(bet == 0) chipAnchor.Hide();
+        else
+        {
+            chipAnchor.Show();
+            if(bet < 100)
+            {
+                chipAnchor.GetNode<Node3D>("large").Hide();
+                chipAnchor.GetNode<Node3D>("medium").Hide();
+                chipAnchor.GetNode<Node3D>("small").Show();
+            } else if (bet < 150)
+            {
+                chipAnchor.GetNode<Node3D>("large").Hide();
+                chipAnchor.GetNode<Node3D>("medium").Show();
+                chipAnchor.GetNode<Node3D>("small").Hide();
+            } else if (bet < 200)
+            {
+                chipAnchor.GetNode<Node3D>("large").Show();
+                chipAnchor.GetNode<Node3D>("medium").Hide();
+                chipAnchor.GetNode<Node3D>("small").Hide();
+            } else
+            {
+                chipAnchor.GetNode<Node3D>("large").Show();
+                chipAnchor.GetNode<Node3D>("medium").Show();
+                chipAnchor.GetNode<Node3D>("small").Hide();
+            }
+        }
 
         if(distractionTimer > 0)
         {
@@ -248,7 +280,8 @@ public partial class NPC : CharacterBody3D
             {
                 targetRot = initialRot;
             }
-            Rotation = new Vector3(0, AsymptoticApproach(Rotation.Y, targetRot, 20.0f*(float)delta), 0);
+            // Rotation = new Vector3(0, AsymptoticApproach(Rotation.Y, targetRot, 20.0f*(float)delta), 0);
+            Rotation = new Vector3(0, targetRot, 0);
         // }
 
         Scale = Vector3.One;
@@ -291,6 +324,7 @@ public partial class NPC : CharacterBody3D
             // s.col.SetDeferred("disabled", true);
             (body as SabotageProp).LinearVelocity *= 4.0f;
             s.stillEffective = false;
+            s.GetNode<AudioStreamPlayer>("Hit").Play();
         }
     }
 

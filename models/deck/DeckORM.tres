@@ -1,0 +1,11 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://dm37fx2ao1jkb"]
+
+[ext_resource type="Texture2D" uid="uid://b5rj4t0kfen21" path="res://models/deck/S_CardDeck_M_CardDeck_BaseColor.1001.png" id="1_y7nga"]
+[ext_resource type="Texture2D" uid="uid://cj2sd1qc8mcrh" path="res://models/deck/S_CardDeck_M_CardDeck_Normal.1001.png" id="2_1pxin"]
+[ext_resource type="Texture2D" uid="uid://icryl3elgp7l" path="res://models/deck/S_CardDeck_M_CardDeck_OcclusionRoughnessMetallic.1001.png" id="3_whbkq"]
+
+[resource]
+albedo_texture = ExtResource("1_y7nga")
+orm_texture = ExtResource("3_whbkq")
+normal_enabled = true
+normal_texture = ExtResource("2_1pxin")

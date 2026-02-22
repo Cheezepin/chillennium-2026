@@ -1,17 +1,80 @@
 [gd_scene format=3 uid="uid://658buqrne63l"]
 
 [ext_resource type="Texture2D" uid="uid://veixwcvt71ur" path="res://entities/npc/speech_bubble_default.png" id="1_t3uxi"]
+[ext_resource type="Texture2D" uid="uid://dn6nc4ayswrj8" path="res://ui/SpeechBubbles/ChilleniumUILazySpeechBubble1.png" id="2_abnju"]
+[ext_resource type="Texture2D" uid="uid://cb40h3hja3jmr" path="res://ui/SpeechBubbles/ChilleniumUINormalSpeechBubble1.png" id="2_hveh5"]
 [ext_resource type="Script" uid="uid://pa0hc3cnikjq" path="res://entities/npc/NPCSpeechBubble.cs" id="2_r5vlq"]
 [ext_resource type="Theme" uid="uid://ydqiig0e1vje" path="res://ui/NPCDialog.tres" id="2_xv58l"]
+[ext_resource type="Texture2D" uid="uid://da715ry8g8s00" path="res://ui/SpeechBubbles/ChilleniumUINormalSpeechBubble2.png" id="3_vh6a2"]
+[ext_resource type="Texture2D" uid="uid://b5rhrbcrcot7p" path="res://ui/SpeechBubbles/ChilleniumUILazySpeechBubble2.png" id="3_vyr36"]
+[ext_resource type="Texture2D" uid="uid://cwnbfegqcijvl" path="res://ui/SpeechBubbles/ChilleniumUINormalSpeechBubble3.png" id="4_arilc"]
+[ext_resource type="Texture2D" uid="uid://b2mjxcxm2xkkr" path="res://ui/SpeechBubbles/ChilleniumUILazySpeechBubble3.png" id="4_javen"]
+[ext_resource type="Texture2D" uid="uid://6odcpc2y5gd7" path="res://ui/SpeechBubbles/ChilleniumUINervousSpeechBubble1.png" id="8_pvl1l"]
+[ext_resource type="Texture2D" uid="uid://cfnujqlp65s87" path="res://ui/SpeechBubbles/ChilleniumUINervousSpeechBubble2.png" id="9_dbul8"]
+[ext_resource type="Texture2D" uid="uid://bu3rxij3hmjky" path="res://ui/SpeechBubbles/ChilleniumUINervousSpeechBubble3.png" id="10_4v2sy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_abnju"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_abnju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vyr36")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_javen")
+}],
+"loop": true,
+"name": &"lazy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hveh5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vh6a2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_arilc")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_pvl1l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_dbul8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_4v2sy")
+}],
+"loop": true,
+"name": &"skittish",
+"speed": 9.0
+}]
 
 [node name="Speech Bubble" type="Control" unique_id=1843639644]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 400.0
+offset_right = 490.0
 offset_bottom = 375.0
 script = ExtResource("2_r5vlq")
 
-[node name="Base" type="TextureRect" parent="." unique_id=264761206]
+[node name="Base" type="AnimatedSprite2D" parent="." unique_id=1848569707]
+position = Vector2(204, 143)
+scale = Vector2(0.12882563, 0.17831637)
+sprite_frames = SubResource("SpriteFrames_abnju")
+animation = &"skittish"
+autoplay = "skittish"
+frame_progress = 0.3076618
+
+[node name="OldBase" type="TextureRect" parent="." unique_id=264761206]
+visible = false
 layout_mode = 0
 offset_left = 39.532867
 offset_top = -20.786674
@@ -24,10 +87,11 @@ texture = ExtResource("1_t3uxi")
 
 [node name="Text" type="RichTextLabel" parent="." unique_id=83054304]
 layout_mode = 0
-offset_left = 20.532837
-offset_top = 5.213295
-offset_right = 372.53284
-offset_bottom = 257.2133
+offset_left = 54.000004
+offset_top = 27.0
+offset_right = 406.0
+offset_bottom = 279.0
+scale = Vector2(0.7957365, 0.7957365)
 mouse_filter = 2
 theme = ExtResource("2_xv58l")
 text = "This is a test!! I love being a sprite in a 3D environment!"

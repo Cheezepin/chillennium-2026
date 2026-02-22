@@ -65,14 +65,16 @@ public partial class SabotageProp : RigidBody3D
         {
             GlobalPosition = Player.Instance.rhandAnchor.GlobalPosition;
 
-			if(mouseClicked)
+			if(mouseClicked && !Input.IsActionPressed("ui_accept"))
             {
                 Vector3 camDir = Camera.Instance.ProjectRayNormal(GetViewport().GetMousePosition());
 				Vector3 dir = camDir.Normalized();
 				GlobalPosition = Camera.Instance.GlobalPosition;
 				Freeze = false;
-				ApplyCentralImpulse(dir*20.0f);
+				ApplyCentralImpulse(dir*10.0f);
+				ApplyTorqueImpulse(dir*10.0f);
 				Player.Instance.rhandProp = null;
+				GetNode<AudioStreamPlayer>("Whoosh").Play();
             }
         }
     }
@@ -116,6 +118,8 @@ public partial class SabotageProp : RigidBody3D
 							hands[0].AddChild(card);
 							card.GlobalPosition = Deck.Instance.GlobalPosition;
 
+							GetNode<AudioStreamPlayer>("Flip").Play();
+
 							foreach(NPC npc in BlackjackHandler.Instance.npcs)
                             {
                                 if(npc.IsAlert())
@@ -131,6 +135,13 @@ public partial class SabotageProp : RigidBody3D
 						case PropType.Radio:
 							break;
 					}
+
+					if(GetNodeOrNull("Tape") != null)
+					{
+						GetNode<Node3D>("Tape").Hide();
+						GetNode<Node3D>("Tape").GetNode<AudioStreamPlayer>("AudioStreamPlayer").Play();
+					}
+
 					mouseClicked = false;
 					mouseHeld = true;
 					selectable = false;

@@ -27,6 +27,8 @@ public partial class Card : Area3D
         );
 
         Rotation = new Vector3(0, showing ? 0 : Mathf.Pi, 0);
+
+        GetNode<AudioStreamPlayer>("Flip").Play();
         base._Ready();
     }
 

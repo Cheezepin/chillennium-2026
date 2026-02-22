@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bxos0wf1bt2q0"]
 
-[ext_resource type="Texture2D" uid="uid://dedu6pgvltyp1" path="res://ui/ChilleniumTitleScreen_Ver2.png" id="1_evd2d"]
+[ext_resource type="Script" uid="uid://bmctui4uxhr6k" path="res://levels/MainMenu.cs" id="1_p3rmf"]
 [ext_resource type="Texture2D" uid="uid://j6bfeyy3k0ho" path="res://ui/Buttons/ChilleniumUIStart.png" id="1_smbho"]
+[ext_resource type="Texture2D" uid="uid://bft0m6x7crplv" path="res://ui/ChilleniumTitleScreen_Ver1.png" id="2_26ri5"]
 [ext_resource type="Texture2D" uid="uid://c1xphkiijg7ac" path="res://ui/Buttons/ChilleniumUIStart_P.png" id="2_lclon"]
 [ext_resource type="Texture2D" uid="uid://yj4kddpff7xq" path="res://ui/Buttons/ChilleniumUIStart_H.png" id="3_bf6rl"]
 [ext_resource type="BitMap" uid="uid://bccna52hideve" path="res://ui/Buttons/Mask.png" id="4_tv6i7"]
@@ -15,21 +16,26 @@
 [ext_resource type="Texture2D" uid="uid://cvoerdnvbxp8s" path="res://ui/Buttons/ChilleniumUIQuit_P.png" id="12_evd2d"]
 [ext_resource type="Texture2D" uid="uid://bwpk1btq66b1x" path="res://ui/Buttons/ChilleniumUIQuit_H.png" id="13_mf1p1"]
 [ext_resource type="Texture2D" uid="uid://bafw7uofsmc0b" path="res://ui/ChilleniumCreditsScreen.png" id="15_mf1p1"]
+[ext_resource type="Texture2D" uid="uid://v1430h5p4pwj" path="res://ui/ChilleniumHowToScreen.png" id="17_r5hvk"]
+[ext_resource type="AudioStream" uid="uid://hb8m3fta05q8" path="res://sounds/waves.wav" id="18_0vv0i"]
 
-[node name="Title Screen" type="Control" unique_id=373041148]
+[node name="Title Screen" type="Control" unique_id=373041148 node_paths=PackedStringArray("HowTo", "Credits")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_p3rmf")
+HowTo = NodePath("How to Play")
+Credits = NodePath("CreditsScreen")
 
 [node name="BG" type="TextureRect" parent="." unique_id=274366932]
 layout_mode = 0
 offset_right = 3840.0
 offset_bottom = 2160.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_evd2d")
+texture = ExtResource("2_26ri5")
 
 [node name="Start" type="TextureButton" parent="." unique_id=1036545496]
 layout_mode = 0
@@ -80,9 +86,24 @@ texture_hover = ExtResource("13_mf1p1")
 texture_click_mask = ExtResource("4_tv6i7")
 
 [node name="How to Play" type="TextureRect" parent="." unique_id=877677535]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_r5hvk")
+
+[node name="Quit" type="TextureButton" parent="How to Play" unique_id=1755620274]
+layout_mode = 0
+offset_left = 1450.0
+offset_top = 1644.0
+offset_right = 5290.0
+offset_bottom = 3804.0
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("11_0a35u")
+texture_pressed = ExtResource("12_evd2d")
+texture_hover = ExtResource("13_mf1p1")
+texture_click_mask = ExtResource("4_tv6i7")
 
 [node name="CreditsScreen" type="TextureRect" parent="." unique_id=175412610]
 layout_mode = 0
@@ -90,3 +111,57 @@ offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("15_mf1p1")
+
+[node name="Quit" type="TextureButton" parent="CreditsScreen" unique_id=428111176]
+layout_mode = 0
+offset_left = 1440.0
+offset_top = 1596.0
+offset_right = 5280.0
+offset_bottom = 3756.0
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("11_0a35u")
+texture_pressed = ExtResource("12_evd2d")
+texture_hover = ExtResource("13_mf1p1")
+texture_click_mask = ExtResource("4_tv6i7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CreditsScreen" unique_id=719784322]
+layout_mode = 0
+offset_left = 2982.0
+offset_top = 848.0
+offset_right = 3804.0
+offset_bottom = 2038.0
+theme_override_font_sizes/normal_font_size = 64
+text = "Sound/Font Credits:
+
+Freesound.org
+-boat inside, a bit far from the motor by fonografico -- https://freesound.org/s/611930/ -- License: Creative Commons 0
+-Ocean Waves by derjuli -- https://freesound.org/s/693389/ -- License: Creative Commons 0
+-Simple Whoosh –https://pixabay.com/sound-effects/film-special-effects-simple-whoosh-382724/
+-Seagull - Sound Effect - https://pixabay.com/sound-effects/nature-seagull-sound-effect-272695/
+-Card Flip by f4ngy -- https://freesound.org/s/240776/ -- License: Attribution 4.0
+-Tape Rip 5 by Geoff-Bremner-Audio -- https://freesound.org/s/788639/ -- License: Creative Commons 0
+-walkie_talkie_over_beep.m4a by MiscPractice -- https://freesound.org/s/676958/ -- License: Attribution 4.0
+-bottle rolling 2 by limpinglizards -- https://freesound.org/s/789462/ -- License: Creative Commons 0
+-Plastic vs glass impact - cup vs glass - foley sound hit one-shot perc.wav by Duisterwho -- https://freesound.org/s/644727/ -- License: Creative Commons 0
+-Stone - Throwing pebbles by Vrymaa -- https://freesound.org/s/734669/ -- License: Creative Commons 0
+-hit-hockey by Eelke -- https://freesound.org/s/266647/ -- License: Attribution 4.0
+-Hard Slap Impact Sound by DonnyDB -- https://freesound.org/s/765339/ -- License: Attribution NonCommercial 4.0
+-Water Ballon Pop 3.wav by Motion_S -- https://freesound.org/s/188008/ -- License: Attribution 4.0
+-20160816_street.hurdy-gurdy.02.wav by dobroide -- https://freesound.org/s/352575/ -- License: Attribution 4.0
+-Band in Venice.m4a by alexyquest42 -- https://freesound.org/s/661288/ -- License: Attribution 4.0
+-Simple Hit/Hurt Sound by Davidsraba -- https://freesound.org/s/448801/ -- License: Creative Commons 0
+-Wood knock by Raclure -- https://freesound.org/s/405549/ -- License: Creative Commons 0
+-Cash register purchase – https://pixabay.com/sound-effects/film-special-effects-cash-register-purchase-87313/
+-incorrect buzzer sound – https://pixabay.com/sound-effects/film-special-effects-incorrect-buzzer-sound-147336/"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=154093985]
+stream = ExtResource("18_0vv0i")
+volume_db = -3.0
+autoplay = true
+
+[connection signal="pressed" from="Start" to="." method="ClickStart"]
+[connection signal="pressed" from="HowTo" to="." method="ClickHowTo"]
+[connection signal="pressed" from="Credits" to="." method="ClickCredits"]
+[connection signal="pressed" from="Quit" to="." method="Quit"]
+[connection signal="pressed" from="How to Play/Quit" to="." method="QuitSubmenu"]
+[connection signal="pressed" from="CreditsScreen/Quit" to="." method="QuitSubmenu"]

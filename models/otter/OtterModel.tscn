@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bsoqhlrqv7pdd"]
+
+[ext_resource type="PackedScene" uid="uid://hq052qbdaynn" path="res://models/otter/attack_otter.fbx" id="1_sojug"]
+[ext_resource type="AnimationLibrary" uid="uid://dl848vojvnqwf" path="res://models/otter/Otter Anims.res" id="2_1wpwa"]
+
+[node name="attack_otter" unique_id=987174059 instance=ExtResource("1_sojug")]
+
+[node name="Skeleton3D" parent="otter" parent_id_path=PackedInt32Array(154629157) index="1" unique_id=1102266753]
+bones/0/position = Vector3(-0.003503221, 0.076825425, 0.1833064)
+bones/1/position = Vector3(1.2288519, 0.00011759782, 0)
+bones/1/rotation = Quaternion(0.9999723, 0.0074471775, 4.560081e-19, 6.123064e-17)
+bones/2/position = Vector3(1.203098, 4.279888e-15, -2.1684043e-17)
+bones/2/rotation = Quaternion(0.9999201, 0.012638722, 2.0327502e-18, 1.6082227e-16)
+bones/3/position = Vector3(0.92317545, 2.9327669e-15, -2.1684043e-17)
+bones/3/rotation = Quaternion(0.7025304, 0.71165377, 1.1445893e-16, -2.6956407e-17)
+bones/4/rotation = Quaternion(0, -9.11301e-25, 0.87298495, -0.48774713)
+bones/5/position = Vector3(0.77901644, 3.469447e-16, -1.7347235e-16)
+bones/5/rotation = Quaternion(-3.5953485e-09, 1.2393827e-08, 0.9604055, -0.27860585)
+bones/6/rotation = Quaternion(0.025193121, 0.26846662, 0.9575068, -0.102332026)
+bones/7/position = Vector3(0.52039033, 7.8062556e-16, 4.3368087e-17)
+bones/8/position = Vector3(0.702073, 1.3877788e-15, -2.6020852e-16)
+bones/8/rotation = Quaternion(0.17137752, -0.6780203, 0.1817544, 0.6912913)
+bones/8/scale = Vector3(0.99999994, 1, 0.99999994)
+bones/9/position = Vector3(-0.2823616, 0.4192301, 0.1833064)
+bones/9/rotation = Quaternion(0.08997092, 0.95874774, 0.26811722, -0.028654959)
+bones/10/position = Vector3(0.5203871, -3.469447e-16, -3.9031278e-16)
+bones/11/position = Vector3(0.70207363, -5.2041704e-16, -2.6020852e-16)
+bones/12/rotation = Quaternion(0.4764432, 0.8792053, 6.55059e-09, 3.549778e-09)
+bones/13/position = Vector3(0.775254, 0.07424262, 1.1063005e-09)
+bones/13/rotation = Quaternion(1.993581e-08, 6.830288e-09, 0.32411855, 0.9460165)
+
+[node name="global_ctrl" parent="otter/global_ctrl_ofstGrp" parent_id_path=PackedInt32Array(577129086) index="0" unique_id=1052115436]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.016424065, 0)
+
+[node name="spine_ctrl_1" parent="otter/global_ctrl_ofstGrp/global_ctrl/spine_ctrl_1_ofstGrp" parent_id_path=PackedInt32Array(191572728) index="0" unique_id=428307361]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.046686467, 0)
+
+[node name="right_whisker_ctrl" parent="otter/global_ctrl_ofstGrp/global_ctrl/spine_ctrl_1_ofstGrp/spine_ctrl_1/neck_Ctrl_ofstGrp/neck_Ctrl/right_whisker_ctrl_ofstGrp" parent_id_path=PackedInt32Array(1952508785) index="0" unique_id=1576619625]
+transform = Transform3D(0.99544567, -0.09533028, 0, 0.09533028, 0.99544567, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="left_whisker_ctrl" parent="otter/global_ctrl_ofstGrp/global_ctrl/spine_ctrl_1_ofstGrp/spine_ctrl_1/neck_Ctrl_ofstGrp/neck_Ctrl/left_whisker_ctrl_ofstGrp" parent_id_path=PackedInt32Array(1139907915) index="0" unique_id=1792686505]
+transform = Transform3D(0.99555373, 0.094195515, 0, -0.094195515, 0.99555373, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="paw_left_ctrl" parent="otter/global_ctrl_ofstGrp/global_ctrl/spine_ctrl_1_ofstGrp/spine_ctrl_1/shoulder_left_ctrl_ofstGrp/shoulder_left_ctrl/elbow_left_ctrl_ofstGrp/elbow_left_ctrl/paw_left_ctrl_ofstGrp" parent_id_path=PackedInt32Array(1793493575) index="0" unique_id=1402290346]
+transform = Transform3D(0.9829002, -0.04396154, -0.17881432, 0.1053006, 0.930824, 0.3499692, 0.15105948, -0.36281407, 0.91953623, 0, 0, 0)
+
+[node name="AnimationPlayer" parent="." index="2" unique_id=1855847849]
+"libraries/Otter Anims" = ExtResource("2_1wpwa")

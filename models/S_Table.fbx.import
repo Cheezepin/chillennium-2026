@@ -41,7 +41,7 @@ _subresources={
 "materials": {
 "standardSurface1": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://models/M_Table.tres",
+"use_external/fallback_path": "res://models/Materials/M_Table.tres",
 "use_external/path": "uid://bv4jm4laya15n"
 }
 }

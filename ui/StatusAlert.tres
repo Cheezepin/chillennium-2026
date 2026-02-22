@@ -1,5 +1,7 @@
 [gd_resource type="Theme" format=3 uid="uid://cnuu5cksgqbp5"]
 
+[ext_resource type="FontFile" uid="uid://dwy4apwhundk0" path="res://MAIAN.TTF" id="1_c061x"]
+
 [resource]
 RichTextLabel/colors/font_outline_color = Color(0.74558026, 0.7455802, 0.7455802, 1)
 RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.8039216)
@@ -7,3 +9,4 @@ RichTextLabel/constants/shadow_offset_x = 6
 RichTextLabel/constants/shadow_offset_y = 6
 RichTextLabel/constants/shadow_outline_size = 10
 RichTextLabel/font_sizes/normal_font_size = 128
+RichTextLabel/fonts/normal_font = ExtResource("1_c061x")

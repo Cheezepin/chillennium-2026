@@ -18,9 +18,10 @@ size = Vector3(1, 0.6, 0.05)
 [sub_resource type="ViewportTexture" id="ViewportTexture_fq5x3"]
 viewport_path = NodePath("SubViewport")
 
-[node name="Siamese Cat" type="CharacterBody3D" unique_id=747487254 node_paths=PackedStringArray("animPlayer", "eyes", "speechBubbleSprite")]
+[node name="Siamese Cat" type="CharacterBody3D" unique_id=747487254 node_paths=PackedStringArray("model", "animPlayer", "eyes", "speechBubbleSprite")]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 script = ExtResource("1_2jvjs")
+model = NodePath("Cat_T3_Model")
 handID = 1
 animPlayer = NodePath("Cat_T3_Model/AnimationPlayer")
 species = 2
@@ -70,7 +71,7 @@ script = ExtResource("4_4vhsj")
 [node name="Cat_T3_Model" parent="." unique_id=607004104 instance=ExtResource("5_2jvjs")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, -0.25)
 
-[node name="Skeleton3D" parent="Cat_T3_Model/cat" parent_id_path=PackedInt32Array(607004104, 1397519298) index="1" unique_id=738496811]
+[node name="Skeleton3D" parent="Cat_T3_Model/cat" parent_id_path=PackedInt32Array(607004104, 1821370915) index="1" unique_id=525050587]
 bones/9/rotation = Quaternion(-1.8807907e-37, 3.5264825e-38, -0.3798288, 0.92505676)
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="." unique_id=94251970]

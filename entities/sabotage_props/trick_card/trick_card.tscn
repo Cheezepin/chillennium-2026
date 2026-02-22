@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://bdwnl84n4djrt" path="res://entities/sabotage_props/SabotageProp.cs" id="1_w7pih"]
 [ext_resource type="Texture2D" uid="uid://d4ijoamfb1in0" path="res://entities/card/Cards_Compressed.png" id="2_ogotc"]
 [ext_resource type="Texture2D" uid="uid://q56vhthiyj56" path="res://entities/card/Card_Back.png" id="3_31ms3"]
+[ext_resource type="PackedScene" uid="uid://diapn5fjuw7eu" path="res://models/S_Tape.fbx" id="4_31ms3"]
+[ext_resource type="AudioStream" uid="uid://ci5svooavc1fg" path="res://sounds/tape-rip.wav" id="5_vpuc6"]
+[ext_resource type="AudioStream" uid="uid://bxtgkyfycuixy" path="res://sounds/card-flip.wav" id="6_wv5nf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vpuc6"]
 size = Vector3(0.35, 0.505, 0.02)
@@ -28,6 +31,15 @@ region_rect = Rect2(0, 0, 675, 1000)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=285528512]
 shape = SubResource("BoxShape3D_vpuc6")
 debug_color = Color(0.86489606, 0.35590076, 0.07262098, 0.41960785)
+
+[node name="Tape" parent="." unique_id=464799068 instance=ExtResource("4_31ms3")]
+transform = Transform3D(-4.3711385e-08, -1.2093825e-07, -5.0113297, -0.99999994, 3.50101e-08, 2.1905207e-07, 4.3711385e-08, 0.80093795, -7.566896e-07, 0, -0.062659904, 0.026716173)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Tape" unique_id=1523190975]
+stream = ExtResource("5_vpuc6")
+
+[node name="Flip" type="AudioStreamPlayer" parent="." unique_id=1684032627]
+stream = ExtResource("6_wv5nf")
 
 [connection signal="input_event" from="." to="." method="OnInputEvent"]
 [connection signal="mouse_entered" from="." to="." method="OnMouseEnter"]

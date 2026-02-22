@@ -39,7 +39,7 @@ public partial class UI : CanvasLayer
     public override void _Process(double delta)
     {
         moneyCounter.Text = "$" + money.ToString() + " / " + "$" + quota.ToString();
-        roundCounter.Text = "Round " + BlackjackHandler.Instance.round.ToString() + " / 3";
+        roundCounter.Text = "Round " + BlackjackHandler.Instance.round.ToString() + "/3";
 
         if(statusTimer <= 0)
         {

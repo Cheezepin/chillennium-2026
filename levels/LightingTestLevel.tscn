@@ -1,0 +1,1271 @@
+[gd_scene format=3 uid="uid://c4iebpcxx2bfx"]
+
+[ext_resource type="Texture2D" uid="uid://drwkxe065ftdu" path="res://global/blacksquare.png" id="1_fi1ee"]
+[ext_resource type="Texture2D" uid="uid://cwedenxsijyri" path="res://models/MattePaintings/daytime/ChilleniumMattePaintingsDayTime_Background.png" id="2_5rhfo"]
+[ext_resource type="Texture2D" uid="uid://b2pq2515okvi6" path="res://models/MattePaintings/daytime/ChilleniumMattePaintingsDayTime_Clouds1.png" id="3_1057h"]
+[ext_resource type="Script" uid="uid://4ycwyelwdtgb" path="res://levels/WhiteboxLevel/CloudsMatte.cs" id="4_5eplv"]
+[ext_resource type="Texture2D" uid="uid://usn0280vvlh0" path="res://models/MattePaintings/daytime/ChilleniumMattePaintingsDayTime_Clouds2.png" id="5_1fu3p"]
+[ext_resource type="Texture2D" uid="uid://cor5fj65evwjr" path="res://models/MattePaintings/daytime/ChilleniumMattePaintingsDayTime_MidGround.png" id="6_8re64"]
+[ext_resource type="Texture2D" uid="uid://c8opfjxqj1nko" path="res://models/MattePaintings/daytime/ChilleniumMattePaintingsDayTime_Rocks.png" id="7_poca2"]
+[ext_resource type="Texture2D" uid="uid://cgcxgt17htlpl" path="res://models/MattePaintings/goldenhour/ChilleniumMattePaintingsGoldenHour_Background.png" id="8_sha8d"]
+[ext_resource type="Texture2D" uid="uid://cav70uq32xgvn" path="res://models/MattePaintings/goldenhour/ChilleniumMattePaintingsGoldenHour_Clouds1.png" id="9_51y0e"]
+[ext_resource type="Texture2D" uid="uid://drvrjju5rq3bg" path="res://models/MattePaintings/goldenhour/ChilleniumMattePaintingsGoldenHour_Clouds2.png" id="10_4lii0"]
+[ext_resource type="Texture2D" uid="uid://ghnru3na4dhg" path="res://models/MattePaintings/goldenhour/ChilleniumMattePaintingsGoldenHour_MidGround.png" id="11_juhcf"]
+[ext_resource type="Texture2D" uid="uid://hr6xsw5yl64v" path="res://models/MattePaintings/goldenhour/ChilleniumMattePaintingsGoldenHour_Rocks.png" id="12_y6iho"]
+[ext_resource type="Texture2D" uid="uid://dalbfc06rbo15" path="res://models/MattePaintings/bluehour/ChilleniumMattePaintingsBlueHour_Background.png" id="13_5x7k2"]
+[ext_resource type="Texture2D" uid="uid://85qq78cll6i8" path="res://models/MattePaintings/bluehour/ChilleniumMattePaintingsBlueHour_Clouds1.png" id="14_pmwph"]
+[ext_resource type="Texture2D" uid="uid://ym3fsduppyyw" path="res://models/MattePaintings/bluehour/ChilleniumMattePaintingsBlueHour_Clouds2.png" id="15_o1m4m"]
+[ext_resource type="Texture2D" uid="uid://dwa22r8vlpbko" path="res://models/MattePaintings/bluehour/ChilleniumMattePaintingsBlueHour_MidGround.png" id="16_nrje6"]
+[ext_resource type="Texture2D" uid="uid://htr5xvk5kbb1" path="res://models/MattePaintings/bluehour/ChilleniumMattePaintingsBlueHour_Rocks.png" id="17_nvby4"]
+[ext_resource type="PackedScene" uid="uid://enad51olhes2" path="res://models/S_Table.fbx" id="18_888nd"]
+[ext_resource type="PackedScene" uid="uid://brjxr2qwenoec" path="res://models/S_Docks_002.fbx" id="19_m4pg6"]
+[ext_resource type="PackedScene" uid="uid://dxfauvr8ks2yv" path="res://models/underTableCover.fbx" id="20_u6581"]
+[ext_resource type="PackedScene" uid="uid://cphpytkah8a7" path="res://ui/ui.tscn" id="21_5gju1"]
+[ext_resource type="Script" uid="uid://botpfiw828nfc" path="res://global/Hand.cs" id="22_kp2ew"]
+[ext_resource type="Script" uid="uid://qlcxn8xra4yy" path="res://entities/player/Player.cs" id="23_sbm4p"]
+[ext_resource type="Script" uid="uid://clstsmfijjar1" path="res://global/Camera.cs" id="24_gcpqo"]
+[ext_resource type="PackedScene" uid="uid://d0s0roluhea4w" path="res://entities/sabotage_props/rock/rock.tscn" id="25_rcbfk"]
+[ext_resource type="PackedScene" uid="uid://beh2n4ja6i0pu" path="res://entities/sabotage_props/trick_card/trick_card.tscn" id="26_gk2bi"]
+[ext_resource type="PackedScene" uid="uid://biw721dmht3nf" path="res://entities/sabotage_props/wine_bottle/wine_bottle.tscn" id="27_2fqbs"]
+[ext_resource type="PackedScene" uid="uid://jjica3a6c1eg" path="res://entities/sabotage_props/walkie-talkie/walkie_talkie.tscn" id="28_3qh8c"]
+[ext_resource type="PackedScene" uid="uid://55j8wvmcsy31" path="res://entities/fish/BlueFish.tscn" id="29_b3qtn"]
+[ext_resource type="PackedScene" uid="uid://csrllh1y1j632" path="res://entities/fish/RedFish.tscn" id="30_obrsb"]
+[ext_resource type="PackedScene" uid="uid://mkgx5kya5te5" path="res://entities/fish/YellowFish.tscn" id="31_d4u5l"]
+[ext_resource type="PackedScene" uid="uid://dmovsrb64wv43" path="res://models/chip/largePile_Chips.fbx" id="32_45yix"]
+[ext_resource type="PackedScene" uid="uid://dley6ns12be3m" path="res://models/chip/mediumPile_Chips.fbx" id="33_m3uyp"]
+[ext_resource type="PackedScene" uid="uid://be5w5k1b7t7ho" path="res://models/chip/smallPile_chips.fbx" id="34_70ofy"]
+[ext_resource type="Script" uid="uid://j6enoe10dcyy" path="res://global/Deck.cs" id="35_pdkae"]
+[ext_resource type="PackedScene" uid="uid://bii30brc0wmu1" path="res://models/deck/S_CardDeck.fbx" id="36_ui55i"]
+[ext_resource type="Script" uid="uid://jojgsem7mb7e" path="res://global/Discard.cs" id="37_52ca7"]
+[ext_resource type="PackedScene" uid="uid://baga7hxael2ul" path="res://entities/otter/Otter.tscn" id="38_ijsvj"]
+[ext_resource type="PackedScene" uid="uid://bp8vw4ygb6b3c" path="res://models/water/water_plane.glb" id="39_15yew"]
+[ext_resource type="Script" uid="uid://c0fu6qxjbljkb" path="res://levels/DistractionZone.cs" id="40_fq7kn"]
+[ext_resource type="Script" uid="uid://cdnytelyn12bo" path="res://global/BlackjackHandler.cs" id="41_2ptpr"]
+[ext_resource type="PackedScene" uid="uid://bo1ssvdm5xgl2" path="res://entities/seagull/MohawkSeagull.tscn" id="42_i3rk2"]
+[ext_resource type="PackedScene" uid="uid://df4kio5ftoku3" path="res://entities/seagull/PrettySeagull.tscn" id="43_ulnsq"]
+[ext_resource type="PackedScene" uid="uid://dpfmcb04v3ngy" path="res://entities/seagull/RockSeagull.tscn" id="44_wk4t8"]
+[ext_resource type="PackedScene" uid="uid://orny0pib538t" path="res://entities/cat/T1Cat.tscn" id="45_vuupw"]
+[ext_resource type="PackedScene" uid="uid://dfd3120ont1xl" path="res://entities/cat/T2Cat.tscn" id="46_grkbk"]
+[ext_resource type="PackedScene" uid="uid://dqu1axvmlpm2h" path="res://entities/cat/T3Cat.tscn" id="47_rq5hb"]
+[ext_resource type="AudioStream" uid="uid://dsi264hsqtxmy" path="res://sounds/chaching.mp3" id="48_als6j"]
+[ext_resource type="AudioStream" uid="uid://dw84i7n2wvrp5" path="res://sounds/incorrect.mp3" id="49_h0x07"]
+[ext_resource type="AudioStream" uid="uid://hb8m3fta05q8" path="res://sounds/waves.wav" id="50_a4sye"]
+[ext_resource type="AudioStream" uid="uid://deja2luk8n4w1" path="res://sounds/seagulls.mp3" id="51_u15b5"]
+[ext_resource type="Script" uid="uid://dy2ud4x46bam" path="res://levels/WhiteboxLevel/SeagullSound.cs" id="52_rxk2o"]
+[ext_resource type="AudioStream" uid="uid://tioer27lpfhm" path="res://sounds/band.wav" id="53_7av2n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l1kps"]
+size = Vector3(1, 0.6, 0.05)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qner7"]
+size = Vector3(4, 0.5, 0.30566406)
+
+[sub_resource type="Animation" id="Animation_p514l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionalLight3D:light_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DirectionalLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DirectionalLight3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.8796634, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DaytimeBG/SkyMatte:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DaytimeBG/CloudsMatte1:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DaytimeBG/CloudsMatte2:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("DaytimeBG/CloudsMatte3:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("DaytimeBG/CloudsMatte4:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("DaytimeBG/BuildingsMatte:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("DaytimeBG/RocksMatte:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SunsetBG:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("DaytimeBG:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SunsetBG/RocksMatte:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SunsetBG/SkyMatte:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SunsetBG/CloudsMatte1:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("SunsetBG/CloudsMatte2:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("SunsetBG/CloudsMatte3:modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("SunsetBG/CloudsMatte4:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("SunsetBG/BuildingsMatte:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("DuskBG:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("DuskBG/SkyMatte:modulate")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("DuskBG/CloudsMatte1:modulate")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("DuskBG/CloudsMatte2:modulate")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("DuskBG/CloudsMatte3:modulate")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("DuskBG/CloudsMatte4:modulate")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("DuskBG/BuildingsMatte:modulate")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("DuskBG/RocksMatte:modulate")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4ngxb"]
+resource_name = "day2sunset"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionalLight3D:light_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.983589, 0.38535145, 0.21875122, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DirectionalLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DirectionalLight3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.74691314, 0.5183135, -0.698356), Vector3(-0.7813296, -0.746992, 1.0508509)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DaytimeBG/SkyMatte:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DaytimeBG/CloudsMatte1:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DaytimeBG/CloudsMatte2:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("DaytimeBG/CloudsMatte3:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("DaytimeBG/CloudsMatte4:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("DaytimeBG/BuildingsMatte:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("DaytimeBG/RocksMatte:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SunsetBG:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("DaytimeBG:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SunsetBG/RocksMatte:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SunsetBG/SkyMatte:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SunsetBG/CloudsMatte1:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("SunsetBG/CloudsMatte2:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("SunsetBG/CloudsMatte3:modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("SunsetBG/CloudsMatte4:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("SunsetBG/BuildingsMatte:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_y08xh"]
+resource_name = "sunset2night"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionalLight3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.7813296, -0.746992, 1.0508509), Vector3(-1.0277294, -0.26131135, -0.3369331)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DirectionalLight3D:light_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.983589, 0.38535142, 0.21875119, 1), Color(0.0036533887, 0.14834282, 0.37645665, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DirectionalLight3D:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SunsetBG:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SunsetBG/SkyMatte:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SunsetBG/CloudsMatte1:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SunsetBG/CloudsMatte2:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SunsetBG/CloudsMatte3:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SunsetBG/CloudsMatte4:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SunsetBG/BuildingsMatte:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SunsetBG/RocksMatte:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("DuskBG:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("DuskBG/SkyMatte:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("DuskBG/CloudsMatte1:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("DuskBG/CloudsMatte2:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("DuskBG/CloudsMatte3:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("DuskBG/CloudsMatte4:modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("DuskBG/BuildingsMatte:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("DuskBG/RocksMatte:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g1pa3"]
+_data = {
+&"RESET": SubResource("Animation_p514l"),
+&"day2sunset": SubResource("Animation_4ngxb"),
+&"sunset2night": SubResource("Animation_y08xh")
+}
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i7juc"]
+
+[sub_resource type="Sky" id="Sky_rlmsx"]
+sky_material = SubResource("ProceduralSkyMaterial_i7juc")
+
+[sub_resource type="Environment" id="Environment_dqbfd"]
+background_mode = 2
+sky = SubResource("Sky_rlmsx")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5bwm8"]
+size = Vector3(100, 17.747074, 13.738)
+
+[node name="WhiteboxLevel" type="Node3D" unique_id=1721237249]
+
+[node name="TrueBG" type="Node3D" parent="." unique_id=1164814418]
+
+[node name="Black" type="Sprite3D" parent="TrueBG" unique_id=227587746]
+transform = Transform3D(48.86477, 0, 0, 0, 59.709625, 0, 0, 0, 0.60432017, 0, 0, -105.8945)
+render_priority = -10
+texture = ExtResource("1_fi1ee")
+
+[node name="DaytimeBG" type="Node3D" parent="." unique_id=1699407702]
+
+[node name="SkyMatte" type="Sprite3D" parent="DaytimeBG" unique_id=101913599]
+transform = Transform3D(3.1, 0, 0, 0, 3.1, 0, 0, 0, 1.033, 0, 47.381542, -81.95723)
+pixel_size = 0.02
+double_sided = false
+render_priority = -3
+texture = ExtResource("2_5rhfo")
+
+[node name="CloudsMatte1" type="Sprite3D" parent="DaytimeBG" unique_id=1453281241]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.910927, -78.779724)
+pixel_size = 0.02
+double_sided = false
+render_priority = -2
+texture = ExtResource("3_1057h")
+script = ExtResource("4_5eplv")
+
+[node name="CloudsMatte2" type="Sprite3D" parent="DaytimeBG" unique_id=1365833746]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 19.052, -78.78)
+pixel_size = 0.02
+double_sided = false
+render_priority = -2
+texture = ExtResource("5_1fu3p")
+script = ExtResource("4_5eplv")
+
+[node name="CloudsMatte3" type="Sprite3D" parent="DaytimeBG" unique_id=1464884932]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80, 19.052, -78.78)
+pixel_size = 0.02
+double_sided = false
+render_priority = -2
+texture = ExtResource("5_1fu3p")
+script = ExtResource("4_5eplv")
+
+[node name="CloudsMatte4" type="Sprite3D" parent="DaytimeBG" unique_id=41199090]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160, 30.911, -78.78)
+pixel_size = 0.02
+double_sided = false
+render_priority = -2
+texture = ExtResource("3_1057h")
+script = ExtResource("4_5eplv")
+
+[node name="BuildingsMatte" type="Sprite3D" parent="DaytimeBG" unique_id=2138036887]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.684792, -73.73732)
+pixel_size = 0.045
+double_sided = false
+render_priority = -1
+texture = ExtResource("6_8re64")
+
+[node name="RocksMatte" type="Sprite3D" parent="DaytimeBG" unique_id=1960502979]
+transform = Transform3D(1.2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.459064, -72.127)
+pixel_size = 0.04
+double_sided = false
+texture = ExtResource("7_poca2")
+
+[node name="SunsetBG" type="Node3D" parent="." unique_id=1176520256]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="SkyMatte" type="Sprite3D" parent="SunsetBG" unique_id=373855418]
+transform = Transform3D(3.1, 0, 0, 0, 3.1, 0, 0, 0, 1.033, 0, 47.381542, -81.95723)
+modulate = Color(1, 1, 1, 0)
+pixel_size = 0.02
+double_sided = false
+render_priority = -3
+texture = ExtResource("8_sha8d")
+
+[node name="CloudsMatte1" type="Sprite3D" parent="SunsetBG" unique_id=850206833]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.910927, -78.779724)
+modulate = Color(1, 1, 1, 0)
+pixel_size = 0.02
+double_sided = false
+render_priority = -2
+texture = ExtResource("9_51y0e")
+script = ExtResource("4_5eplv")
+
+[node name="CloudsMatte2" type="Sprite3D" parent="SunsetBG" unique_id=442850186]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 19.052, -78.78)
+modulate = Color(1, 1, 1, 0)
+pixel_size = 0.02
+double_sided = false
+render_priority = -2
+texture = ExtResource("10_4lii0")
+script = ExtResource("4_5eplv")
+
+[node name="CloudsMatte3" type="Sprite3D" parent="SunsetBG" unique_id=1584225034]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80, 19.052, -78.78)
+modulate = Color(1, 1, 1, 0)
+pixel_size = 0.02
+double_sided = false
+render_priority = -2
+texture = ExtResource("10_4lii0")
+script = ExtResource("4_5eplv")
+
+[node name="CloudsMatte4" type="Sprite3D" parent="SunsetBG" unique_id=208442346]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160, 30.911, -78.78)
+modulate = Color(1, 1, 1, 0)
+pixel_size = 0.02
+double_sided = false
+render_priority = -2
+texture = ExtResource("9_51y0e")
+script = ExtResource("4_5eplv")
+
+[node name="BuildingsMatte" type="Sprite3D" parent="SunsetBG" unique_id=724533102]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.684792, -73.73732)
+modulate = Color(1, 1, 1, 0)
+pixel_size = 0.045
+double_sided = false
+render_priority = -1
+texture = ExtResource("11_juhcf")
+
+[node name="RocksMatte" type="Sprite3D" parent="SunsetBG" unique_id=152347167]
+transform = Transform3D(1.2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.459064, -72.127)
+modulate = Color(1, 1, 1, 0)
+pixel_size = 0.04
+double_sided = false
+texture = ExtResource("12_y6iho")
+
+[node name="DuskBG" type="Node3D" parent="." unique_id=1311553965]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="SkyMatte" type="Sprite3D" parent="DuskBG" unique_id=2115328165]
+transform = Transform3D(3.1, 0, 0, 0, 3.1, 0, 0, 0, 1.033, 0, 47.381542, -81.95723)
+modulate = Color(1, 1, 1, 0)
+pixel_size = 0.02
+double_sided = false
+render_priority = -3
+texture = ExtResource("13_5x7k2")
+
+[node name="CloudsMatte1" type="Sprite3D" parent="DuskBG" unique_id=905491920]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.910927, -78.779724)
+modulate = Color(1, 1, 1, 0)
+pixel_size = 0.02
+double_sided = false
+render_priority = -2
+texture = ExtResource("14_pmwph")
+script = ExtResource("4_5eplv")
+
+[node name="CloudsMatte2" type="Sprite3D" parent="DuskBG" unique_id=726947419]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 19.052, -78.78)
+modulate = Color(1, 1, 1, 0)
+pixel_size = 0.02
+double_sided = false
+render_priority = -2
+texture = ExtResource("15_o1m4m")
+script = ExtResource("4_5eplv")
+
+[node name="CloudsMatte3" type="Sprite3D" parent="DuskBG" unique_id=2078087613]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80, 19.052, -78.78)
+modulate = Color(1, 1, 1, 0)
+pixel_size = 0.02
+double_sided = false
+render_priority = -2
+texture = ExtResource("15_o1m4m")
+script = ExtResource("4_5eplv")
+
+[node name="CloudsMatte4" type="Sprite3D" parent="DuskBG" unique_id=393139480]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 160, 30.911, -78.78)
+modulate = Color(1, 1, 1, 0)
+pixel_size = 0.02
+double_sided = false
+render_priority = -2
+texture = ExtResource("14_pmwph")
+script = ExtResource("4_5eplv")
+
+[node name="BuildingsMatte" type="Sprite3D" parent="DuskBG" unique_id=966999773]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.684792, -73.73732)
+modulate = Color(1, 1, 1, 0)
+pixel_size = 0.045
+double_sided = false
+render_priority = -1
+texture = ExtResource("16_nrje6")
+
+[node name="RocksMatte" type="Sprite3D" parent="DuskBG" unique_id=1503967480]
+transform = Transform3D(1.2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.459064, -72.127)
+modulate = Color(1, 1, 1, 0)
+pixel_size = 0.04
+double_sided = false
+texture = ExtResource("17_nvby4")
+
+[node name="Env" type="Node3D" parent="." unique_id=231542105]
+
+[node name="S_Table" parent="Env" unique_id=2046026162 instance=ExtResource("18_888nd")]
+transform = Transform3D(-1.6505302e-08, 0, -0.3775973, 0, 0.3775973, 0, 0.3775973, 0, -1.6505302e-08, -0.02629888, 0.7585132, -0.4828384)
+
+[node name="S_Docks_002" parent="Env" unique_id=967021105 instance=ExtResource("19_m4pg6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.18074, 0.11108971, -6.1915374)
+
+[node name="underTableCover" parent="Env" unique_id=1166490127 instance=ExtResource("20_u6581")]
+transform = Transform3D(-1.5298985e-08, 0, -0.35, 0, 0.35, 0, 0.35, 0, -1.5298985e-08, 0, 0.845, -0.6847513)
+
+[node name="UI" parent="." unique_id=1425285729 instance=ExtResource("21_5gju1")]
+
+[node name="DealerHand" type="Node3D" parent="." unique_id=599761734]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.0489051, -0.8114425)
+script = ExtResource("22_kp2ew")
+
+[node name="Area3D" type="Area3D" parent="DealerHand" unique_id=2018757505]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DealerHand/Area3D" unique_id=292126623]
+shape = SubResource("BoxShape3D_l1kps")
+
+[node name="Player" type="Node3D" parent="." unique_id=1696744575]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.714, 0.51)
+script = ExtResource("23_sbm4p")
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=307989853]
+transform = Transform3D(1, 0, 0, 0, 0.96592575, 0.258819, 0, -0.258819, 0.96592575, 0, 0.56526005, 0)
+script = ExtResource("24_gcpqo")
+
+[node name="Hitbox" type="Area3D" parent="Player/Camera3D" unique_id=534153943]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, -0.25881907, 0, 0.25881907, 0.9659259, 0, -0.5459993, -0.14630008)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Camera3D/Hitbox" unique_id=372283504]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016937256, 0.62921154, 0.053955078)
+shape = SubResource("BoxShape3D_qner7")
+
+[node name="RHandAnchor" type="Node3D" parent="Player" unique_id=305670240]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.27671146, -0.5)
+
+[node name="FrontAnchor" type="Node3D" parent="Player" unique_id=628989949]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, -1.046376)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=133779659]
+transform = Transform3D(1.0000001, 0, 0, 0, 0.63741046, 0.7705245, 0, -0.7705243, 0.6374106, 8.800253, 3.9404383, -0.9445267)
+shadow_enabled = true
+
+[node name="LightAnimation" type="AnimationPlayer" parent="DirectionalLight3D" unique_id=1616534389]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_g1pa3")
+autoplay = &"RESET"
+
+[node name="Props" type="Node3D" parent="." unique_id=539665658]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.69550705, -1.6638746)
+
+[node name="Rock" parent="Props" unique_id=1238349591 instance=ExtResource("25_rcbfk")]
+transform = Transform3D(0.6799278, 0, 0.73327905, 0, 1, 0, -0.73327905, 0, 0.6799278, -1.1368799, 0, 0.7919985)
+
+[node name="Rock2" parent="Props" unique_id=1991071548 instance=ExtResource("25_rcbfk")]
+transform = Transform3D(0.6398147, 0, -0.76852924, 0, 1, 0, 0.76852924, 0, 0.6398147, 1.3522668, 0, 0.41909814)
+
+[node name="Trick Card" parent="Props" unique_id=148572484 instance=ExtResource("26_gk2bi")]
+transform = Transform3D(0.99604106, -0.08889429, 0, 0.08832287, 0.9896384, 0.11320321, -0.010063119, -0.112755045, 0.9935719, -0.12678927, -0.30371168, -0.5120802)
+suit = 3
+rank = 2
+
+[node name="Trick Card2" parent="Props" unique_id=1943329595 instance=ExtResource("26_gk2bi")]
+transform = Transform3D(0.8035834, -0.0047776923, 0.595173, -0.077954754, 0.990509, 0.11320321, -0.590065, -0.13736477, 0.79558414, -1.1068548, -0.30371168, -0.14668012)
+suit = 1
+
+[node name="Trick Card3" parent="Props" unique_id=518208344 instance=ExtResource("26_gk2bi")]
+transform = Transform3D(0.805742, -0.051416457, -0.59003085, 0.08571309, 0.99586016, 0.030267913, 0.58603173, -0.074961476, 0.8068132, 1.0017523, -0.30371168, -0.19945323)
+rank = 1
+
+[node name="WineBottle" parent="Props" unique_id=493171760 instance=ExtResource("27_2fqbs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4333911, -0.593904, -0.19724786)
+
+[node name="WineBottle2" parent="Props" unique_id=166422532 instance=ExtResource("27_2fqbs")]
+transform = Transform3D(-0.87264097, 0, -0.48836234, 0, 1, 0, 0.48836234, 0, -0.87264097, -0.6261338, -0.593904, -0.05631864)
+
+[node name="WineBottle3" parent="Props" unique_id=1072476858 instance=ExtResource("27_2fqbs")]
+transform = Transform3D(-0.87264097, 0, -0.48836234, 0, 1, 0, 0.48836234, 0, -0.87264097, 1.3203895, -0.593904, 0.76661086)
+
+[node name="WalkieTalkie" parent="Props" unique_id=330102182 instance=ExtResource("28_3qh8c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.69762933, -0.6317001, 0.57523346)
+
+[node name="NPCs" type="Node3D" parent="." unique_id=536264414]
+
+[node name="BlueFish" parent="NPCs" unique_id=747487254 instance=ExtResource("29_b3qtn")]
+transform = Transform3D(0.70710665, 0, 0.70710665, 0, 1, 0, -0.70710665, 0, 0.70710665, -2, 0, -2)
+
+[node name="RedFish" parent="NPCs" unique_id=13857622 instance=ExtResource("30_obrsb")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, -3)
+handID = 2
+
+[node name="YellowFish" parent="NPCs" unique_id=1769658774 instance=ExtResource("31_d4u5l")]
+transform = Transform3D(0.70710665, 0, -0.70710665, 0, 1, 0, 0.70710665, 0, 0.70710665, 2, 0, -2)
+handID = 3
+
+[node name="NPC Anchors" type="Node3D" parent="." unique_id=1328940762]
+
+[node name="Left" type="Node3D" parent="NPC Anchors" unique_id=1794650409]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -2.1, 0, -2.1)
+
+[node name="Middle" type="Node3D" parent="NPC Anchors" unique_id=911942786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.2)
+
+[node name="Right" type="Node3D" parent="NPC Anchors" unique_id=1150178911]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 2.1, 0, -2.1)
+
+[node name="Chip Anchors" type="Node3D" parent="." unique_id=1447951021]
+
+[node name="Left" type="Node3D" parent="Chip Anchors" unique_id=1270827192]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -1.4619279, 1.0428884, -1.4544077)
+
+[node name="large" parent="Chip Anchors/Left" unique_id=669693131 instance=ExtResource("32_45yix")]
+
+[node name="medium" parent="Chip Anchors/Left" unique_id=1008713274 instance=ExtResource("33_m3uyp")]
+
+[node name="small" parent="Chip Anchors/Left" unique_id=1003522345 instance=ExtResource("34_70ofy")]
+
+[node name="Middle" type="Node3D" parent="Chip Anchors" unique_id=108450005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1553814, 1.039751, -2.1544487)
+
+[node name="large" parent="Chip Anchors/Middle" unique_id=317648259 instance=ExtResource("32_45yix")]
+
+[node name="medium" parent="Chip Anchors/Middle" unique_id=561534738 instance=ExtResource("33_m3uyp")]
+
+[node name="small" parent="Chip Anchors/Middle" unique_id=1389857165 instance=ExtResource("34_70ofy")]
+
+[node name="Right" type="Node3D" parent="Chip Anchors" unique_id=2004132998]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 1.3545156, 1.1192921, -1.5494131)
+
+[node name="large" parent="Chip Anchors/Right" unique_id=708135002 instance=ExtResource("32_45yix")]
+
+[node name="medium" parent="Chip Anchors/Right" unique_id=1048443760 instance=ExtResource("33_m3uyp")]
+
+[node name="small" parent="Chip Anchors/Right" unique_id=1105124735 instance=ExtResource("34_70ofy")]
+
+[node name="Deck" type="Node3D" parent="." unique_id=173381474]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6817358, 1.0648443, -0.8107072)
+script = ExtResource("35_pdkae")
+
+[node name="S_CardDeck" parent="Deck" unique_id=1306161839 instance=ExtResource("36_ui55i")]
+transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, -0.045582056, 0)
+
+[node name="Discard" type="Node3D" parent="." unique_id=680652010]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8060831, 1.020208, -0.8577401)
+script = ExtResource("37_52ca7")
+
+[node name="S_CardDeck2" parent="Discard" unique_id=1888253510 instance=ExtResource("36_ui55i")]
+transform = Transform3D(0.065, 0, 0, 0, 0.01, 0, 0, 0, 0.065, 0, 0, 0)
+
+[node name="Otter" parent="." unique_id=900309670 instance=ExtResource("38_ijsvj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53158, -4.7683716e-07, -1.1977276)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=360804522]
+environment = SubResource("Environment_dqbfd")
+
+[node name="water_plane" parent="." unique_id=1475975502 instance=ExtResource("39_15yew")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 3, 0, -1.042, -28.165743)
+
+[node name="DistractionZone" type="Area3D" parent="." unique_id=1206204365 node_paths=PackedStringArray("npcs")]
+script = ExtResource("40_fq7kn")
+npcs = NodePath("../NPCs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DistractionZone" unique_id=1403119665]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0441017, 8.035006, -13.776703)
+shape = SubResource("BoxShape3D_5bwm8")
+
+[node name="Blackjack Simulator" type="Node" parent="." unique_id=74933002 node_paths=PackedStringArray("NPCParent", "NPCAnchors", "fishResources", "seagullResources", "catResources", "dayMover")]
+script = ExtResource("41_2ptpr")
+NPCParent = NodePath("../NPCs")
+NPCAnchors = NodePath("../NPC Anchors")
+fishResources = NodePath("FishResources")
+seagullResources = NodePath("SeagullResources")
+catResources = NodePath("CatResources")
+dayMover = NodePath("../DirectionalLight3D/LightAnimation")
+
+[node name="FishResources" type="ResourcePreloader" parent="Blackjack Simulator" unique_id=576854924]
+resources = [PackedStringArray("BlueFish", "RedFish", "YellowFish"), [ExtResource("29_b3qtn"), ExtResource("30_obrsb"), ExtResource("31_d4u5l")]]
+
+[node name="SeagullResources" type="ResourcePreloader" parent="Blackjack Simulator" unique_id=417776758]
+resources = [PackedStringArray("MohawkSeagull", "PrettySeagull", "RockSeagull"), [ExtResource("42_i3rk2"), ExtResource("43_ulnsq"), ExtResource("44_wk4t8")]]
+
+[node name="CatResources" type="ResourcePreloader" parent="Blackjack Simulator" unique_id=2140899719]
+resources = [PackedStringArray("T1Cat", "T2Cat", "T3Cat"), [ExtResource("45_vuupw"), ExtResource("46_grkbk"), ExtResource("47_rq5hb")]]
+
+[node name="GOOD" type="AudioStreamPlayer" parent="Blackjack Simulator" unique_id=1893111326]
+stream = ExtResource("48_als6j")
+
+[node name="BAD" type="AudioStreamPlayer" parent="Blackjack Simulator" unique_id=822602030]
+stream = ExtResource("49_h0x07")
+
+[node name="Waves" type="AudioStreamPlayer3D" parent="." unique_id=1662051530]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.039196, 0, -16.702568)
+stream = ExtResource("50_a4sye")
+autoplay = true
+
+[node name="Seagulls" type="AudioStreamPlayer3D" parent="." unique_id=1601791391]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.516693, 0, 5.480632)
+stream = ExtResource("51_u15b5")
+autoplay = true
+script = ExtResource("52_rxk2o")
+
+[node name="Band" type="AudioStreamPlayer3D" parent="." unique_id=1824908744]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8197479, 0, -55.0831)
+stream = ExtResource("53_7av2n")
+autoplay = true
+
+[connection signal="mouse_entered" from="DealerHand/Area3D" to="DealerHand" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="DealerHand/Area3D" to="DealerHand" method="OnMouseExit"]
+[connection signal="body_entered" from="Player/Camera3D/Hitbox" to="Player" method="OnBodyEntered"]
+[connection signal="body_entered" from="DistractionZone" to="DistractionZone" method="OnBodyEntered"]

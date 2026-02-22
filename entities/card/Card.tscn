@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cuf8aojg1rtf5" path="res://entities/card/Card.cs" id="2_he7hl"]
 [ext_resource type="Texture2D" uid="uid://d4ijoamfb1in0" path="res://entities/card/Cards_Compressed.png" id="2_o04fy"]
 [ext_resource type="Texture2D" uid="uid://q56vhthiyj56" path="res://entities/card/Card_Back.png" id="3_o04fy"]
+[ext_resource type="AudioStream" uid="uid://bxtgkyfycuixy" path="res://sounds/card-flip.wav" id="4_ibghk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o04fy"]
 size = Vector3(0.35, 0.505, 0.02)
@@ -26,6 +27,9 @@ region_rect = Rect2(0, 0, 675, 1000)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=662566046]
 shape = SubResource("BoxShape3D_o04fy")
 debug_color = Color(0.86489606, 0.35590076, 0.07262098, 0.41960785)
+
+[node name="Flip" type="AudioStreamPlayer" parent="." unique_id=1940725905]
+stream = ExtResource("4_ibghk")
 
 [connection signal="input_event" from="." to="." method="OnInputEvent"]
 [connection signal="mouse_entered" from="." to="." method="OnMouseEnter"]

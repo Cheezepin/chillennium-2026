@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://b2uma8vuxptkp"]
 
-[ext_resource type="PackedScene" uid="uid://dsiduv5kuh4kk" path="res://models/jason_whiteboxes/halftable.glb" id="1_7fr32"]
 [ext_resource type="Texture2D" uid="uid://cwedenxsijyri" path="res://models/MattePaintings/daytime/ChilleniumMattePaintingsDayTime_Background.png" id="1_g1pa3"]
 [ext_resource type="Texture2D" uid="uid://drwkxe065ftdu" path="res://global/blacksquare.png" id="1_ke0r6"]
 [ext_resource type="PackedScene" uid="uid://cphpytkah8a7" path="res://ui/ui.tscn" id="1_lj2dc"]
@@ -29,21 +28,31 @@
 [ext_resource type="Texture2D" uid="uid://ym3fsduppyyw" path="res://models/MattePaintings/bluehour/ChilleniumMattePaintingsBlueHour_Clouds2.png" id="15_rlmsx"]
 [ext_resource type="Texture2D" uid="uid://dwa22r8vlpbko" path="res://models/MattePaintings/bluehour/ChilleniumMattePaintingsBlueHour_MidGround.png" id="16_cqsyt"]
 [ext_resource type="Texture2D" uid="uid://htr5xvk5kbb1" path="res://models/MattePaintings/bluehour/ChilleniumMattePaintingsBlueHour_Rocks.png" id="17_rlmsx"]
+[ext_resource type="PackedScene" uid="uid://enad51olhes2" path="res://models/S_Table.fbx" id="18_jyh4p"]
+[ext_resource type="PackedScene" uid="uid://brjxr2qwenoec" path="res://models/S_Docks_002.fbx" id="19_rfatf"]
+[ext_resource type="PackedScene" uid="uid://dxfauvr8ks2yv" path="res://models/underTableCover.fbx" id="20_rfatf"]
 [ext_resource type="PackedScene" uid="uid://55j8wvmcsy31" path="res://entities/fish/BlueFish.tscn" id="25_opbx6"]
 [ext_resource type="PackedScene" uid="uid://csrllh1y1j632" path="res://entities/fish/RedFish.tscn" id="26_j8up8"]
 [ext_resource type="PackedScene" uid="uid://mkgx5kya5te5" path="res://entities/fish/YellowFish.tscn" id="27_ebdrw"]
+[ext_resource type="PackedScene" uid="uid://jjica3a6c1eg" path="res://entities/sabotage_props/walkie-talkie/walkie_talkie.tscn" id="28_6abfk"]
+[ext_resource type="PackedScene" uid="uid://bii30brc0wmu1" path="res://models/deck/S_CardDeck.fbx" id="31_bs1t5"]
+[ext_resource type="PackedScene" uid="uid://dmovsrb64wv43" path="res://models/chip/largePile_Chips.fbx" id="32_qmc5v"]
 [ext_resource type="PackedScene" uid="uid://bo1ssvdm5xgl2" path="res://entities/seagull/MohawkSeagull.tscn" id="33_fj13f"]
+[ext_resource type="PackedScene" uid="uid://dley6ns12be3m" path="res://models/chip/mediumPile_Chips.fbx" id="33_xhmx3"]
+[ext_resource type="PackedScene" uid="uid://baga7hxael2ul" path="res://entities/otter/Otter.tscn" id="34_00yet"]
 [ext_resource type="PackedScene" uid="uid://df4kio5ftoku3" path="res://entities/seagull/PrettySeagull.tscn" id="34_24roe"]
+[ext_resource type="PackedScene" uid="uid://be5w5k1b7t7ho" path="res://models/chip/smallPile_chips.fbx" id="34_xhmx3"]
 [ext_resource type="PackedScene" uid="uid://dpfmcb04v3ngy" path="res://entities/seagull/RockSeagull.tscn" id="35_cwxou"]
 [ext_resource type="PackedScene" uid="uid://orny0pib538t" path="res://entities/cat/T1Cat.tscn" id="36_ucx57"]
 [ext_resource type="PackedScene" uid="uid://dfd3120ont1xl" path="res://entities/cat/T2Cat.tscn" id="37_jyh4p"]
 [ext_resource type="PackedScene" uid="uid://dqu1axvmlpm2h" path="res://entities/cat/T3Cat.tscn" id="38_rfatf"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_red06"]
-albedo_color = Color(0, 0.34901962, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lj2dc"]
-albedo_color = Color(0.64804476, 0.32772115, 0.09066401, 1)
+[ext_resource type="PackedScene" uid="uid://biw721dmht3nf" path="res://entities/sabotage_props/wine_bottle/wine_bottle.tscn" id="41_mags4"]
+[ext_resource type="AudioStream" uid="uid://hb8m3fta05q8" path="res://sounds/waves.wav" id="43_ankmw"]
+[ext_resource type="AudioStream" uid="uid://deja2luk8n4w1" path="res://sounds/seagulls.mp3" id="43_ftykn"]
+[ext_resource type="AudioStream" uid="uid://dsi264hsqtxmy" path="res://sounds/chaching.mp3" id="45_0vcmm"]
+[ext_resource type="AudioStream" uid="uid://tioer27lpfhm" path="res://sounds/band.wav" id="45_fgjpb"]
+[ext_resource type="Script" uid="uid://dy2ud4x46bam" path="res://levels/WhiteboxLevel/SeagullSound.cs" id="45_ianee"]
+[ext_resource type="AudioStream" uid="uid://dw84i7n2wvrp5" path="res://sounds/incorrect.mp3" id="46_u75xx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l1kps"]
 size = Vector3(1, 0.6, 0.05)
@@ -1048,26 +1057,19 @@ texture = ExtResource("17_rlmsx")
 
 [node name="Env" type="Node3D" parent="." unique_id=231542105]
 
-[node name="Ground" type="CSGBox3D" parent="Env" unique_id=160722957]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.670052)
-size = Vector3(10, 0.2, 10)
-material = SubResource("StandardMaterial3D_red06")
+[node name="S_Table" parent="Env" unique_id=2046026162 instance=ExtResource("18_jyh4p")]
+transform = Transform3D(-1.6505302e-08, 0, -0.3775973, 0, 0.3775973, 0, 0.3775973, 0, -1.6505302e-08, -0.02629888, 0.7585132, -0.4828384)
 
-[node name="Table" type="CSGCylinder3D" parent="Env" unique_id=1712506394]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9518583, -2.5943594)
-visible = false
-radius = 2.0
-height = 0.1
-sides = 16
-material = SubResource("StandardMaterial3D_lj2dc")
+[node name="S_Docks_002" parent="Env" unique_id=967021105 instance=ExtResource("19_rfatf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.18074, 0.11108971, -6.1915374)
 
-[node name="halftable" parent="Env" unique_id=1257731531 instance=ExtResource("1_7fr32")]
-transform = Transform3D(1, 0, 0, 0, 0.25, 0, 0, 0, 1, 0, 0.8740455, -0.43054628)
+[node name="underTableCover" parent="Env" unique_id=1166490127 instance=ExtResource("20_rfatf")]
+transform = Transform3D(-1.5298985e-08, 0, -0.35, 0, 0.35, 0, 0.35, 0, -1.5298985e-08, 0, 0.845, -0.6847513)
 
 [node name="UI" parent="." unique_id=1425285729 instance=ExtResource("1_lj2dc")]
 
 [node name="DealerHand" type="Node3D" parent="." unique_id=599761734]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.0262716, -0.8114425)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.0489051, -0.8114425)
 script = ExtResource("4_feq8d")
 
 [node name="Area3D" type="Area3D" parent="DealerHand" unique_id=2018757505]
@@ -1091,7 +1093,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016937256, 0.62921154, 0.0
 shape = SubResource("BoxShape3D_qner7")
 
 [node name="RHandAnchor" type="Node3D" parent="Player" unique_id=305670240]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.11050987, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.27671146, -0.5)
 
 [node name="FrontAnchor" type="Node3D" parent="Player" unique_id=628989949]
 transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 0, -1.046376)
@@ -1109,14 +1111,35 @@ autoplay = &"RESET"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.69550705, -1.6638746)
 
 [node name="Rock" parent="Props" unique_id=1238349591 instance=ExtResource("10_qner7")]
+transform = Transform3D(0.6799278, 0, 0.73327905, 0, 1, 0, -0.73327905, 0, 0.6799278, -1.1368799, 0, 0.7919985)
 
 [node name="Rock2" parent="Props" unique_id=1991071548 instance=ExtResource("10_qner7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3522668, 0, 0.41909814)
+transform = Transform3D(0.6398147, 0, -0.76852924, 0, 1, 0, 0.76852924, 0, 0.6398147, 1.3522668, 0, 0.41909814)
 
 [node name="Trick Card" parent="Props" unique_id=148572484 instance=ExtResource("11_p514l")]
-transform = Transform3D(1, 0, 0, 0, 0.37287444, -0.92788184, 0, 0.92788184, 0.37287444, -0.914504, 0.05236125, 0)
+transform = Transform3D(0.99604106, -0.08889429, 0, 0.08832287, 0.9896384, 0.11320321, -0.010063119, -0.112755045, 0.9935719, -0.12678927, -0.30371168, -0.5120802)
 suit = 3
 rank = 2
+
+[node name="Trick Card2" parent="Props" unique_id=1943329595 instance=ExtResource("11_p514l")]
+transform = Transform3D(0.8035834, -0.0047776923, 0.595173, -0.077954754, 0.990509, 0.11320321, -0.590065, -0.13736477, 0.79558414, -1.1068548, -0.30371168, -0.14668012)
+suit = 1
+
+[node name="Trick Card3" parent="Props" unique_id=518208344 instance=ExtResource("11_p514l")]
+transform = Transform3D(0.805742, -0.051416457, -0.59003085, 0.08571309, 0.99586016, 0.030267913, 0.58603173, -0.074961476, 0.8068132, 1.0017523, -0.30371168, -0.19945323)
+rank = 1
+
+[node name="WineBottle" parent="Props" unique_id=493171760 instance=ExtResource("41_mags4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4333911, -0.593904, -0.19724786)
+
+[node name="WineBottle2" parent="Props" unique_id=166422532 instance=ExtResource("41_mags4")]
+transform = Transform3D(-0.87264097, 0, -0.48836234, 0, 1, 0, 0.48836234, 0, -0.87264097, -0.6261338, -0.593904, -0.05631864)
+
+[node name="WineBottle3" parent="Props" unique_id=1072476858 instance=ExtResource("41_mags4")]
+transform = Transform3D(-0.87264097, 0, -0.48836234, 0, 1, 0, 0.48836234, 0, -0.87264097, 1.3203895, -0.593904, 0.76661086)
+
+[node name="WalkieTalkie" parent="Props" unique_id=330102182 instance=ExtResource("28_6abfk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.69762933, -0.6317001, 0.57523346)
 
 [node name="NPCs" type="Node3D" parent="." unique_id=536264414]
 
@@ -1134,27 +1157,59 @@ handID = 3
 [node name="NPC Anchors" type="Node3D" parent="." unique_id=1328940762]
 
 [node name="Left" type="Node3D" parent="NPC Anchors" unique_id=1794650409]
-transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -2, 0, -2)
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -2.1, 0, -2.1)
 
 [node name="Middle" type="Node3D" parent="NPC Anchors" unique_id=911942786]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.2)
 
 [node name="Right" type="Node3D" parent="NPC Anchors" unique_id=1150178911]
-transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 2, 0, -2)
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 2.1, 0, -2.1)
+
+[node name="Chip Anchors" type="Node3D" parent="." unique_id=1447951021]
+
+[node name="Left" type="Node3D" parent="Chip Anchors" unique_id=1270827192]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -1.0327317, 1.0428884, -0.83285946)
+
+[node name="large" parent="Chip Anchors/Left" unique_id=1327169123 instance=ExtResource("32_qmc5v")]
+
+[node name="medium" parent="Chip Anchors/Left" unique_id=294583894 instance=ExtResource("33_xhmx3")]
+
+[node name="small" parent="Chip Anchors/Left" unique_id=1744624204 instance=ExtResource("34_xhmx3")]
+
+[node name="Middle" type="Node3D" parent="Chip Anchors" unique_id=108450005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.058918595, 1.039751, -1.3898898)
+
+[node name="large" parent="Chip Anchors/Middle" unique_id=1540928632 instance=ExtResource("32_qmc5v")]
+
+[node name="medium" parent="Chip Anchors/Middle" unique_id=1583944961 instance=ExtResource("33_xhmx3")]
+
+[node name="small" parent="Chip Anchors/Middle" unique_id=928721849 instance=ExtResource("34_xhmx3")]
+
+[node name="Right" type="Node3D" parent="Chip Anchors" unique_id=2004132998]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0.79085064, 1.1192921, -0.9152665)
+
+[node name="large" parent="Chip Anchors/Right" unique_id=650456107 instance=ExtResource("32_qmc5v")]
+
+[node name="medium" parent="Chip Anchors/Right" unique_id=493821587 instance=ExtResource("33_xhmx3")]
+
+[node name="small" parent="Chip Anchors/Right" unique_id=2102785415 instance=ExtResource("34_xhmx3")]
 
 [node name="Deck" type="Node3D" parent="." unique_id=173381474]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6817358, 1.0805373, -0.7174332)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6817358, 1.0648443, -0.8107072)
 script = ExtResource("8_l1kps")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Deck" unique_id=80353012]
-size = Vector3(0.36, 0.15, 0.52)
+[node name="S_CardDeck" parent="Deck" unique_id=1306161839 instance=ExtResource("31_bs1t5")]
+transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, -0.045582056, 0)
 
 [node name="Discard" type="Node3D" parent="." unique_id=680652010]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7061847, 1.020208, -0.7106398)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8060831, 1.020208, -0.8577401)
 script = ExtResource("9_mcbbh")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Discard" unique_id=340182761]
-size = Vector3(0.36, 0.02, 0.52)
+[node name="S_CardDeck2" parent="Discard" unique_id=1888253510 instance=ExtResource("31_bs1t5")]
+transform = Transform3D(0.065, 0, 0, 0, 0.01, 0, 0, 0, 0.065, 0, 0, 0)
+
+[node name="Otter" parent="." unique_id=900309670 instance=ExtResource("34_00yet")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53158, -4.7683716e-07, -1.1977276)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=360804522]
 environment = SubResource("Environment_dqbfd")
@@ -1187,6 +1242,28 @@ resources = [PackedStringArray("MohawkSeagull", "PrettySeagull", "RockSeagull"),
 
 [node name="CatResources" type="ResourcePreloader" parent="Blackjack Simulator" unique_id=2140899719]
 resources = [PackedStringArray("T1Cat", "T2Cat", "T3Cat"), [ExtResource("36_ucx57"), ExtResource("37_jyh4p"), ExtResource("38_rfatf")]]
+
+[node name="GOOD" type="AudioStreamPlayer" parent="Blackjack Simulator" unique_id=1893111326]
+stream = ExtResource("45_0vcmm")
+
+[node name="BAD" type="AudioStreamPlayer" parent="Blackjack Simulator" unique_id=822602030]
+stream = ExtResource("46_u75xx")
+
+[node name="Waves" type="AudioStreamPlayer3D" parent="." unique_id=1662051530]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.039196, 0, -16.702568)
+stream = ExtResource("43_ankmw")
+autoplay = true
+
+[node name="Seagulls" type="AudioStreamPlayer3D" parent="." unique_id=1601791391]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.516693, 0, 5.480632)
+stream = ExtResource("43_ftykn")
+autoplay = true
+script = ExtResource("45_ianee")
+
+[node name="Band" type="AudioStreamPlayer3D" parent="." unique_id=1824908744]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8197479, 0, -55.0831)
+stream = ExtResource("45_fgjpb")
+autoplay = true
 
 [connection signal="mouse_entered" from="DealerHand/Area3D" to="DealerHand" method="OnMouseEnter"]
 [connection signal="mouse_exited" from="DealerHand/Area3D" to="DealerHand" method="OnMouseExit"]

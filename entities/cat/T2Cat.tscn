@@ -18,9 +18,10 @@ size = Vector3(1, 0.6, 0.05)
 [sub_resource type="ViewportTexture" id="ViewportTexture_fq5x3"]
 viewport_path = NodePath("SubViewport")
 
-[node name="Black Cat" type="CharacterBody3D" unique_id=747487254 node_paths=PackedStringArray("animPlayer", "eyes", "speechBubbleSprite")]
+[node name="Black Cat" type="CharacterBody3D" unique_id=747487254 node_paths=PackedStringArray("model", "animPlayer", "eyes", "speechBubbleSprite")]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 script = ExtResource("1_palwi")
+model = NodePath("Cat_T2_Model")
 handID = 1
 animPlayer = NodePath("Cat_T2_Model/AnimationPlayer")
 species = 2

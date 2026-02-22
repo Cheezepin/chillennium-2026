@@ -1,0 +1,8 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://dqvski8wtscrf"]
+
+[ext_resource type="Texture2D" uid="uid://cop6qqffaqlqh" path="res://models/otter/S_otter_M_otter_BaseColor.1001.png" id="1_0tyfw"]
+[ext_resource type="Texture2D" uid="uid://b7pwsso8ed1gt" path="res://models/otter/S_otter_M_otter_OcclusionRoughnessMetallic.1001.png" id="2_pq4uy"]
+
+[resource]
+albedo_texture = ExtResource("1_0tyfw")
+orm_texture = ExtResource("2_pq4uy")
