@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cfdp8cfjtpcwc"]
+
+[ext_resource type="Texture2D" uid="uid://odibx2gp0rei" path="res://models/Textures/T_Tray/S_Tray_M_Tray_BaseColor.1001.png" id="1_tfb13"]
+[ext_resource type="Texture2D" uid="uid://dp32tiv5xjeed" path="res://models/Textures/T_Tray/S_Tray_M_Tray_OcclusionRoughnessMetallic.1001.png" id="2_vt1t1"]
+
+[resource]
+albedo_texture = ExtResource("1_tfb13")
+metallic = 1.0
+metallic_texture = ExtResource("2_vt1t1")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_vt1t1")
+roughness_texture_channel = 1
+ao_enabled = true
+ao_texture = ExtResource("2_vt1t1")

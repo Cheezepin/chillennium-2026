@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cbh3f7dvxdomv"]
+
+[ext_resource type="Texture2D" uid="uid://dnlx7ylrtkh3e" path="res://models/Textures/T_Bottle/S_WineBottle_M_Bottles_BaseColor.1001.png" id="1_w4h60"]
+[ext_resource type="Texture2D" uid="uid://b2y1n50an5fah" path="res://models/Textures/T_Bottle/S_WineBottle_M_Bottles_OcclusionRoughnessMetallic.1001.png" id="2_r0c0p"]
+[ext_resource type="Texture2D" uid="uid://mxmmx0s28fkq" path="res://models/Textures/T_Bottle/S_WineBottle_M_Bottles_Normal.1001.png" id="3_uxw05"]
+
+[resource]
+albedo_texture = ExtResource("1_w4h60")
+metallic = 1.0
+metallic_texture = ExtResource("2_r0c0p")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_r0c0p")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_uxw05")
+ao_enabled = true
+ao_texture = ExtResource("2_r0c0p")

@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cj612aw7bdqb8"]
+
+[ext_resource type="Texture2D" uid="uid://bk0va1bas2hdk" path="res://models/Textures/T_Tape/S_Tape_M_Tape_BaseColor.1001.png" id="1_y3eik"]
+[ext_resource type="Texture2D" uid="uid://c0gydoinxhvu4" path="res://models/Textures/T_Tape/S_Tape_M_Tape_OcclusionRoughnessMetallic.1001.png" id="2_kuxk0"]
+
+[resource]
+albedo_texture = ExtResource("1_y3eik")
+metallic = 1.0
+metallic_texture = ExtResource("2_kuxk0")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_kuxk0")
+roughness_texture_channel = 1
+ao_enabled = true
+ao_texture = ExtResource("2_kuxk0")

@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b3h7uds2gspxq"]
+
+[ext_resource type="Texture2D" uid="uid://bmrf8qiemb5mf" path="res://models/Textures/T_WaterBalloon/S_WaterBalloon_M_WaterBalloon_BaseColor.1001.png" id="1_dad5o"]
+[ext_resource type="Texture2D" uid="uid://ltkok2uabush" path="res://models/Textures/T_WaterBalloon/S_WaterBalloon_M_WaterBalloon_OcclusionRoughnessMetallic.1001.png" id="2_haleq"]
+
+[resource]
+albedo_texture = ExtResource("1_dad5o")
+metallic = 1.0
+metallic_texture = ExtResource("2_haleq")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_haleq")
+roughness_texture_channel = 1
+ao_enabled = true
+ao_texture = ExtResource("2_haleq")

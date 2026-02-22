@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://coyfhdmciiwet"]
+
+[ext_resource type="Texture2D" uid="uid://cm83xovlyklhe" path="res://models/Textures/T_WalkieTalkie/S_WalkieTalkie_M_WalkieTalkie_BaseColor.1001.png" id="1_5okok"]
+[ext_resource type="Texture2D" uid="uid://dug3xqyyh4ka7" path="res://models/Textures/T_WalkieTalkie/S_WalkieTalkie_M_WalkieTalkie_OcclusionRoughnessMetallic.1001.png" id="2_csy6p"]
+[ext_resource type="Texture2D" uid="uid://dirdcb4dwgq0b" path="res://models/Textures/T_WalkieTalkie/S_WalkieTalkie_M_WalkieTalkie_Normal.1001.png" id="3_mro3h"]
+
+[resource]
+albedo_texture = ExtResource("1_5okok")
+metallic = 1.0
+metallic_texture = ExtResource("2_csy6p")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_csy6p")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_mro3h")
+ao_enabled = true
+ao_texture = ExtResource("2_csy6p")
