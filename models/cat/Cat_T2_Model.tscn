@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bq2j3841rxt4f"]
+
+[ext_resource type="PackedScene" uid="uid://bnwqg0a26fot1" path="res://models/cat/Cat_T2_Model.fbx" id="1_6pg5s"]
+[ext_resource type="AnimationLibrary" uid="uid://diydry8pcykq6" path="res://models/cat/Cat Anims.res" id="2_1wbt3"]
+
+[node name="Cat_T2_Model" unique_id=1853620548 instance=ExtResource("1_6pg5s")]
+
+[node name="Skeleton3D" parent="cat" parent_id_path=PackedInt32Array(75080882) index="1" unique_id=679209450]
+bones/1/position = Vector3(0.509174, 2.6020852e-16, -9.486769e-18)
+bones/1/rotation = Quaternion(0.10764939, 0.017194804, 0.066179685, 0.99183476)
+bones/5/rotation = Quaternion(-2.3509887e-38, -9.403955e-38, 0.36869156, 0.9295518)
+bones/7/rotation = Quaternion(0.8388121, 0.544421, 3.3335088e-17, 5.1360733e-17)
+bones/9/rotation = Quaternion(-2.3509884e-38, 1.2930437e-37, -0.37982884, 0.9250568)
+bones/11/rotation = Quaternion(0.26423195, 0.9644592, 5.905414e-17, 1.6179004e-17)
+bones/12/rotation = Quaternion(-4.354703e-10, 1.0527709e-08, 0.9991457, -0.041328862)
+bones/13/rotation = Quaternion(0.015178381, 0.027850538, -0.8000158, 0.5991399)
+bones/14/rotation = Quaternion(-0.06116387, 0.12246315, -0.033875424, 0.9900073)
+bones/16/rotation = Quaternion(-0.054215167, -0.09947946, -0.79526776, 0.5955786)
+bones/17/rotation = Quaternion(0.06116397, -0.12246213, -0.03387062, 0.9900075)
+
+[node name="buttlips" parent="cat/Skeleton3D" index="6" unique_id=111741066]
+blend_shapes/catMouth.catMouthTalk = 1.0
+
+[node name="leftWhisker_ctrl" parent="cat/global_Ctrl_ofstGrp/global_Ctrl/spine_ctrl_ofstGrp/spine_ctrl/neck_ctrl_ofstGrp/neck_ctrl/leftWhisker_ctrl_ofstGrp" parent_id_path=PackedInt32Array(91007961) index="0" unique_id=700321526]
+transform = Transform3D(0.9968778, 0.078960024, 0, -0.078960024, 0.9968778, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=2048838534]
+"libraries/Cat Anims" = ExtResource("2_1wbt3")

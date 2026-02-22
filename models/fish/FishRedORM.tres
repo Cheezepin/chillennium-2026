@@ -1,0 +1,8 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://boff82gfbuxx3"]
+
+[ext_resource type="Texture2D" uid="uid://ckj4hna13my0b" path="res://models/fish/fish_texturing_lambert2_BaseColor.1001_red.png" id="1_6bld4"]
+[ext_resource type="Texture2D" uid="uid://br450572k0t1d" path="res://models/fish/fish_texturing_lambert2_OcclusionRoughnessMetallic.1001_blue.png" id="2_6bld4"]
+
+[resource]
+albedo_texture = ExtResource("1_6bld4")
+orm_texture = ExtResource("2_6bld4")

@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://bo1ssvdm5xgl2"]
+
+[ext_resource type="Script" uid="uid://blcjnt6tvmjwp" path="res://entities/npc/NPC.cs" id="1_uj7m8"]
+[ext_resource type="Script" uid="uid://botpfiw828nfc" path="res://global/Hand.cs" id="2_matd4"]
+[ext_resource type="PackedScene" uid="uid://658buqrne63l" path="res://entities/npc/NPCSpeechBubble.tscn" id="3_22lry"]
+[ext_resource type="Script" uid="uid://b4m5ch5xlgxfd" path="res://entities/npc/SpeechBubbleSprite.cs" id="4_hidih"]
+[ext_resource type="PackedScene" uid="uid://b58m1mx3tpsl2" path="res://entities/attack/FishAttack.tscn" id="5_sb806"]
+[ext_resource type="PackedScene" uid="uid://2up121dvb0u3" path="res://models/seagull/Seagull_Mohawk_Model.tscn" id="6_1a0j6"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fq5x3"]
+radius = 0.35
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_x8luf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fq5x3"]
+size = Vector3(1, 0.6, 0.05)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fq5x3"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Mohawk Seagull" type="CharacterBody3D" unique_id=747487254 node_paths=PackedStringArray("animPlayer", "eyes", "speechBubbleSprite")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+script = ExtResource("1_uj7m8")
+handID = 1
+animPlayer = NodePath("Seagull Mohawk Model/AnimationPlayer")
+species = 1
+eyes = [NodePath("Seagull Mohawk Model/seagull/Skeleton3D/leftEye"), NodePath("Seagull Mohawk Model/seagull/Skeleton3D/rightEye"), NodePath("Seagull Mohawk Model/seagull/Skeleton3D/leftDizzyEye"), NodePath("Seagull Mohawk Model/seagull/Skeleton3D/rightDizzyEye")]
+speechBubbleSprite = NodePath("SpeechBubbleSprite")
+
+[node name="CollisionBox" type="CollisionShape3D" parent="." unique_id=624112433]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_fq5x3")
+
+[node name="Hitbox" type="Area3D" parent="." unique_id=521099133]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=489823220]
+shape = SubResource("CylinderShape3D_x8luf")
+
+[node name="Hand" type="Node3D" parent="." unique_id=578049173]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.49999988, 0.8660254, 0, -0.86602503, 0.49999988, 0, 1.1815875, 1.2279994)
+script = ExtResource("2_matd4")
+handID = 2
+
+[node name="Area3D" type="Area3D" parent="Hand" unique_id=1070455888]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hand/Area3D" unique_id=1824910747]
+shape = SubResource("BoxShape3D_fq5x3")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1715892597]
+disable_3d = true
+own_world_3d = true
+transparent_bg = true
+gui_disable_input = true
+size = Vector2i(400, 350)
+
+[node name="Speech Bubble" parent="SubViewport" unique_id=1843639644 node_paths=PackedStringArray("npc") instance=ExtResource("3_22lry")]
+npc = NodePath("../..")
+
+[node name="SpeechBubbleSprite" type="Sprite3D" parent="." unique_id=1603437472]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 2.0305035, 0)
+centered = false
+offset = Vector2(-200, 0)
+billboard = 1
+double_sided = false
+fixed_size = true
+texture = SubResource("ViewportTexture_fq5x3")
+script = ExtResource("4_hidih")
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="." unique_id=642707125]
+resources = [PackedStringArray("FishAttack"), [ExtResource("5_sb806")]]
+
+[node name="Seagull Mohawk Model" parent="." unique_id=1914600575 instance=ExtResource("6_1a0j6")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Seagull Mohawk Model/seagull" parent_id_path=PackedInt32Array(1914600575, 1422832000) index="0" unique_id=796931697]
+bones/1/position = Vector3(0.0055282116, 1.5265585e-18, 1.8488928e-34)
+bones/1/rotation = Quaternion(-2.2590441e-18, -3.1117446e-19, 0.13645759, 0.99064595)
+bones/3/rotation = Quaternion(0.43856984, -0.072628304, 0.017712582, 0.89558244)
+bones/10/rotation = Quaternion(-0.809044, 0.58769095, -0.0057149366, 0.0058841333)
+bones/12/rotation = Quaternion(-0.49808806, 0.86708456, 0.006120729, -0.0059396587)
+
+[node name="neck_ctrl" parent="Seagull Mohawk Model/seagull/controls/global_ctrl_ofstGrp/global_ctrl/ctrl_1__ofst/ctrl_1/neckCtrl_ofstGrp" parent_id_path=PackedInt32Array(1914600575, 847473989) index="0" unique_id=1932717513]
+transform = Transform3D(0.60476327, 0, 0.7964052, 0, 0.99999994, 0, -0.79640526, 0, 0.6047632, 0, 0, 0)
+
+[node name="topBeak_ctrl" parent="Seagull Mohawk Model/seagull/controls/global_ctrl_ofstGrp/global_ctrl/ctrl_1__ofst/ctrl_1/neckCtrl_ofstGrp/neck_ctrl/topBeak_ctrl_ofstGrp" parent_id_path=PackedInt32Array(1914600575, 1420643203) index="0" unique_id=237149432]
+transform = Transform3D(0.9039847, 0.4275497, 0.0035945072, -0.42754966, 0.90385014, 0.016006108, 0.003594511, -0.016006108, 0.9998655, 0, 0, 0)
+
+[node name="bottomBeak_ctrl" parent="Seagull Mohawk Model/seagull/controls/global_ctrl_ofstGrp/global_ctrl/ctrl_1__ofst/ctrl_1/neckCtrl_ofstGrp/neck_ctrl/bottomBeak_ctrl_ofstGrp" parent_id_path=PackedInt32Array(1914600575, 1622185079) index="0" unique_id=1182955087]
+transform = Transform3D(0.89619404, -0.44364524, 0.0038861663, 0.44364527, 0.89604855, -0.016608676, 0.003886167, 0.016608676, 0.9998545, 0, 0, 0)
+
+[node name="AnimationPlayer" parent="Seagull Mohawk Model" index="1" unique_id=1280193334]
+autoplay = &"Seagull Anims/BirdIdle"
+
+[connection signal="body_entered" from="Hitbox" to="." method="OnBodyEntered"]
+[connection signal="input_event" from="Hand/Area3D" to="Hand" method="OnInputEvent"]
+[connection signal="mouse_entered" from="Hand/Area3D" to="Hand" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Hand/Area3D" to="Hand" method="OnMouseExit"]
+
+[editable path="Seagull Mohawk Model"]

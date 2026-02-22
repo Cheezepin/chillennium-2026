@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://dr5fjtnslo0yd"]
+
+[ext_resource type="PackedScene" uid="uid://y3n3j8c34djl" path="res://models/fish/fishRiggedBlue.fbx" id="1_0mjo1"]
+[ext_resource type="AnimationLibrary" uid="uid://b1t0v78rkerdt" path="res://models/fish/Fish Anims.res" id="2_ni5t4"]
+
+[node name="Fish_Blue_Model" unique_id=1991960471 instance=ExtResource("1_0mjo1")]
+
+[node name="ctrl_1" parent="fish/globalFishCtrl_ofstGrp/globalFishCtrl/ctrl_ofstGrp_1" parent_id_path=PackedInt32Array(515021103) index="0" unique_id=1918401805]
+transform = Transform3D(0.99999046, -0.004362273, 0, 0.004362273, 0.99999046, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="ctrl_2" parent="fish/globalFishCtrl_ofstGrp/globalFishCtrl/ctrl_ofstGrp_1/ctrl_1/ctrl_ofstGrp_2" parent_id_path=PackedInt32Array(995557141) index="0" unique_id=2083289003]
+transform = Transform3D(0.99999046, -0.004362273, 0, 0.004362273, 0.99999046, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="ctrl_3" parent="fish/globalFishCtrl_ofstGrp/globalFishCtrl/ctrl_ofstGrp_1/ctrl_1/ctrl_ofstGrp_2/ctrl_2/ctrl_ofstGrp_3" parent_id_path=PackedInt32Array(73616312) index="0" unique_id=415758512]
+transform = Transform3D(0.99999046, -0.0043622726, 0, 0.004362273, 0.9999904, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="fin_ctrl_1" parent="fish/globalFishCtrl_ofstGrp/globalFishCtrl/ctrl_ofstGrp_1/ctrl_1/ctrl_ofstGrp_2/ctrl_2/fin_ctrl_1_ofstGrp" parent_id_path=PackedInt32Array(444578873) index="0" unique_id=80318740]
+transform = Transform3D(0.99999845, -0.0017437089, 0, 0.0017437089, 0.99999845, 0, 0, 0, 1, 0.32949513, 0.51473033, 0)
+
+[node name="fin_ctrl_2" parent="fish/globalFishCtrl_ofstGrp/globalFishCtrl/ctrl_ofstGrp_1/ctrl_1/ctrl_ofstGrp_2/ctrl_2/fin_ctrl_2_ofstGrp" parent_id_path=PackedInt32Array(551456361) index="0" unique_id=557950274]
+transform = Transform3D(0.9999946, -0.0032928025, 0, 0.0032928025, 0.9999946, 0, 0, 0, 1, -0.29695433, 1.2221733, -3.8575852e-08)
+
+[node name="rightFin_ctlr" parent="fish/globalFishCtrl_ofstGrp/globalFishCtrl/ctrl_ofstGrp_1/ctrl_1/ctrl_ofstGrp_2/ctrl_2/rightFin_ctlr_ofstGrp" parent_id_path=PackedInt32Array(1999448546) index="0" unique_id=497070035]
+transform = Transform3D(0.9999996, -0.00087047764, 0.00037317935, 0.00087051844, 0.99999964, -0.000109131906, -0.0003730842, 0.00010945672, 0.99999994, 1.8594118e-08, 2.1067963, 0.5154989)
+
+[node name="ctrl_32" parent="fish/globalFishCtrl_ofstGrp/globalFishCtrl/ctrl_ofstGrp_1/ctrl_1/ctrl_ofstGrp_2/ctrl_2/ctrl_ofstGrp_4" parent_id_path=PackedInt32Array(1542634517) index="0" unique_id=404955663]
+transform = Transform3D(0.99999046, -0.0043622726, 0, 0.004362273, 0.9999904, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="rightFin_ctlr2" parent="fish/globalFishCtrl_ofstGrp/globalFishCtrl/ctrl_ofstGrp_1/ctrl_1/ctrl_ofstGrp_2/ctrl_2/rightFin_ctlr_ofstGrp1" parent_id_path=PackedInt32Array(2135448036) index="0" unique_id=1879099598]
+transform = Transform3D(0.9999996, -0.00087047764, 0.00037317935, 0.00087051844, 0.99999964, -0.000109131906, -0.0003730842, 0.00010945672, 0.99999994, 1.8594118e-08, 2.1067963, 0.5154989)
+
+[node name="Skeleton3D" parent="fish" parent_id_path=PackedInt32Array(1413146482) index="1" unique_id=2144885695]
+bones/1/position = Vector3(0.48074758, 3.954031e-17, 1.0775187e-32)
+bones/1/rotation = Quaternion(0.999998, -0.0020430908, 6.1232204e-17, -1.3073698e-19)
+bones/2/rotation = Quaternion(0.9999969, 0.0025103115, 1.53716e-19, 6.123012e-17)
+bones/3/rotation = Quaternion(0.9999984, -0.0018043732, -6.123218e-17, 1.3547129e-19)
+bones/4/rotation = Quaternion(1.5316691e-32, 5.4405446e-32, -0.7069963, 0.7072172)
+bones/5/position = Vector3(4.114175e-16, 0.7666589, -1.0111741e-17)
+bones/5/rotation = Quaternion(0, 0, 0, 1)
+bones/6/rotation = Quaternion(-0.04312239, -0.4010492, 0.9098291, -0.09752536)
+bones/7/position = Vector3(1.089326, -8.6736174e-16, 4.3368087e-17)
+bones/7/rotation = Quaternion(0, -3.469447e-18, 6.938894e-18, 1)
+bones/8/rotation = Quaternion(-0.40104917, 0.043122385, 0.09752535, 0.909829)
+bones/9/rotation = Quaternion(0, -3.469447e-18, 7.70372e-34, 1)
+bones/10/rotation = Quaternion(0.70756716, 0.70664614, 8.640492e-17, -1.7328715e-16)
+bones/11/position = Vector3(-0.32949513, -0.51473033, 1.2924697e-24)
+bones/12/rotation = Quaternion(0.12022491, 0.9927468, -1.3811827e-08, 1.3774871e-08)
+bones/13/position = Vector3(1.2577319, 3.469447e-16, -2.5849394e-23)
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=1785062358]
+"libraries/Fish Anims" = ExtResource("2_ni5t4")

@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://bxos0wf1bt2q0"]
+
+[ext_resource type="Texture2D" uid="uid://dedu6pgvltyp1" path="res://ui/ChilleniumTitleScreen_Ver2.png" id="1_evd2d"]
+[ext_resource type="Texture2D" uid="uid://j6bfeyy3k0ho" path="res://ui/Buttons/ChilleniumUIStart.png" id="1_smbho"]
+[ext_resource type="Texture2D" uid="uid://c1xphkiijg7ac" path="res://ui/Buttons/ChilleniumUIStart_P.png" id="2_lclon"]
+[ext_resource type="Texture2D" uid="uid://yj4kddpff7xq" path="res://ui/Buttons/ChilleniumUIStart_H.png" id="3_bf6rl"]
+[ext_resource type="BitMap" uid="uid://bccna52hideve" path="res://ui/Buttons/Mask.png" id="4_tv6i7"]
+[ext_resource type="Texture2D" uid="uid://bhp35t4yi2b0q" path="res://ui/Buttons/ChilleniumUIHowTo.png" id="5_tv6i7"]
+[ext_resource type="Texture2D" uid="uid://c4fhgn36epikc" path="res://ui/Buttons/ChilleniumUIHowTo_P.png" id="6_7qapi"]
+[ext_resource type="Texture2D" uid="uid://beam6mfwy56i4" path="res://ui/Buttons/ChilleniumUIHowTo_H.png" id="7_svk7d"]
+[ext_resource type="Texture2D" uid="uid://dbpuuel0knjsi" path="res://ui/Buttons/ChilleniumUICredits.png" id="8_ivyrb"]
+[ext_resource type="Texture2D" uid="uid://bbercnha0wvis" path="res://ui/Buttons/ChilleniumUICredits_P.png" id="9_dctpx"]
+[ext_resource type="Texture2D" uid="uid://dfsja1rsewkvm" path="res://ui/Buttons/ChilleniumUICredits_H.png" id="10_tjk0l"]
+[ext_resource type="Texture2D" uid="uid://dn080rkw162wa" path="res://ui/Buttons/ChilleniumUIQuit.png" id="11_0a35u"]
+[ext_resource type="Texture2D" uid="uid://cvoerdnvbxp8s" path="res://ui/Buttons/ChilleniumUIQuit_P.png" id="12_evd2d"]
+[ext_resource type="Texture2D" uid="uid://bwpk1btq66b1x" path="res://ui/Buttons/ChilleniumUIQuit_H.png" id="13_mf1p1"]
+[ext_resource type="Texture2D" uid="uid://bafw7uofsmc0b" path="res://ui/ChilleniumCreditsScreen.png" id="15_mf1p1"]
+
+[node name="Title Screen" type="Control" unique_id=373041148]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="TextureRect" parent="." unique_id=274366932]
+layout_mode = 0
+offset_right = 3840.0
+offset_bottom = 2160.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_evd2d")
+
+[node name="Start" type="TextureButton" parent="." unique_id=1036545496]
+layout_mode = 0
+offset_left = 670.99994
+offset_top = 316.99997
+offset_right = 4511.0
+offset_bottom = 2477.0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("1_smbho")
+texture_pressed = ExtResource("2_lclon")
+texture_hover = ExtResource("3_bf6rl")
+texture_click_mask = ExtResource("4_tv6i7")
+
+[node name="HowTo" type="TextureButton" parent="." unique_id=1501048247]
+layout_mode = 0
+offset_left = 463.0
+offset_top = 606.0
+offset_right = 4303.0
+offset_bottom = 2766.0
+scale = Vector2(0.15, 0.15)
+texture_normal = ExtResource("5_tv6i7")
+texture_pressed = ExtResource("6_7qapi")
+texture_hover = ExtResource("7_svk7d")
+texture_click_mask = ExtResource("4_tv6i7")
+
+[node name="Credits" type="TextureButton" parent="." unique_id=1813285089]
+layout_mode = 0
+offset_left = 1075.0
+offset_top = 606.0
+offset_right = 4915.0
+offset_bottom = 2766.0
+scale = Vector2(0.15, 0.15)
+texture_normal = ExtResource("8_ivyrb")
+texture_pressed = ExtResource("9_dctpx")
+texture_hover = ExtResource("10_tjk0l")
+texture_click_mask = ExtResource("4_tv6i7")
+
+[node name="Quit" type="TextureButton" parent="." unique_id=931310036]
+layout_mode = 0
+offset_left = 772.0
+offset_top = 776.0
+offset_right = 4612.0
+offset_bottom = 2936.0
+scale = Vector2(0.15, 0.15)
+texture_normal = ExtResource("11_0a35u")
+texture_pressed = ExtResource("12_evd2d")
+texture_hover = ExtResource("13_mf1p1")
+texture_click_mask = ExtResource("4_tv6i7")
+
+[node name="How to Play" type="TextureRect" parent="." unique_id=877677535]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CreditsScreen" type="TextureRect" parent="." unique_id=175412610]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_mf1p1")

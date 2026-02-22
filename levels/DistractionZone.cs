@@ -10,7 +10,7 @@ public partial class DistractionZone : Area3D
         {
             SabotageProp s = node as SabotageProp;
             
-            foreach(NPC npc in npcs.GetChildren())
+            foreach(NPC npc in BlackjackHandler.Instance.npcs)
             {
                 npc.EmitSignal(NPC.SignalName.GetDistracted, s);
             }

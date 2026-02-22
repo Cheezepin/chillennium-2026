@@ -17,10 +17,11 @@ size = Vector3(1, 0.6, 0.05)
 [sub_resource type="ViewportTexture" id="ViewportTexture_fq5x3"]
 viewport_path = NodePath("SubViewport")
 
-[node name="NPC" type="CharacterBody3D" unique_id=747487254 node_paths=PackedStringArray("speechBubbleSprite")]
+[node name="NPC" type="CharacterBody3D" unique_id=747487254 node_paths=PackedStringArray("eyes", "speechBubbleSprite")]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 script = ExtResource("1_dqo36")
 handID = 1
+eyes = []
 speechBubbleSprite = NodePath("SpeechBubbleSprite")
 
 [node name="CollisionBox" type="CollisionShape3D" parent="." unique_id=624112433]

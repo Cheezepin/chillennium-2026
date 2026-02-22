@@ -13,7 +13,6 @@
 [ext_resource type="Script" uid="uid://botpfiw828nfc" path="res://global/Hand.cs" id="4_feq8d"]
 [ext_resource type="Texture2D" uid="uid://usn0280vvlh0" path="res://models/MattePaintings/daytime/ChilleniumMattePaintingsDayTime_Clouds2.png" id="4_v0iw4"]
 [ext_resource type="Texture2D" uid="uid://c8opfjxqj1nko" path="res://models/MattePaintings/daytime/ChilleniumMattePaintingsDayTime_Rocks.png" id="5_g1pa3"]
-[ext_resource type="PackedScene" uid="uid://fs6ys0sijvlm" path="res://entities/npc/NPC.tscn" id="6_5bwm8"]
 [ext_resource type="PackedScene" uid="uid://bp8vw4ygb6b3c" path="res://models/water/water_plane.glb" id="8_dqbfd"]
 [ext_resource type="Texture2D" uid="uid://cav70uq32xgvn" path="res://models/MattePaintings/goldenhour/ChilleniumMattePaintingsGoldenHour_Clouds1.png" id="8_h2ru1"]
 [ext_resource type="Script" uid="uid://j6enoe10dcyy" path="res://global/Deck.cs" id="8_l1kps"]
@@ -30,6 +29,15 @@
 [ext_resource type="Texture2D" uid="uid://ym3fsduppyyw" path="res://models/MattePaintings/bluehour/ChilleniumMattePaintingsBlueHour_Clouds2.png" id="15_rlmsx"]
 [ext_resource type="Texture2D" uid="uid://dwa22r8vlpbko" path="res://models/MattePaintings/bluehour/ChilleniumMattePaintingsBlueHour_MidGround.png" id="16_cqsyt"]
 [ext_resource type="Texture2D" uid="uid://htr5xvk5kbb1" path="res://models/MattePaintings/bluehour/ChilleniumMattePaintingsBlueHour_Rocks.png" id="17_rlmsx"]
+[ext_resource type="PackedScene" uid="uid://55j8wvmcsy31" path="res://entities/fish/BlueFish.tscn" id="25_opbx6"]
+[ext_resource type="PackedScene" uid="uid://csrllh1y1j632" path="res://entities/fish/RedFish.tscn" id="26_j8up8"]
+[ext_resource type="PackedScene" uid="uid://mkgx5kya5te5" path="res://entities/fish/YellowFish.tscn" id="27_ebdrw"]
+[ext_resource type="PackedScene" uid="uid://bo1ssvdm5xgl2" path="res://entities/seagull/MohawkSeagull.tscn" id="33_fj13f"]
+[ext_resource type="PackedScene" uid="uid://df4kio5ftoku3" path="res://entities/seagull/PrettySeagull.tscn" id="34_24roe"]
+[ext_resource type="PackedScene" uid="uid://dpfmcb04v3ngy" path="res://entities/seagull/RockSeagull.tscn" id="35_cwxou"]
+[ext_resource type="PackedScene" uid="uid://orny0pib538t" path="res://entities/cat/T1Cat.tscn" id="36_ucx57"]
+[ext_resource type="PackedScene" uid="uid://dfd3120ont1xl" path="res://entities/cat/T2Cat.tscn" id="37_jyh4p"]
+[ext_resource type="PackedScene" uid="uid://dqu1axvmlpm2h" path="res://entities/cat/T3Cat.tscn" id="38_rfatf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_red06"]
 albedo_color = Color(0, 0.34901962, 0, 1)
@@ -841,15 +849,15 @@ _data = {
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i7juc"]
 
-[sub_resource type="Sky" id="Sky_feq8d"]
+[sub_resource type="Sky" id="Sky_rlmsx"]
 sky_material = SubResource("ProceduralSkyMaterial_i7juc")
 
 [sub_resource type="Environment" id="Environment_dqbfd"]
 background_mode = 2
-sky = SubResource("Sky_feq8d")
+sky = SubResource("Sky_rlmsx")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5bwm8"]
-size = Vector3(49.95072, 37.43744, 13.73761)
+size = Vector3(100, 17.747074, 13.738)
 
 [node name="WhiteboxLevel" type="Node3D" unique_id=1721237249]
 
@@ -1112,18 +1120,27 @@ rank = 2
 
 [node name="NPCs" type="Node3D" parent="." unique_id=536264414]
 
-[node name="Left NPC" parent="NPCs" unique_id=747487254 instance=ExtResource("6_5bwm8")]
-transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, -2, 0, -2)
+[node name="BlueFish" parent="NPCs" unique_id=747487254 instance=ExtResource("25_opbx6")]
+transform = Transform3D(0.70710665, 0, 0.70710665, 0, 1, 0, -0.70710665, 0, 0.70710665, -2, 0, -2)
 
-[node name="Middle NPC" parent="NPCs" unique_id=1386858959 instance=ExtResource("6_5bwm8")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, -2.989279)
+[node name="RedFish" parent="NPCs" unique_id=13857622 instance=ExtResource("26_j8up8")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, -3)
 handID = 2
-personality = 1
 
-[node name="Right NPC" parent="NPCs" unique_id=537468967 instance=ExtResource("6_5bwm8")]
-transform = Transform3D(0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, 0.7071067, 2, 0, -2)
+[node name="YellowFish" parent="NPCs" unique_id=1769658774 instance=ExtResource("27_ebdrw")]
+transform = Transform3D(0.70710665, 0, -0.70710665, 0, 1, 0, 0.70710665, 0, 0.70710665, 2, 0, -2)
 handID = 3
-personality = 2
+
+[node name="NPC Anchors" type="Node3D" parent="." unique_id=1328940762]
+
+[node name="Left" type="Node3D" parent="NPC Anchors" unique_id=1794650409]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -2, 0, -2)
+
+[node name="Middle" type="Node3D" parent="NPC Anchors" unique_id=911942786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="Right" type="Node3D" parent="NPC Anchors" unique_id=1150178911]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 2, 0, -2)
 
 [node name="Deck" type="Node3D" parent="." unique_id=173381474]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6817358, 1.0805373, -0.7174332)
@@ -1150,13 +1167,26 @@ script = ExtResource("11_5bwm8")
 npcs = NodePath("../NPCs")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DistractionZone" unique_id=1403119665]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0441017, -1.8099556, -13.776703)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0441017, 8.035006, -13.776703)
 shape = SubResource("BoxShape3D_5bwm8")
 
-[node name="Blackjack Simulator" type="Node" parent="." unique_id=74933002 node_paths=PackedStringArray("NPCParent", "dayMover")]
+[node name="Blackjack Simulator" type="Node" parent="." unique_id=74933002 node_paths=PackedStringArray("NPCParent", "NPCAnchors", "fishResources", "seagullResources", "catResources", "dayMover")]
 script = ExtResource("12_7fr32")
 NPCParent = NodePath("../NPCs")
+NPCAnchors = NodePath("../NPC Anchors")
+fishResources = NodePath("FishResources")
+seagullResources = NodePath("SeagullResources")
+catResources = NodePath("CatResources")
 dayMover = NodePath("../DirectionalLight3D/LightAnimation")
+
+[node name="FishResources" type="ResourcePreloader" parent="Blackjack Simulator" unique_id=576854924]
+resources = [PackedStringArray("BlueFish", "RedFish", "YellowFish"), [ExtResource("25_opbx6"), ExtResource("26_j8up8"), ExtResource("27_ebdrw")]]
+
+[node name="SeagullResources" type="ResourcePreloader" parent="Blackjack Simulator" unique_id=417776758]
+resources = [PackedStringArray("MohawkSeagull", "PrettySeagull", "RockSeagull"), [ExtResource("33_fj13f"), ExtResource("34_24roe"), ExtResource("35_cwxou")]]
+
+[node name="CatResources" type="ResourcePreloader" parent="Blackjack Simulator" unique_id=2140899719]
+resources = [PackedStringArray("T1Cat", "T2Cat", "T3Cat"), [ExtResource("36_ucx57"), ExtResource("37_jyh4p"), ExtResource("38_rfatf")]]
 
 [connection signal="mouse_entered" from="DealerHand/Area3D" to="DealerHand" method="OnMouseEnter"]
 [connection signal="mouse_exited" from="DealerHand/Area3D" to="DealerHand" method="OnMouseExit"]

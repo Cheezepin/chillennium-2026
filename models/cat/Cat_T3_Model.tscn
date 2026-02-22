@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bbmmyu2iqwgw3"]
+
+[ext_resource type="PackedScene" uid="uid://3poaukw8cpap" path="res://models/cat/Cat_T3_Model.fbx" id="1_g501e"]
+[ext_resource type="AnimationLibrary" uid="uid://diydry8pcykq6" path="res://models/cat/Cat Anims.res" id="2_ijrag"]
+
+[node name="Cat_T3_Model" unique_id=607004104 instance=ExtResource("1_g501e")]
+
+[node name="Skeleton3D" parent="cat" parent_id_path=PackedInt32Array(1459482410) index="1" unique_id=1397330159]
+bones/1/position = Vector3(0.005091727, 1.5265651e-18, 1.0408331e-19)
+bones/3/rotation = Quaternion(-0.039903548, -0.0089525, -0.07674773, 0.9962115)
+bones/5/rotation = Quaternion(-2.3509887e-38, -9.403955e-38, 0.36869156, 0.9295518)
+bones/7/rotation = Quaternion(0.8388121, 0.544421, 3.3335088e-17, 5.1360733e-17)
+bones/9/rotation = Quaternion(2.8211864e-37, -2.0703452e-37, -0.34298244, 0.93934184)
+bones/11/rotation = Quaternion(0.26423195, 0.9644592, 5.905414e-17, 1.6179004e-17)
+bones/12/rotation = Quaternion(-4.354703e-10, 1.0527709e-08, 0.9991457, -0.041328862)
+bones/13/rotation = Quaternion(0.015178381, 0.027850538, -0.8000158, 0.5991399)
+bones/14/rotation = Quaternion(-0.06116387, 0.12246315, -0.033875424, 0.9900073)
+bones/15/rotation = Quaternion(0.8131354, 0.20650592, -0.5274673, 0.13395692)
+bones/16/rotation = Quaternion(-0.054215167, -0.09947946, -0.79526776, 0.5955786)
+bones/17/rotation = Quaternion(0.06116397, -0.12246213, -0.03387062, 0.9900075)
+bones/18/rotation = Quaternion(-0.20650545, 0.8131351, 0.13395683, 0.5274679)
+
+[node name="buttlips" parent="cat/Skeleton3D" index="6" unique_id=1948403493]
+blend_shapes/catMouth.catMouthTalk = 1.0
+
+[node name="leftWhisker_ctrl" parent="cat/global_Ctrl_ofstGrp/global_Ctrl/spine_ctrl_ofstGrp/spine_ctrl/neck_ctrl_ofstGrp/neck_ctrl/leftWhisker_ctrl_ofstGrp" parent_id_path=PackedInt32Array(1911827742) index="0" unique_id=1327094316]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=1916630079]
+"libraries/Cat Anims" = ExtResource("2_ijrag")

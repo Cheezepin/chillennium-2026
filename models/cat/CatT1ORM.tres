@@ -1,0 +1,11 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://bxc4qbprsoqed"]
+
+[ext_resource type="Texture2D" uid="uid://cx85fc565lflq" path="res://models/cat/S_Cat_Retop_M_Cat_01_BaseColor.1001.png" id="1_8umyc"]
+[ext_resource type="Texture2D" uid="uid://dj4iv1lrmhbqv" path="res://models/cat/S_Cat_Retop_M_Cat_01_Normal.1001.png" id="2_jp8ri"]
+[ext_resource type="Texture2D" uid="uid://bq8pys406av1h" path="res://models/cat/S_Cat_Retop_M_Cat_01_OcclusionRoughnessMetallic.1001.png" id="3_mwdqw"]
+
+[resource]
+albedo_texture = ExtResource("1_8umyc")
+orm_texture = ExtResource("3_mwdqw")
+normal_enabled = true
+normal_texture = ExtResource("2_jp8ri")

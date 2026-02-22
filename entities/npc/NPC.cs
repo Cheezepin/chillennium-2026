@@ -13,6 +13,7 @@ public partial class NPC : CharacterBody3D
     [Export]public HandID handID;
 
     public ResourcePreloader resourcePreloader;
+    [Export]public AnimationPlayer animPlayer;
 
 #region Personality
     [Export]public Personality personality;
@@ -32,6 +33,75 @@ public partial class NPC : CharacterBody3D
 #endregion
     [Signal] public delegate void GetDistractedEventHandler(SabotageProp prop);
 
+    public enum Species
+    {
+        Fish,
+        Seagull,
+        Cat
+    }
+    [Export]public Species species;
+
+    public enum Anims
+    {
+        Idle,
+        Distracted,
+        Dizzy,
+        Attacking
+    }
+
+    [Export]public Node3D[] eyes;
+
+    private float initialRot;
+
+    public void PlayAnimation(Anims anim)
+    {
+        Position = Vector3.Zero;
+        switch(anim)
+        {
+            case Anims.Idle:
+                switch(species)
+                {
+                    case Species.Fish:    animPlayer.Play("Fish Anims/FishIdle"); break;
+                    case Species.Seagull: animPlayer.Play("Seagull Anims/BirdIdle"); break;
+                    case Species.Cat:     animPlayer.Play("Cat Anims/CatIdle"); break;
+                }
+                if(species != Species.Fish) Position = Vector3.Up*0.5f;
+                break;
+            case Anims.Distracted:
+                switch(species)
+                {
+                    case Species.Fish:    animPlayer.Play("Fish Anims/FishIdle"); break;
+                    case Species.Seagull: animPlayer.Play("Seagull Anims/BirdIdle"); break;
+                    case Species.Cat:     animPlayer.Play("Cat Anims/CatIdle"); break;
+                }
+                if(species != Species.Fish) Position = Vector3.Up*0.5f;
+                break;
+            case Anims.Dizzy:
+                switch(species)
+                {
+                    case Species.Fish:    animPlayer.Play("Fish Anims/FishDizzy"); break;
+                    case Species.Seagull: animPlayer.Play("Seagull Anims/BirdDizzy"); break;
+                    case Species.Cat:     animPlayer.Play("Cat Anims/CatDizzy"); break;
+                }
+                break;
+            case Anims.Attacking:
+                switch(species)
+                {
+                    case Species.Fish:    animPlayer.Play("Fish Anims/FishAttack"); break;
+                    case Species.Seagull: animPlayer.Play("Seagull Anims/BirdAttack"); break;
+                    case Species.Cat:     animPlayer.Play("Cat Anims/CatAttack"); break;
+                }
+                break;
+        }
+        if(anim == Anims.Dizzy)
+        {
+            eyes[0].Hide(); if(eyes[1] != null) eyes[1].Hide(); eyes[2].Show(); eyes[3].Show();
+        } else
+        {
+            eyes[0].Show(); if(eyes[1] != null) eyes[1].Show(); eyes[2].Hide(); eyes[3].Hide();
+        }
+    }
+
     public override void _Ready()
     {
         hand = GetNode<Hand>("Hand");
@@ -39,6 +109,8 @@ public partial class NPC : CharacterBody3D
         hands[(int)handID] = hand;
         GetDistracted += Distract;
         resourcePreloader = GetNode<ResourcePreloader>("ResourcePreloader");
+        SitAtTable();
+        PlayAnimation(Anims.Idle);
         base._Ready();
     }
 
@@ -128,15 +200,21 @@ public partial class NPC : CharacterBody3D
                 SetDialogState(DialogState.Attacking);
                 // ATTACK!!!
                 GD.Print("Fuck you!!");
-                attackingTimer = 1.0;
+                switch(species)
+                {
+                    case Species.Fish: attackingTimer = 0.6; break;
+                    case Species.Cat: attackingTimer = 0.6; break;
+                    case Species.Seagull: attackingTimer = 0.6; break;
+                }
                 BlackjackHandler.Instance.freezeTimer = 3.0;
+                PlayAnimation(Anims.Attacking);
             }
         }
     }
 
     public void SpawnAttack()
     {
-        Attack atk = (resourcePreloader.GetResource("FishAttack") as PackedScene).Instantiate<Attack>();
+        Attack atk = (resourcePreloader.GetResource("Attack") as PackedScene).Instantiate<Attack>();
         GetTree().CurrentScene.AddChild(atk);
         Vector3 targetPos = new Vector3(0, 2.3f, 0.25f);
         atk.spawner = this;
@@ -158,15 +236,31 @@ public partial class NPC : CharacterBody3D
             }
         }
 
+        // if(species == Species.Fish)
+        // {
+            float targetRot;
+            if(distractionTimer > 0)
+            {
+                Vector2 targetPos = new Vector2(distractedBy.GlobalPosition.X, distractedBy.GlobalPosition.Z);
+                Vector2 currentPos = new Vector2(GlobalPosition.X, GlobalPosition.Z);
+                targetRot = Mathf.Atan2(targetPos.Y - currentPos.Y, targetPos.X - currentPos.X) + (species == Species.Fish ? Mathf.Pi*0.5f : -Mathf.Pi);
+            } else
+            {
+                targetRot = initialRot;
+            }
+            Rotation = new Vector3(0, AsymptoticApproach(Rotation.Y, targetRot, 20.0f*(float)delta), 0);
+        // }
+
         Scale = Vector3.One;
         if(stunTimer > 0)
         {
             stunTimer -= delta;
-            Scale = new Vector3(1.0f, stunTimer > 0 ? 1.0f + 0.4f*Mathf.Sin((float)stunTimer) : 1.0f, 1.0f);
+            Scale = new Vector3(1.0f, stunTimer > 0 ? 1.0f + 0.02f*Mathf.Sin((float)stunTimer) : 1.0f, 1.0f);
             if(stunTimer <= 0)
             {
                 stunTimer = 0;
                 GetAngry(0.3f);
+                PlayAnimation(Anims.Idle);
             }
         }
 
@@ -177,6 +271,7 @@ public partial class NPC : CharacterBody3D
             {
                 attackingTimer = 0;
                 SpawnAttack();
+                PlayAnimation(Anims.Idle);
             }
         }
 
@@ -188,11 +283,14 @@ public partial class NPC : CharacterBody3D
         if(body is SabotageProp)
         {
             SabotageProp s = body as SabotageProp;
+            if(!s.stillEffective) return;
             GD.Print("Ow!");
+            PlayAnimation(Anims.Dizzy);
             Camera.Instance.ShakeScreen(0.01f, 0.07);
             stunTimer = s.distractionBaseTime * 3.0f;
             // s.col.SetDeferred("disabled", true);
             (body as SabotageProp).LinearVelocity *= 4.0f;
+            s.stillEffective = false;
         }
     }
 
@@ -206,6 +304,7 @@ public partial class NPC : CharacterBody3D
             case Personality.Lazy:     distractionModifier = 1.0; break;
         }
         distractionTimer = s.distractionBaseTime + distractionModifier;
+        PlayAnimation(Anims.Distracted);
         GD.Print(distractionTimer);
     }
 
@@ -240,7 +339,7 @@ public partial class NPC : CharacterBody3D
             case Personality.Lazy:     time += 0.8; break;
         }
 
-        return time * 2.5;
+        return Mathf.Clamp(time * 2.5, 0.8f, 2.5f);
     }
 
     public bool HandOver()
@@ -257,6 +356,7 @@ public partial class NPC : CharacterBody3D
     {
         // Put HAND ID assigning stuff here
         SetDialogState(DialogState.SittingDown);
+        initialRot = Rotation.Y;
     }
 
     [Export]public SpeechBubbleSprite speechBubbleSprite;

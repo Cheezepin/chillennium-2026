@@ -5,6 +5,7 @@ using static Global;
 public partial class UI : CanvasLayer
 {
     public RichTextLabel moneyCounter;
+    public RichTextLabel roundCounter;
     public RichTextLabel statusAlert;
 
     public ColorRect fadeRect;
@@ -22,6 +23,7 @@ public partial class UI : CanvasLayer
     {
         Instance = this;
         moneyCounter = GetNode<RichTextLabel>("Money");
+        roundCounter = GetNode<RichTextLabel>("Round");
         statusAlert = GetNode<RichTextLabel>("Status Alert");
         fadeRect = GetNode<ColorRect>("FadeRect");
         GetHit += GetHitByAttack;
@@ -37,6 +39,7 @@ public partial class UI : CanvasLayer
     public override void _Process(double delta)
     {
         moneyCounter.Text = "$" + money.ToString() + " / " + "$" + quota.ToString();
+        roundCounter.Text = "Round " + BlackjackHandler.Instance.round.ToString() + " / 3";
 
         if(statusTimer <= 0)
         {

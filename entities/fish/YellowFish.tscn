@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://mkgx5kya5te5"]
+
+[ext_resource type="Script" uid="uid://blcjnt6tvmjwp" path="res://entities/npc/NPC.cs" id="1_etvia"]
+[ext_resource type="Script" uid="uid://botpfiw828nfc" path="res://global/Hand.cs" id="2_2so8j"]
+[ext_resource type="PackedScene" uid="uid://658buqrne63l" path="res://entities/npc/NPCSpeechBubble.tscn" id="3_p1vmn"]
+[ext_resource type="Script" uid="uid://b4m5ch5xlgxfd" path="res://entities/npc/SpeechBubbleSprite.cs" id="4_kfagp"]
+[ext_resource type="PackedScene" uid="uid://dj3lmkdcrwtyp" path="res://models/fish/Fish_Yellow_Model.tscn" id="6_2so8j"]
+[ext_resource type="PackedScene" uid="uid://b58m1mx3tpsl2" path="res://entities/attack/FishAttack.tscn" id="6_etvia"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fq5x3"]
+radius = 0.35
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_x8luf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fq5x3"]
+size = Vector3(1, 0.6, 0.05)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fq5x3"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Yellow Fish" type="CharacterBody3D" unique_id=747487254 node_paths=PackedStringArray("animPlayer", "eyes", "speechBubbleSprite")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+script = ExtResource("1_etvia")
+handID = 1
+animPlayer = NodePath("Fish Yellow Model/AnimationPlayer")
+eyes = [NodePath("Fish Yellow Model/fish/Skeleton3D/leftEye"), NodePath("Fish Yellow Model/fish/Skeleton3D/rightEye"), NodePath("Fish Yellow Model/fish/Skeleton3D/leftDizzyEye2"), NodePath("Fish Yellow Model/fish/Skeleton3D/leftDizzyEye4")]
+speechBubbleSprite = NodePath("SpeechBubbleSprite")
+
+[node name="CollisionBox" type="CollisionShape3D" parent="." unique_id=624112433]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_fq5x3")
+
+[node name="Hitbox" type="Area3D" parent="." unique_id=521099133]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=489823220]
+shape = SubResource("CylinderShape3D_x8luf")
+
+[node name="Hand" type="Node3D" parent="." unique_id=578049173]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.49999988, 0.8660254, 0, -0.86602503, 0.49999988, 0, 1.1815875, 1.2279994)
+script = ExtResource("2_2so8j")
+handID = 2
+
+[node name="Area3D" type="Area3D" parent="Hand" unique_id=1070455888]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hand/Area3D" unique_id=1824910747]
+shape = SubResource("BoxShape3D_fq5x3")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1715892597]
+disable_3d = true
+own_world_3d = true
+transparent_bg = true
+gui_disable_input = true
+size = Vector2i(400, 350)
+
+[node name="Speech Bubble" parent="SubViewport" unique_id=1843639644 node_paths=PackedStringArray("npc") instance=ExtResource("3_p1vmn")]
+npc = NodePath("../..")
+
+[node name="SpeechBubbleSprite" type="Sprite3D" parent="." unique_id=1603437472]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 2.0305035, 0)
+centered = false
+offset = Vector2(-200, 0)
+billboard = 1
+double_sided = false
+fixed_size = true
+texture = SubResource("ViewportTexture_fq5x3")
+script = ExtResource("4_kfagp")
+
+[node name="Fish Yellow Model" parent="." unique_id=257077168 instance=ExtResource("6_2so8j")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Fish Yellow Model/fish" parent_id_path=PackedInt32Array(257077168, 1258635403) index="1" unique_id=565630480]
+bones/12/rotation = Quaternion(0.11867584, 0.99293303, -1.3790317e-08, 1.3796403e-08)
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="." unique_id=1419156628]
+resources = [PackedStringArray("Attack"), [ExtResource("6_etvia")]]
+
+[connection signal="body_entered" from="Hitbox" to="." method="OnBodyEntered"]
+[connection signal="input_event" from="Hand/Area3D" to="Hand" method="OnInputEvent"]
+[connection signal="mouse_entered" from="Hand/Area3D" to="Hand" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Hand/Area3D" to="Hand" method="OnMouseExit"]
+
+[editable path="Fish Yellow Model"]

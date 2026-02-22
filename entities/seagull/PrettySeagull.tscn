@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://df4kio5ftoku3"]
+
+[ext_resource type="Script" uid="uid://blcjnt6tvmjwp" path="res://entities/npc/NPC.cs" id="1_aayg4"]
+[ext_resource type="Script" uid="uid://botpfiw828nfc" path="res://global/Hand.cs" id="2_a0e4f"]
+[ext_resource type="PackedScene" uid="uid://658buqrne63l" path="res://entities/npc/NPCSpeechBubble.tscn" id="3_ye1dx"]
+[ext_resource type="Script" uid="uid://b4m5ch5xlgxfd" path="res://entities/npc/SpeechBubbleSprite.cs" id="4_20d3a"]
+[ext_resource type="PackedScene" uid="uid://b58m1mx3tpsl2" path="res://entities/attack/FishAttack.tscn" id="5_cpu31"]
+[ext_resource type="PackedScene" uid="uid://c73ocsdx3pxri" path="res://models/seagull/Seagull_Pretty_Model.tscn" id="6_wgrkh"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fq5x3"]
+radius = 0.35
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_x8luf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fq5x3"]
+size = Vector3(1, 0.6, 0.05)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fq5x3"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Pretty Seagull" type="CharacterBody3D" unique_id=747487254 node_paths=PackedStringArray("animPlayer", "eyes", "speechBubbleSprite")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+script = ExtResource("1_aayg4")
+handID = 1
+animPlayer = NodePath("Seagull Pretty Model/AnimationPlayer")
+species = 1
+eyes = [NodePath("Seagull Pretty Model/seagull/Skeleton3D/leftEye"), NodePath("Seagull Pretty Model/seagull/Skeleton3D/rightEye"), NodePath("Seagull Pretty Model/seagull/Skeleton3D/leftDizzyEye"), NodePath("Seagull Pretty Model/seagull/Skeleton3D/rightDizzyEye")]
+speechBubbleSprite = NodePath("SpeechBubbleSprite")
+
+[node name="CollisionBox" type="CollisionShape3D" parent="." unique_id=624112433]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_fq5x3")
+
+[node name="Hitbox" type="Area3D" parent="." unique_id=521099133]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=489823220]
+shape = SubResource("CylinderShape3D_x8luf")
+
+[node name="Hand" type="Node3D" parent="." unique_id=578049173]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.49999988, 0.8660254, 0, -0.86602503, 0.49999988, 0, 1.1815875, 1.2279994)
+script = ExtResource("2_a0e4f")
+handID = 2
+
+[node name="Area3D" type="Area3D" parent="Hand" unique_id=1070455888]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hand/Area3D" unique_id=1824910747]
+shape = SubResource("BoxShape3D_fq5x3")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1715892597]
+disable_3d = true
+own_world_3d = true
+transparent_bg = true
+gui_disable_input = true
+size = Vector2i(400, 350)
+
+[node name="Speech Bubble" parent="SubViewport" unique_id=1843639644 node_paths=PackedStringArray("npc") instance=ExtResource("3_ye1dx")]
+npc = NodePath("../..")
+
+[node name="SpeechBubbleSprite" type="Sprite3D" parent="." unique_id=1603437472]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 2.0305035, 0)
+centered = false
+offset = Vector2(-200, 0)
+billboard = 1
+double_sided = false
+fixed_size = true
+texture = SubResource("ViewportTexture_fq5x3")
+script = ExtResource("4_20d3a")
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="." unique_id=642707125]
+resources = [PackedStringArray("FishAttack"), [ExtResource("5_cpu31")]]
+
+[node name="Seagull Pretty Model" parent="." unique_id=1914600575 instance=ExtResource("6_wgrkh")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Seagull Pretty Model/seagull" parent_id_path=PackedInt32Array(1914600575, 1422832000) index="0" unique_id=796931697]
+bones/1/rotation = Quaternion(3.527346e-27, -2.5849394e-26, 0.13645759, 0.99064595)
+bones/3/rotation = Quaternion(8.4818325e-26, 1.7771458e-26, 0.019773854, 0.9998045)
+bones/6/rotation = Quaternion(-1.2278462e-25, 2.494279e-26, -0.04523461, 0.9989764)
+bones/10/rotation = Quaternion(-0.66063464, 0.7507076, 4.0451005e-17, 4.5965993e-17)
+bones/12/rotation = Quaternion(-0.6825619, 0.7308278, 4.1793473e-17, 4.474882e-17)
+bones/14/rotation = Quaternion(0.29481584, 0.9449686, 0.02232812, 0.14006954)
+bones/21/rotation = Quaternion(-6.462349e-26, -8.233721e-26, 0.03293487, 0.9994576)
+
+[node name="ctrl_1" parent="Seagull Pretty Model/seagull/controls/global_ctrl_ofstGrp/global_ctrl/ctrl_1__ofst" parent_id_path=PackedInt32Array(1914600575, 2089650320) index="0" unique_id=710244215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="tail_ctrl" parent="Seagull Pretty Model/seagull/controls/global_ctrl_ofstGrp/global_ctrl/ctrl_1__ofst/ctrl_1/tail_ctrl_ofstGrp" parent_id_path=PackedInt32Array(1914600575, 1596785315) index="0" unique_id=1427939791]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+
+[node name="leftWingCtrl" parent="Seagull Pretty Model/seagull/controls/global_ctrl_ofstGrp/global_ctrl/ctrl_1__ofst/ctrl_1/leftWingCtrl_ofstGrp" parent_id_path=PackedInt32Array(1914600575, 425873297) index="0" unique_id=605983995]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -0.029188963, 1.5976832, 0.52222157)
+
+[node name="rightWingCtrl" parent="Seagull Pretty Model/seagull/controls/global_ctrl_ofstGrp/global_ctrl/ctrl_1__ofst/ctrl_1/rightWingCtrl_ofstGrp1" parent_id_path=PackedInt32Array(1914600575, 2097934500) index="0" unique_id=928691848]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, -0.029188963, 1.5976832, 0.52222157)
+
+[node name="neck_ctrl" parent="Seagull Pretty Model/seagull/controls/global_ctrl_ofstGrp/global_ctrl/ctrl_1__ofst/ctrl_1/neckCtrl_ofstGrp" parent_id_path=PackedInt32Array(1914600575, 847473989) index="0" unique_id=1932717513]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
+
+[node name="feathersTop_ctrl" parent="Seagull Pretty Model/seagull/controls/global_ctrl_ofstGrp/global_ctrl/ctrl_1__ofst/ctrl_1/neckCtrl_ofstGrp/neck_ctrl/feathersTop_ctrl_ofstGrp" parent_id_path=PackedInt32Array(1914600575, 327267304) index="0" unique_id=1508499976]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08710863, -0.37556672, 4.8960516e-16)
+
+[node name="feathersBack_ctrl" parent="Seagull Pretty Model/seagull/controls/global_ctrl_ofstGrp/global_ctrl/ctrl_1__ofst/ctrl_1/neckCtrl_ofstGrp/neck_ctrl/feathersBack_ctrl_ofstGrp" parent_id_path=PackedInt32Array(1914600575, 1081748393) index="0" unique_id=1131319963]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.9999999, -0.08710863, -0.37556672, 4.8960516e-16)
+
+[connection signal="body_entered" from="Hitbox" to="." method="OnBodyEntered"]
+[connection signal="input_event" from="Hand/Area3D" to="Hand" method="OnInputEvent"]
+[connection signal="mouse_entered" from="Hand/Area3D" to="Hand" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Hand/Area3D" to="Hand" method="OnMouseExit"]
+
+[editable path="Seagull Pretty Model"]

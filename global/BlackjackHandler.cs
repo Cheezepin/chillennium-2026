@@ -7,10 +7,17 @@ using static Deck;
 using System.Data.SqlTypes;
 using static UI;
 using static NPCSpeechBubble;
+using System.Security.Cryptography.X509Certificates;
 
 public partial class BlackjackHandler : Node
 {
     [Export]public Node NPCParent;
+    [Export]public Node NPCAnchors;
+    [Export]public ResourcePreloader fishResources;
+    [Export]public ResourcePreloader seagullResources;
+    [Export]public ResourcePreloader catResources;
+
+    public int round = 0;
     public List<NPC> npcs = new List<NPC>();
 
     public static BlackjackHandler Instance;
@@ -24,7 +31,7 @@ public partial class BlackjackHandler : Node
         Idle,
     }
 
-    public static BlackjackState state;
+    public static BlackjackState state = BlackjackState.Idle;
     public int substate = 0;
     public double timer = 0;
 
@@ -234,14 +241,16 @@ public partial class BlackjackHandler : Node
                     Player.Instance.frontHandHeld.RemoveAnchorToHand();
                     Player.Instance.frontHandHeld = null;
                 }
+                int sum = 0;
                 if(dealerHand.runningTotal == 21)
                 {
                     GD.Print("Dealer win!! Take everyone's bet!!");
                     foreach(NPC npc in npcs)
                     {
                         npc.SetDialogState(DialogState.Lose);
-                        money += npc.bet;
+                        sum += npc.bet;
                     }
+                    AlertStatus("You got a 21! You won $" + sum.ToString() + ".", 2.0);
                 } else if(dealerHand.runningTotal > 21)
                 {
                     GD.Print("Dealer bust!! Everyone who hasn't busted wins their money!!");
@@ -249,8 +258,9 @@ public partial class BlackjackHandler : Node
                     {
                         npc.SetDialogState(DialogState.Win);
                         if(!npc.busted)
-                            money -= npc.has21 ? (int)(npc.bet*1.5f) : npc.bet;
+                            sum -= npc.has21 ? (int)(npc.bet*1.5f) : npc.bet;
                     }
+                    AlertStatus("You busted... You lost $" + Math.Abs(sum).ToString() + ".", 2.0);
                 } else
                 {
                     foreach(NPC npc in npcs)
@@ -259,29 +269,85 @@ public partial class BlackjackHandler : Node
                         {
                             npc.SetDialogState(DialogState.Blackjack);
                             GD.Print(npc.Name, " EPIC win!!");
-                            money -= (int)(npc.bet*1.5f);
+                            sum -= (int)(npc.bet*1.5f);
                         }
                         if(!npc.busted && npc.hand.runningTotal > dealerHand.runningTotal)
                         {
                             npc.SetDialogState(DialogState.Win);
                             GD.Print(npc.Name, " win!!");
-                            money -= npc.bet;
+                            sum -= npc.bet;
                         } else
                         {
                             npc.SetDialogState(DialogState.Lose);
                             GD.Print(npc.Name, " lose!!");
-                            money += npc.bet;
+                            sum += npc.bet;
                         }
+
+                        if(sum >= 0) AlertStatus("You earned $" + sum.ToString() + ".", 2.0);
+                        else AlertStatus("You lost $" + Math.Abs(sum).ToString() + ".", 2.0);
                     }
                 }
-                ChangeState(BlackjackState.Idle);
+                money += sum;
+                ++substate;
+                timer += delta;
+                switch(round)
+                {
+                    case 1: dayMover.Play("day2sunset"); break;
+                    case 2: dayMover.Play("sunset2night"); break;
+                    case 3: GetTree().Quit(); break;
+                }
+                break;
+            case 3:
+                timer += delta;
+                if(timer > 2.0) ChangeState(BlackjackState.Idle);
                 break;
         }
     }
 
     public void IdleState(double delta)
     {
-        
+        if(timer == 0)
+        {
+            ++round;
+            ClearHands();
+            ResetDeck();
+		    ShuffleDeck();
+
+            foreach(NPC npc in npcs)
+            {
+                npc.QueueFree();
+            }
+            foreach(Node3D a in NPCAnchors.GetChildren())
+            {
+                if(a.GetChildCount() > 0) {
+                    a.GetChild(0).QueueFree();
+                    a.RemoveChild(a.GetChild(0));
+                }
+            }
+            npcs.Clear();
+            List<ResourcePreloader> loads = new List<ResourcePreloader>(){fishResources, seagullResources, catResources};
+            HandID newID = HandID.LeftNPC;
+            foreach(ResourcePreloader load in loads) {
+                NPC newNPC = (load.GetResource(load.GetResourceList()[rng.RandiRange(0,load.GetResourceList().Length-1)]) as PackedScene).Instantiate<NPC>();
+                newNPC.personality = (Personality)rng.RandiRange(0,2);
+                newNPC.handID = newID;
+                bool stillSearching = true;
+                while(stillSearching)
+                {
+                    Node3D anchor = (NPCAnchors.GetChildren()[rng.RandiRange(0,2)] as Node3D);
+                    if(anchor.GetChildCount() == 0) {
+                        anchor.AddChild(newNPC);
+                        newNPC.GlobalTransform = anchor.GlobalTransform;
+                        newNPC.PlayAnimation(NPC.Anims.Idle);
+                        stillSearching = false;
+                    }
+                }
+                npcs.Add(newNPC);
+                ++newID;
+            }
+        }
+        timer += delta;
+        if(timer > 2.0) ChangeState(BlackjackState.Betting);
     }
 
     public double freezeTimer = 0;
@@ -310,18 +376,18 @@ public partial class BlackjackHandler : Node
         //     ChangeState(BlackjackState.Betting);
         // }
 
-        if(Input.IsActionJustPressed("ui_down"))
-        {
-            dayMover.Play("day2sunset");
-        }
-        if(Input.IsActionJustPressed("ui_up"))
-        {
-            dayMover.Play("sunset2night");
-        }
-        if(Input.IsActionJustPressed("ui_left"))
-        {
-            dayMover.Play("RESET");
-        }
+        // if(Input.IsActionJustPressed("ui_down"))
+        // {
+        //     dayMover.Play("day2sunset");
+        // }
+        // if(Input.IsActionJustPressed("ui_up"))
+        // {
+        //     dayMover.Play("sunset2night");
+        // }
+        // if(Input.IsActionJustPressed("ui_left"))
+        // {
+        //     dayMover.Play("RESET");
+        // }
     }
 
     public void InterruptBJ()

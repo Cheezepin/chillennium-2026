@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://c73ocsdx3pxri"]
+
+[ext_resource type="PackedScene" uid="uid://31g3lq15a4q7" path="res://models/seagull/seagull_Rigged.fbx" id="1_103nf"]
+[ext_resource type="AnimationLibrary" uid="uid://b0mgc66g3norc" path="res://models/seagull/Seagull Anims.res" id="2_1ax8i"]
+
+[node name="Seagull Pretty Model" unique_id=1914600575 instance=ExtResource("1_103nf")]
+
+[node name="Skeleton3D" parent="seagull" parent_id_path=PackedInt32Array(756972918) index="0" unique_id=825598995]
+bones/1/position = Vector3(0.5528241, 3.2526065e-17, -2.4074124e-33)
+bones/1/rotation = Quaternion(-0.01635615, 0.07954934, 0.11337917, 0.99022704)
+bones/2/position = Vector3(0.4869653, 8.6736174e-17, 1.612334e-17)
+bones/2/rotation = Quaternion(-4.996846e-18, -1.0514781e-18, 0.109667, 0.99396837)
+bones/3/position = Vector3(0.49068275, -1.7347235e-16, 2.8468324e-17)
+bones/3/rotation = Quaternion(0.026326787, 0.081317484, 0.0034710672, 0.9963345)
+bones/4/position = Vector3(0.633013, 1.3010426e-15, 4.5382808e-17)
+bones/4/rotation = Quaternion(3.693839e-18, 8.94752e-19, -0.06731908, 0.9977315)
+bones/5/position = Vector3(0.36509752, 1.7347235e-16, 6.938894e-18)
+bones/5/rotation = Quaternion(-8.276557e-18, -2.4081314e-18, 0.13422425, 0.990951)
+bones/6/rotation = Quaternion(0.061857656, 0.18440007, 0.035217788, 0.9802703)
+bones/7/position = Vector3(0.3855363, -4.3368087e-16, 4.5024728e-17)
+bones/7/rotation = Quaternion(0.7829245, 0.6221168, 4.4263344e-17, 4.0175855e-17)
+bones/8/position = Vector3(0.1222245, 0.32959545, -1.7581498e-15)
+bones/8/rotation = Quaternion(0.7680709, 0.6403649, -3.9209747e-17, -4.702922e-17)
+bones/9/position = Vector3(0.43973643, -6.938894e-16, 8.0714795e-17)
+bones/9/rotation = Quaternion(-4.6027e-41, 1.8532748e-32, 0.06872561, 0.9976356)
+bones/10/position = Vector3(0.032295126, -0.4555096, -6.161374e-17)
+bones/10/rotation = Quaternion(-0.66063464, 0.7507076, -1.862923e-15, -2.1178424e-15)
+bones/11/position = Vector3(0.61617553, 6.938894e-16, -7.468131e-17)
+bones/12/position = Vector3(-0.086973324, -0.42120254, -5.1743797e-17)
+bones/12/rotation = Quaternion(-0.6825619, 0.7308278, 4.529881e-17, 4.8022837e-17)
+bones/13/position = Vector3(0.5137088, 0, -1.3212574e-16)
+bones/13/rotation = Quaternion(-3.6594344e-33, 6.163258e-33, 0.9999543, 0.009561531)
+bones/14/rotation = Quaternion(0.28677985, 0.91921085, 0.04247679, 0.2664668)
+bones/15/position = Vector3(1.1672363, -5.2041704e-16, 0)
+bones/17/rotation = Quaternion(0.29481712, 0.9449681, -0.022328394, -0.14007005)
+bones/18/position = Vector3(1.1672305, -1.7347235e-16, 0)
+bones/20/position = Vector3(0.0111458795, 0.56424993, 6.9469725e-17)
+bones/20/rotation = Quaternion(3.610818e-17, 3.1238605e-17, 0.68960226, 0.7241883)
+bones/21/position = Vector3(0.6145441, -1.7347235e-16, 3.85186e-32)
+bones/21/rotation = Quaternion(0.00241876, -0.01327511, -0.06585933, 0.99773765)
+bones/22/position = Vector3(0.49738926, 1.2143064e-15, 6.40189e-19)
+bones/22/rotation = Quaternion(-8.438678e-19, 6.236452e-19, 0.00720847, 0.999974)
+bones/23/position = Vector3(0.62202835, 6.418477e-15, -8.1381663e-19)
+bones/23/rotation = Quaternion(0.9997574, 0.022026354, 4.052075e-19, 1.0404295e-16)
+
+[node name="tuftFeather_Big" parent="seagull/Skeleton3D" index="13" unique_id=1619724639]
+visible = false
+
+[node name="tuftFeather_small" parent="seagull/Skeleton3D" index="14" unique_id=1601742153]
+visible = false
+
+[node name="tuftFeather_middle" parent="seagull/Skeleton3D" index="15" unique_id=23873680]
+visible = false
+
+[node name="theRock_Eyebrow_right" parent="seagull/Skeleton3D" index="16" unique_id=2096728164]
+visible = false
+
+[node name="theRock_Eyebrow_right1" parent="seagull/Skeleton3D" index="17" unique_id=1637953306]
+visible = false
+
+[node name="tuftBottom" parent="seagull/Skeleton3D" index="18" unique_id=2070192664]
+visible = false
+
+[node name="tuftMiddle" parent="seagull/Skeleton3D" index="19" unique_id=637776437]
+visible = false
+
+[node name="tuftLarge" parent="seagull/Skeleton3D" index="20" unique_id=1671674390]
+visible = false
+
+[node name="leftDizzyEye" parent="seagull/Skeleton3D" index="24" unique_id=983828529]
+visible = false
+
+[node name="rightDizzyEye" parent="seagull/Skeleton3D" index="25" unique_id=1422828699]
+visible = false
+
+[node name="eyeBrow_lines_left" parent="seagull/Skeleton3D" index="26" unique_id=1802538620]
+visible = false
+
+[node name="worryEyeBrow_left" parent="seagull/Skeleton3D" index="27" unique_id=1317424477]
+visible = false
+
+[node name="eyeBrow_lines_right" parent="seagull/Skeleton3D" index="28" unique_id=900922130]
+visible = false
+
+[node name="worryEyeBrow_right" parent="seagull/Skeleton3D" index="29" unique_id=161567307]
+visible = false
+
+[node name="ctrl_1" parent="seagull/controls/global_ctrl_ofstGrp/global_ctrl/ctrl_1__ofst" parent_id_path=PackedInt32Array(1764776685) index="0" unique_id=27364899]
+transform = Transform3D(0.99895865, -0.04532242, 0.0052478244, 0.045574058, 0.9857698, -0.16180529, 0.0021602605, 0.16187596, 0.9868088, 0, 0, 0)
+
+[node name="tail_ctrl" parent="seagull/controls/global_ctrl_ofstGrp/global_ctrl/ctrl_1__ofst/ctrl_1/tail_ctrl_ofstGrp" parent_id_path=PackedInt32Array(252014145) index="0" unique_id=1418397638]
+transform = Transform3D(0.98016167, -0.1963543, 0.026983501, 0.19641864, 0.98052007, 0.00027098623, -0.026511075, 0.005034453, 0.9996358, 0, 0, 0)
+
+[node name="leftWingCtrl" parent="seagull/controls/global_ctrl_ofstGrp/global_ctrl/ctrl_1__ofst/ctrl_1/leftWingCtrl_ofstGrp" parent_id_path=PackedInt32Array(707999900) index="0" unique_id=1384341028]
+transform = Transform3D(1, 0, 0, 0, 0.96592575, 0.258819, 0, -0.258819, 0.96592575, -0.029188963, 1.5976832, 0.52222157)
+
+[node name="rightWingCtrl" parent="seagull/controls/global_ctrl_ofstGrp/global_ctrl/ctrl_1__ofst/ctrl_1/rightWingCtrl_ofstGrp1" parent_id_path=PackedInt32Array(1420290166) index="0" unique_id=2035532287]
+transform = Transform3D(1, 0, 0, 0, 0.96592575, 0.258819, 0, -0.258819, 0.96592575, -0.029188963, 1.5976832, 0.52222157)
+
+[node name="neck_ctrl" parent="seagull/controls/global_ctrl_ofstGrp/global_ctrl/ctrl_1__ofst/ctrl_1/neckCtrl_ofstGrp" parent_id_path=PackedInt32Array(2131428925) index="0" unique_id=797220349]
+transform = Transform3D(0.9991512, -0.030194014, 0.02802287, 0.03448375, 0.9851837, -0.1679993, -0.022535106, 0.16882303, 0.98538864, 0, 0, 0)
+
+[node name="feathersTop_ctrl" parent="seagull/controls/global_ctrl_ofstGrp/global_ctrl/ctrl_1__ofst/ctrl_1/neckCtrl_ofstGrp/neck_ctrl/feathersTop_ctrl_ofstGrp" parent_id_path=PackedInt32Array(1437663854) index="0" unique_id=1834677381]
+transform = Transform3D(0.9871592, 0.159311, -0.011698223, -0.15168265, 0.9118852, -0.38138932, -0.05009208, 0.3782664, 0.92434055, -0.08710863, -0.37556672, 4.8960516e-16)
+
+[node name="feathersBack_ctrl" parent="seagull/controls/global_ctrl_ofstGrp/global_ctrl/ctrl_1__ofst/ctrl_1/neckCtrl_ofstGrp/neck_ctrl/feathersBack_ctrl_ofstGrp" parent_id_path=PackedInt32Array(551743314) index="0" unique_id=822472918]
+transform = Transform3D(0.921153, 0.17843519, -0.34588718, -0.1714571, 0.9838737, 0.0509399, 0.34939882, 0.012381371, 0.9368922, -0.08710863, -0.37556672, 4.8960516e-16)
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=13941682]
+"libraries/Seagull Anims" = ExtResource("2_1ax8i")

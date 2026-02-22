@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://csrllh1y1j632"]
+
+[ext_resource type="Script" uid="uid://blcjnt6tvmjwp" path="res://entities/npc/NPC.cs" id="1_krigp"]
+[ext_resource type="Script" uid="uid://botpfiw828nfc" path="res://global/Hand.cs" id="2_8wsxc"]
+[ext_resource type="PackedScene" uid="uid://658buqrne63l" path="res://entities/npc/NPCSpeechBubble.tscn" id="3_4ldii"]
+[ext_resource type="Script" uid="uid://b4m5ch5xlgxfd" path="res://entities/npc/SpeechBubbleSprite.cs" id="4_me4al"]
+[ext_resource type="PackedScene" uid="uid://b58m1mx3tpsl2" path="res://entities/attack/FishAttack.tscn" id="5_3tjiw"]
+[ext_resource type="PackedScene" uid="uid://dsoadguyho1t3" path="res://models/fish/Fish_Red_Model.tscn" id="6_dvm1e"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fq5x3"]
+radius = 0.35
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_x8luf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fq5x3"]
+size = Vector3(1, 0.6, 0.05)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fq5x3"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Red Fish" type="CharacterBody3D" unique_id=747487254 node_paths=PackedStringArray("animPlayer", "eyes", "speechBubbleSprite")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+script = ExtResource("1_krigp")
+handID = 1
+animPlayer = NodePath("Fish Red Model/AnimationPlayer")
+eyes = [NodePath("Fish Red Model/fish/Skeleton3D/leftEye"), NodePath("Fish Red Model/fish/Skeleton3D/rightEye"), NodePath("Fish Red Model/fish/Skeleton3D/leftDizzyEye2"), NodePath("Fish Red Model/fish/Skeleton3D/leftDizzyEye4")]
+speechBubbleSprite = NodePath("SpeechBubbleSprite")
+
+[node name="CollisionBox" type="CollisionShape3D" parent="." unique_id=624112433]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_fq5x3")
+
+[node name="Hitbox" type="Area3D" parent="." unique_id=521099133]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=489823220]
+shape = SubResource("CylinderShape3D_x8luf")
+
+[node name="Hand" type="Node3D" parent="." unique_id=578049173]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.49999988, 0.8660254, 0, -0.86602503, 0.49999988, 0, 1.1815875, 1.2279994)
+script = ExtResource("2_8wsxc")
+handID = 2
+
+[node name="Area3D" type="Area3D" parent="Hand" unique_id=1070455888]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hand/Area3D" unique_id=1824910747]
+shape = SubResource("BoxShape3D_fq5x3")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1715892597]
+disable_3d = true
+own_world_3d = true
+transparent_bg = true
+gui_disable_input = true
+size = Vector2i(400, 350)
+
+[node name="Speech Bubble" parent="SubViewport" unique_id=1843639644 node_paths=PackedStringArray("npc") instance=ExtResource("3_4ldii")]
+npc = NodePath("../..")
+
+[node name="SpeechBubbleSprite" type="Sprite3D" parent="." unique_id=1603437472]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 2.0305035, 0)
+centered = false
+offset = Vector2(-200, 0)
+billboard = 1
+double_sided = false
+fixed_size = true
+texture = SubResource("ViewportTexture_fq5x3")
+script = ExtResource("4_me4al")
+
+[node name="Fish Red Model" parent="." unique_id=1550068191 instance=ExtResource("6_dvm1e")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="ctrl_3" parent="Fish Red Model/fish/globalFishCtrl_ofstGrp/globalFishCtrl/ctrl_ofstGrp_1/ctrl_1/ctrl_ofstGrp_2/ctrl_2/ctrl_ofstGrp_3" parent_id_path=PackedInt32Array(1550068191, 805476337) index="0" unique_id=686220936]
+transform = Transform3D(0.4364258, -0.86828893, 0.23581049, 0.89484245, 0.44618687, -0.013201594, -0.09375276, 0.2167747, 0.9717094, -0.2734327, 0.1763268, 0.05867532)
+
+[node name="fin_ctrl_1" parent="Fish Red Model/fish/globalFishCtrl_ofstGrp/globalFishCtrl/ctrl_ofstGrp_1/ctrl_1/ctrl_ofstGrp_2/ctrl_2/fin_ctrl_1_ofstGrp" parent_id_path=PackedInt32Array(1550068191, 1030227089) index="0" unique_id=1960402434]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32949513, 0.51473033, 0)
+
+[node name="fin_ctrl_2" parent="Fish Red Model/fish/globalFishCtrl_ofstGrp/globalFishCtrl/ctrl_ofstGrp_1/ctrl_1/ctrl_ofstGrp_2/ctrl_2/fin_ctrl_2_ofstGrp" parent_id_path=PackedInt32Array(1550068191, 1230507495) index="0" unique_id=1333130011]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.29695433, 1.2221733, -3.8575852e-08)
+
+[node name="rightFin_ctlr" parent="Fish Red Model/fish/globalFishCtrl_ofstGrp/globalFishCtrl/ctrl_ofstGrp_1/ctrl_1/ctrl_ofstGrp_2/ctrl_2/rightFin_ctlr_ofstGrp" parent_id_path=PackedInt32Array(1550068191, 809192263) index="0" unique_id=1594398448]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 1.8594118e-08, 2.1067963, 0.5154989)
+
+[node name="ctrl_32" parent="Fish Red Model/fish/globalFishCtrl_ofstGrp/globalFishCtrl/ctrl_ofstGrp_1/ctrl_1/ctrl_ofstGrp_2/ctrl_2/ctrl_ofstGrp_4" parent_id_path=PackedInt32Array(1550068191, 700954269) index="0" unique_id=1932987088]
+transform = Transform3D(0.4239258, -0.87453556, 0.23552966, 0.8928503, 0.44717914, 0.05337724, -0.15200426, 0.1876647, 0.9704003, 0, 0, 0)
+
+[node name="rightFin_ctlr2" parent="Fish Red Model/fish/globalFishCtrl_ofstGrp/globalFishCtrl/ctrl_ofstGrp_1/ctrl_1/ctrl_ofstGrp_2/ctrl_2/rightFin_ctlr_ofstGrp1" parent_id_path=PackedInt32Array(1550068191, 1130626768) index="0" unique_id=317539315]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 1.8594118e-08, 2.1067963, 0.5154989)
+
+[node name="Skeleton3D" parent="Fish Red Model/fish" parent_id_path=PackedInt32Array(1550068191, 1503869618) index="1" unique_id=1402552981]
+bones/1/rotation = Quaternion(0.95139885, 0.00013134189, 2.43666e-05, -0.30796173)
+bones/3/rotation = Quaternion(0.8449336, -0.5214806, -0.06806782, -0.09752991)
+bones/8/rotation = Quaternion(-0.40089282, 0.04297942, 0.09795133, 0.90985894)
+bones/10/rotation = Quaternion(0.7069508, 0.70726275, 1.7317067e-16, -8.663523e-17)
+
+[node name="AnimationPlayer" parent="Fish Red Model" index="1" unique_id=282321954]
+autoplay = &"Fish Anims/FishIdle"
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="." unique_id=94251970]
+resources = [PackedStringArray("Attack"), [ExtResource("5_3tjiw")]]
+
+[connection signal="body_entered" from="Hitbox" to="." method="OnBodyEntered"]
+[connection signal="input_event" from="Hand/Area3D" to="Hand" method="OnInputEvent"]
+[connection signal="mouse_entered" from="Hand/Area3D" to="Hand" method="OnMouseEnter"]
+[connection signal="mouse_exited" from="Hand/Area3D" to="Hand" method="OnMouseExit"]
+
+[editable path="Fish Red Model"]

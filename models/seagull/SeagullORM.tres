@@ -1,0 +1,8 @@
+[gd_resource type="ORMMaterial3D" format=3 uid="uid://x8jjmj5dmoxp"]
+
+[ext_resource type="Texture2D" uid="uid://cb33o0usfcocf" path="res://models/seagull/seagull_textureModel_M_Seagull_BaseColor.1001.png" id="1_mqe16"]
+[ext_resource type="Texture2D" uid="uid://bwxwtla03r42i" path="res://models/seagull/seagull_textureModel_M_Seagull_OcclusionRoughnessMetallic.1001.png" id="2_r4pya"]
+
+[resource]
+albedo_texture = ExtResource("1_mqe16")
+orm_texture = ExtResource("2_r4pya")

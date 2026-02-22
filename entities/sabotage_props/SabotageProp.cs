@@ -12,6 +12,7 @@ public partial class SabotageProp : RigidBody3D
 	float targetOutlineWidth = 0.9f;
 
 	public bool selectable = true;
+	public bool stillEffective = true;
 	
 	[Export]public double distractionBaseTime = 1.0;
 
@@ -124,7 +125,7 @@ public partial class SabotageProp : RigidBody3D
                             }
 
 							BlackjackHandler.Instance.InterruptBJ();
-							
+
 							QueueFree();
 							break;
 						case PropType.Radio:
