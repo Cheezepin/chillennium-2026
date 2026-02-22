@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://usn0280vvlh0" path="res://models/MattePaintings/daytime/ChilleniumMattePaintingsDayTime_Clouds2.png" id="5_am7oo"]
 [ext_resource type="Texture2D" uid="uid://cor5fj65evwjr" path="res://models/MattePaintings/daytime/ChilleniumMattePaintingsDayTime_MidGround.png" id="6_d7sfj"]
 [ext_resource type="Texture2D" uid="uid://c8opfjxqj1nko" path="res://models/MattePaintings/daytime/ChilleniumMattePaintingsDayTime_Rocks.png" id="7_iw0f0"]
+[ext_resource type="PackedScene" uid="uid://enad51olhes2" path="res://models/S_Table.fbx" id="14_kdqvf"]
+[ext_resource type="PackedScene" uid="uid://brjxr2qwenoec" path="res://models/S_Docks_002.fbx" id="15_kdqvf"]
 [ext_resource type="PackedScene" uid="uid://dsiduv5kuh4kk" path="res://models/jason_whiteboxes/halftable.glb" id="18_d8gu4"]
 [ext_resource type="Script" uid="uid://qlcxn8xra4yy" path="res://entities/player/Player.cs" id="21_qx40a"]
 [ext_resource type="Script" uid="uid://clstsmfijjar1" path="res://global/Camera.cs" id="22_heokk"]
@@ -16,9 +18,6 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qner7"]
 size = Vector3(4, 0.5, 0.30566406)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3d1fn"]
-albedo_color = Color(0, 0.34901962, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0er6"]
 albedo_color = Color(0.64804476, 0.32772115, 0.09066401, 1)
@@ -32,13 +31,13 @@ sky_material = SubResource("ProceduralSkyMaterial_6tg4j")
 background_mode = 2
 sky = SubResource("Sky_feq8d")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_a0er6"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_x2seq"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_6tg4j"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_0730k"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_vs478"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_rgjd7"]
 viewport_path = NodePath("SubViewport")
 
 [node name="WhiteboxLevel" type="Node3D" unique_id=1721237249]
@@ -114,11 +113,6 @@ shape = SubResource("BoxShape3D_qner7")
 
 [node name="Env" type="Node3D" parent="." unique_id=2414769]
 
-[node name="Ground" type="CSGBox3D" parent="Env" unique_id=288476697]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.670052)
-size = Vector3(10, 0.2, 10)
-material = SubResource("StandardMaterial3D_3d1fn")
-
 [node name="Table" type="CSGCylinder3D" parent="Env" unique_id=119163517]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9518583, -2.5943594)
 visible = false
@@ -129,6 +123,7 @@ material = SubResource("StandardMaterial3D_a0er6")
 
 [node name="halftable" parent="Env" unique_id=1257731531 instance=ExtResource("18_d8gu4")]
 transform = Transform3D(1, 0, 0, 0, 0.25, 0, 0, 0, 1, 0, 0.8740455, -0.43054628)
+visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1784875132]
 environment = SubResource("Environment_vs478")
@@ -143,7 +138,7 @@ transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.70710
 
 [node name="SpeechBubbleSprite" parent="NPCs/Left NPC" index="5" unique_id=1603437472]
 visible = false
-texture = SubResource("ViewportTexture_a0er6")
+texture = SubResource("ViewportTexture_x2seq")
 
 [node name="Middle NPC" parent="NPCs" unique_id=896790532 instance=ExtResource("25_algdt")]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, -2.989279)
@@ -152,7 +147,7 @@ personality = 1
 
 [node name="SpeechBubbleSprite" parent="NPCs/Middle NPC" index="5" unique_id=1603437472]
 visible = false
-texture = SubResource("ViewportTexture_6tg4j")
+texture = SubResource("ViewportTexture_0730k")
 
 [node name="Right NPC" parent="NPCs" unique_id=731064656 instance=ExtResource("25_algdt")]
 transform = Transform3D(0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, 0.7071067, 2, 0, -2)
@@ -161,7 +156,7 @@ personality = 2
 
 [node name="SpeechBubbleSprite" parent="NPCs/Right NPC" index="5" unique_id=1603437472]
 visible = false
-texture = SubResource("ViewportTexture_vs478")
+texture = SubResource("ViewportTexture_rgjd7")
 
 [node name="Deck" type="Node3D" parent="." unique_id=1420785218]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6817358, 1.0805373, -0.7174332)
@@ -176,6 +171,12 @@ script = ExtResource("27_4y66t")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Discard" unique_id=950139227]
 size = Vector3(0.36, 0.02, 0.52)
+
+[node name="S_Table" parent="." unique_id=1484222145 instance=ExtResource("14_kdqvf")]
+transform = Transform3D(-1.6505302e-08, 0, -0.3775973, 0, 0.3775973, 0, 0.3775973, 0, -1.6505302e-08, -0.02629888, 0.7585132, -0.4828384)
+
+[node name="S_Docks_002" parent="." unique_id=1380467637 instance=ExtResource("15_kdqvf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.941167, 0.11108971, -6.1915374)
 
 [connection signal="body_entered" from="Player/Camera3D/Hitbox" to="Player" method="OnBodyEntered"]
 

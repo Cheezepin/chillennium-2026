@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c1f3ulw1ae7nn"]
+
+[ext_resource type="Texture2D" uid="uid://dng3v1rcrx5rm" path="res://models/Textures/T_Rock/S_Rock_M_Rock_BaseColor.1001.png" id="1_0lmmq"]
+[ext_resource type="Texture2D" uid="uid://cr2hkkfciblmy" path="res://models/Textures/T_Rock/S_Rock_M_Rock_OcclusionRoughnessMetallic.1001.png" id="2_qy6nx"]
+
+[resource]
+albedo_texture = ExtResource("1_0lmmq")
+metallic = 1.0
+metallic_texture = ExtResource("2_qy6nx")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_qy6nx")
+roughness_texture_channel = 1
+ao_enabled = true
+ao_texture = ExtResource("2_qy6nx")
