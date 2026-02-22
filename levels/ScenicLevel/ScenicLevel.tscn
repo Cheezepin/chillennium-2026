@@ -31,13 +31,13 @@ sky_material = SubResource("ProceduralSkyMaterial_6tg4j")
 background_mode = 2
 sky = SubResource("Sky_feq8d")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_kdqvf"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8dsb2"]
+viewport_path = NodePath("SubViewport")
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_x2seq"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_0730k"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_rgjd7"]
 viewport_path = NodePath("SubViewport")
 
 [node name="WhiteboxLevel" type="Node3D" unique_id=1721237249]
@@ -111,6 +111,16 @@ transform = Transform3D(1, 0, 0, 0, 0.9659258, -0.25881907, 0, 0.25881907, 0.965
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.016937256, 0.62921154, 0.053955078)
 shape = SubResource("BoxShape3D_qner7")
 
+[node name="SpotLight3D" type="SpotLight3D" parent="Player/Camera3D" unique_id=1299981607]
+transform = Transform3D(1, 0, 0, 0, 0.34454465, 0.9387698, 0, -0.9387698, 0.34454465, 0, 2.0801084, -0.59910256)
+light_color = Color(1, 0.78999996, 0.3, 1)
+light_energy = 13.592
+
+[node name="rimlight" type="SpotLight3D" parent="Player/Camera3D" unique_id=1969572767]
+transform = Transform3D(1, 0, 0, 0, -0.9428743, 0.3331487, 0, -0.3331487, -0.9428743, 0, 1.578706, -5.8918166)
+light_color = Color(1, 0.958, 0.58000004, 1)
+light_energy = 2.815
+
 [node name="Env" type="Node3D" parent="." unique_id=2414769]
 
 [node name="Table" type="CSGCylinder3D" parent="Env" unique_id=119163517]
@@ -128,7 +138,7 @@ visible = false
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1784875132]
 environment = SubResource("Environment_vs478")
 
-[node name="water_plane" parent="." unique_id=1475975502 instance=ExtResource("28_eyj4u")]
+[node name="water_plane" parent="." unique_id=60756594 instance=ExtResource("28_eyj4u")]
 transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 3, 0, -1.042, -28.165743)
 
 [node name="NPCs" type="Node3D" parent="." unique_id=363217428]
@@ -138,7 +148,7 @@ transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.70710
 
 [node name="SpeechBubbleSprite" parent="NPCs/Left NPC" index="5" unique_id=1603437472]
 visible = false
-texture = SubResource("ViewportTexture_x2seq")
+texture = SubResource("ViewportTexture_kdqvf")
 
 [node name="Middle NPC" parent="NPCs" unique_id=896790532 instance=ExtResource("25_algdt")]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, -2.989279)
@@ -147,7 +157,7 @@ personality = 1
 
 [node name="SpeechBubbleSprite" parent="NPCs/Middle NPC" index="5" unique_id=1603437472]
 visible = false
-texture = SubResource("ViewportTexture_0730k")
+texture = SubResource("ViewportTexture_8dsb2")
 
 [node name="Right NPC" parent="NPCs" unique_id=731064656 instance=ExtResource("25_algdt")]
 transform = Transform3D(0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, 0.7071067, 2, 0, -2)
@@ -156,7 +166,7 @@ personality = 2
 
 [node name="SpeechBubbleSprite" parent="NPCs/Right NPC" index="5" unique_id=1603437472]
 visible = false
-texture = SubResource("ViewportTexture_rgjd7")
+texture = SubResource("ViewportTexture_x2seq")
 
 [node name="Deck" type="Node3D" parent="." unique_id=1420785218]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6817358, 1.0805373, -0.7174332)
