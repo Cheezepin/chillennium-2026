@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://c2t2fuiaaa4iu"]
 
-[ext_resource type="Texture2D" uid="uid://efvxgrhgersu" path="res://entities/card/Atlasnye_playing_cards_deck.png" id="1_2iqqd"]
 [ext_resource type="Script" uid="uid://cuf8aojg1rtf5" path="res://entities/card/Card.cs" id="2_he7hl"]
-[ext_resource type="Texture2D" uid="uid://bs500i07u3vad" path="res://icon.svg" id="3_o04fy"]
+[ext_resource type="Texture2D" uid="uid://d4ijoamfb1in0" path="res://entities/card/Cards_Compressed.png" id="2_o04fy"]
+[ext_resource type="Texture2D" uid="uid://q56vhthiyj56" path="res://entities/card/Card_Back.png" id="3_o04fy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o04fy"]
-size = Vector3(0.4, 0.6, 0.02)
+size = Vector3(0.35, 0.505, 0.02)
 
 [node name="Card" type="Area3D" unique_id=1493185060]
 script = ExtResource("2_he7hl")
@@ -13,16 +13,15 @@ script = ExtResource("2_he7hl")
 [node name="Front" type="Sprite3D" parent="." unique_id=1019558591]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
 double_sided = false
-texture = ExtResource("1_2iqqd")
+texture = ExtResource("2_o04fy")
 region_enabled = true
-region_rect = Rect2(32, 32, 785, 1155)
+region_rect = Rect2(0, 0, 675, 1000)
 
-[node name="Back" type="Sprite3D" parent="." unique_id=1776387956]
-transform = Transform3D(0.35395694, 0, -4.371136e-09, 0, 0.46821117, 0, -3.09439e-08, 0, -0.049999967, 0, 0, 0)
+[node name="Back" type="Sprite3D" parent="." unique_id=478769924]
+transform = Transform3D(-0.026, 0, -2.7101061e-09, 0, 0.026, 0, 2.2729922e-09, 0, -0.031, 0, 0, 0)
 double_sided = false
 texture = ExtResource("3_o04fy")
-region_enabled = true
-region_rect = Rect2(7.8187256, 5.567322, 111.27161, 122.68402)
+region_rect = Rect2(0, 0, 675, 1000)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=662566046]
 shape = SubResource("BoxShape3D_o04fy")

@@ -6,7 +6,7 @@ uniform vec3 outlineAlbedo : source_color;
 
 void vertex() {
 	// Called for every vertex the material is visible on.
-	VERTEX *= outlineWidth;
+	VERTEX *= outlineWidth < 1.0 ? 0.0 : outlineWidth;
 }
 
 void fragment() {

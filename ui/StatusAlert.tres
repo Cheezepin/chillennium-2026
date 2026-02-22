@@ -2,5 +2,8 @@
 
 [resource]
 RichTextLabel/colors/font_outline_color = Color(0.74558026, 0.7455802, 0.7455802, 1)
-RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.29803923)
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.8039216)
+RichTextLabel/constants/shadow_offset_x = 6
+RichTextLabel/constants/shadow_offset_y = 6
+RichTextLabel/constants/shadow_outline_size = 10
 RichTextLabel/font_sizes/normal_font_size = 128

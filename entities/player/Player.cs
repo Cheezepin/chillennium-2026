@@ -29,10 +29,12 @@ public partial class Player : Node3D
     {
         if(Input.IsActionPressed("ui_accept") && frontHandHeld == null)
         {
-            targetPos.Y = homePos.Y - 0.8f;
+            targetPos.Y = homePos.Y - 1.7f;
+            Camera.Instance.targetRotOffset = Mathf.Pi * 0.15f;
         } else
         {
             targetPos.Y = homePos.Y;
+            Camera.Instance.targetRotOffset = 0;
         }
 
 		Position = new Vector3(Position.X, AsymptoticApproach(Position.Y, targetPos.Y, 10.0f*(float)delta), Position.Z);
@@ -40,6 +42,19 @@ public partial class Player : Node3D
         if(frontHandHeld != null && Input.IsActionJustPressed("ui_accept"))
         {
             frontHandHeld.RemoveAnchorToHand();
+        }
+
+        // if(Input.IsActionJustPressed("ui_left")) hands[1].parent.GetAngry(1.0f);
+        // if(Input.IsActionJustPressed("ui_up")) hands[2].parent.GetAngry(1.0f);
+        // if(Input.IsActionJustPressed("ui_right")) hands[3].parent.GetAngry(1.0f);
+    }
+
+    public void OnBodyEntered(Node3D body)
+    {
+        if(body is Attack)
+        {
+            (body as Attack).Despawn();
+            UI.Instance.EmitSignal(UI.SignalName.GetHit);
         }
     }
 }

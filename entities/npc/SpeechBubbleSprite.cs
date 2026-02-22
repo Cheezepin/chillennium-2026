@@ -9,11 +9,11 @@ public partial class SpeechBubbleSprite : Sprite3D
     {
         dialogTimer += delta;
 
-        float scaleVal = EaseOutBack(Mathf.Clamp((float)dialogTimer, 0.0f, 1.0f));
+        float scaleVal = EaseOutBack(Mathf.Clamp((float)(dialogTimer*1.5f), 0.0f, 1.0f));
         scaleVal *= 0.15f;
         Scale = new Vector3(scaleVal, scaleVal, scaleVal);
 
-        Modulate = new Color(1,1,1,Mathf.Clamp(5.0f - (float)dialogTimer, 0.0f, 1.0f));
+        Modulate = new Color(1,1,1,Mathf.Clamp(4.0f - (float)dialogTimer, 0.0f, 1.0f));
         base._Process(delta);
     }
 

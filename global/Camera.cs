@@ -9,15 +9,19 @@ public partial class Camera : Camera3D
 	public Vector3 homePos;
 	// public Vector3 homeRot;
 	// Called when the node enters the scene tree for the first time.
+	private float startingRot;
 	public override void _Ready()
     {
         Instance = this;
 		homePos = Position;
+		startingRot = Rotation.X;
 		// homeRot = Rotation;
     }
 
 	private double shakeTime = 0;
 	private float shakeAmount;
+
+	public float targetRotOffset = 0;
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
     {
@@ -32,6 +36,8 @@ public partial class Camera : Camera3D
 			Position += shakeAmount * new Vector3(Mathf.Sin(angle), Mathf.Cos(angle), 0);
 			// Rotation += shakeAmount * new Vector3(angle1, angle2, 0);
         }
+
+		Rotation = new Vector3(AsymptoticApproach(Rotation.X, startingRot + targetRotOffset, 10.0f*(float)delta), 0, 0);
     }
 
 	public void ShakeScreen(float amount, double time)

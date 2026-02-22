@@ -18,14 +18,14 @@ public partial class NPCSpeechBubble : Control
         ConfidentHand,
         MiddlingHand,
         UnconfidentHand,
-        Thinking,
         Stand,
         Hit,
         Blackjack,
         Bust,
         Win,
         Lose,
-        Angry
+        Angry,
+        Attacking,
     }
 
     public List<Dictionary<DialogState, string>> dialogLists = new List<Dictionary<DialogState, string>>() {
@@ -34,9 +34,8 @@ public partial class NPCSpeechBubble : Control
             {DialogState.Betting,         "I'll put down $!"},
             {DialogState.DoublingDown,    "Doubling down!! I'm throwing in $!"},
             {DialogState.ConfidentHand,   "I'm feeling pretty good about this one."},
-            {DialogState.MiddlingHand,    "Hmm... I can't tell what my odds are right now."},
+            {DialogState.MiddlingHand,    "Hmm... I'm not sure how to feel right now."},
             {DialogState.UnconfidentHand, "This hand really isn't ideal..."},
-            {DialogState.Thinking,        "Let me think..."},
             {DialogState.Stand,           "I'll stand!"},
             {DialogState.Hit,             "I'll hit!"},
             {DialogState.Blackjack,       "Yay!! A blackjack!"},
@@ -44,6 +43,7 @@ public partial class NPCSpeechBubble : Control
             {DialogState.Win,             "Woohoo!"},
             {DialogState.Lose,            "Aw, man..."},
             {DialogState.Angry,           "Grrr!!!!"},
+            {DialogState.Attacking,       "Taste this, pal!"},
         }
     };
 

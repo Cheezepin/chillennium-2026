@@ -32,6 +32,8 @@ public partial class BlackjackHandler : Node
 
     public int focusedPlayer = 0;
 
+    [Export]public AnimationPlayer dayMover;
+
     public void GetNPCs()
     {
         npcs = [.. NPCParent.GetChildren().Cast<NPC>()]; // thanks vsc!
@@ -201,17 +203,20 @@ public partial class BlackjackHandler : Node
     public void ConclusionState(double delta)
     {
         Hand dealerHand = hands[(int)HandID.Dealer];
-        dealerHand.cards[1].showing = true; 
+        // dealerHand.cards[1].showing = true; 
         timer += delta;
         switch(substate)
         {
             case 0:
                 GD.Print("Game is over!!");
+                AlertStatus("Round Over!", 2.0f);
                 ++substate;
                 timer = 0;
+                foreach(Card c in dealerHand.cards) c.showing = true;
                 break;
             case 1:
-                if(timer > 0.5)
+                if(timer < 1.7) break;
+                if(timer > 2.2)
                 {
                     timer -= 0.5;
                     if(dealerHand.runningTotal < 17)
@@ -224,6 +229,11 @@ public partial class BlackjackHandler : Node
                 }
                 break;
             case 2:
+                if(Player.Instance.frontHandHeld != null)
+                {
+                    Player.Instance.frontHandHeld.RemoveAnchorToHand();
+                    Player.Instance.frontHandHeld = null;
+                }
                 if(dealerHand.runningTotal == 21)
                 {
                     GD.Print("Dealer win!! Take everyone's bet!!");
@@ -234,11 +244,12 @@ public partial class BlackjackHandler : Node
                     }
                 } else if(dealerHand.runningTotal > 21)
                 {
-                    GD.Print("Dealer bust!! Everyone wins their bet!!");
+                    GD.Print("Dealer bust!! Everyone who hasn't busted wins their money!!");
                     foreach(NPC npc in npcs)
                     {
                         npc.SetDialogState(DialogState.Win);
-                        money -= npc.has21 ? (int)(npc.bet*1.5f) : npc.bet;
+                        if(!npc.busted)
+                            money -= npc.has21 ? (int)(npc.bet*1.5f) : npc.bet;
                     }
                 } else
                 {
@@ -273,23 +284,48 @@ public partial class BlackjackHandler : Node
         
     }
 
+    public double freezeTimer = 0;
     public override void _Process(double delta)
     {
-        switch(state)
+        if(freezeTimer > 0)
         {
-            case BlackjackState.Betting: BettingState(delta);       break;
-            case BlackjackState.Dealing: DealState(delta);          break;
-            case BlackjackState.Rounds:  RoundState(delta);         break;
-            case BlackjackState.Conclusion: ConclusionState(delta); break;
-            case BlackjackState.Idle:    IdleState(delta);          break;
+            freezeTimer -= delta;
+            if(freezeTimer < 0) freezeTimer = 0;
+        } else {
+            switch(state)
+            {
+                case BlackjackState.Betting: BettingState(delta);       break;
+                case BlackjackState.Dealing: DealState(delta);          break;
+                case BlackjackState.Rounds:  RoundState(delta);         break;
+                case BlackjackState.Conclusion: ConclusionState(delta); break;
+                case BlackjackState.Idle:    IdleState(delta);          break;
+            }
         }
+
+        // if(Input.IsActionJustPressed("ui_down"))
+        // {
+        //     ClearHands();
+        //     ResetDeck();
+        //     ShuffleDeck();
+        //     ChangeState(BlackjackState.Betting);
+        // }
 
         if(Input.IsActionJustPressed("ui_down"))
         {
-            ClearHands();
-            ResetDeck();
-            ShuffleDeck();
-            ChangeState(BlackjackState.Betting);
+            dayMover.Play("day2sunset");
         }
+        if(Input.IsActionJustPressed("ui_up"))
+        {
+            dayMover.Play("sunset2night");
+        }
+        if(Input.IsActionJustPressed("ui_left"))
+        {
+            dayMover.Play("RESET");
+        }
+    }
+
+    public void InterruptBJ()
+    {
+        if(hands[0].runningTotal >= 21) ChangeState(BlackjackState.Conclusion);
     }
 }

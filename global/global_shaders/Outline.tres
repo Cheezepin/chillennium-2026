@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bv22igm4kwbv7"]
+
+[ext_resource type="Shader" uid="uid://bhij7kfi6mnu4" path="res://global/global_shaders/InverseHull.gdshader" id="1_kj1ld"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_kj1ld")
+shader_parameter/outlineWidth = 0.0
+shader_parameter/outlineAlbedo = Color(0, 0, 0.1764706, 1)

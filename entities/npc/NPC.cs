@@ -12,6 +12,8 @@ public partial class NPC : CharacterBody3D
 
     [Export]public HandID handID;
 
+    public ResourcePreloader resourcePreloader;
+
 #region Personality
     [Export]public Personality personality;
     public float confidence; // [0,1)
@@ -21,6 +23,7 @@ public partial class NPC : CharacterBody3D
     public SabotageProp distractedBy;
     public double distractionTimer;
     public double stunTimer;
+    public double attackingTimer;
 
     public bool has21 = false;
     public bool busted = false;
@@ -35,6 +38,7 @@ public partial class NPC : CharacterBody3D
         hand.handID = handID;
         hands[(int)handID] = hand;
         GetDistracted += Distract;
+        resourcePreloader = GetNode<ResourcePreloader>("ResourcePreloader");
         base._Ready();
     }
 
@@ -110,10 +114,39 @@ public partial class NPC : CharacterBody3D
         }
     }
 
+    public void GetAngry(float angerMod)
+    {
+        anger += angerMod;
+        anger = Mathf.Clamp(anger, 0, 1);
+
+        SetDialogState(DialogState.Angry);
+        // Roll for attack
+        if(anger > 0.5f)
+        {
+            if(rng.Randf() <= anger)
+            {
+                SetDialogState(DialogState.Attacking);
+                // ATTACK!!!
+                GD.Print("Fuck you!!");
+                attackingTimer = 1.0;
+                BlackjackHandler.Instance.freezeTimer = 3.0;
+            }
+        }
+    }
+
+    public void SpawnAttack()
+    {
+        Attack atk = (resourcePreloader.GetResource("FishAttack") as PackedScene).Instantiate<Attack>();
+        GetTree().CurrentScene.AddChild(atk);
+        Vector3 targetPos = new Vector3(0, 2.3f, 0.25f);
+        atk.spawner = this;
+        atk.GlobalPosition = GlobalPosition + Vector3.Up*1.5f;
+        atk.GlobalPosition += atk.GlobalPosition.DirectionTo(targetPos)*2.0f;
+        atk.ApplyCentralImpulse(8.0f*atk.GlobalPosition.DirectionTo(targetPos));
+    }
+
     public override void _Process(double delta)
     {
-
-        if(Input.IsActionJustPressed("ui_left")) MakeBJDecision();
 
         if(distractionTimer > 0)
         {
@@ -122,6 +155,28 @@ public partial class NPC : CharacterBody3D
             {
                 distractionTimer = 0;
                 distractedBy = null;
+            }
+        }
+
+        Scale = Vector3.One;
+        if(stunTimer > 0)
+        {
+            stunTimer -= delta;
+            Scale = new Vector3(1.0f, stunTimer > 0 ? 1.0f + 0.4f*Mathf.Sin((float)stunTimer) : 1.0f, 1.0f);
+            if(stunTimer <= 0)
+            {
+                stunTimer = 0;
+                GetAngry(0.3f);
+            }
+        }
+
+        if(attackingTimer > 0)
+        {
+            attackingTimer -= delta;
+            if(attackingTimer <= 0)
+            {
+                attackingTimer = 0;
+                SpawnAttack();
             }
         }
 
@@ -135,8 +190,9 @@ public partial class NPC : CharacterBody3D
             SabotageProp s = body as SabotageProp;
             GD.Print("Ow!");
             Camera.Instance.ShakeScreen(0.01f, 0.07);
+            stunTimer = s.distractionBaseTime * 3.0f;
             // s.col.SetDeferred("disabled", true);
-            // (body as SabotageProp).LinearVelocity *= 10.0f;
+            (body as SabotageProp).LinearVelocity *= 4.0f;
         }
     }
 
@@ -190,6 +246,11 @@ public partial class NPC : CharacterBody3D
     public bool HandOver()
     {
         return (has21 || isStanding || busted);
+    }
+
+    public bool IsAlert()
+    {
+        return stunTimer == 0 && distractionTimer == 0 && attackingTimer == 0;
     }
 
     public void SitAtTable()

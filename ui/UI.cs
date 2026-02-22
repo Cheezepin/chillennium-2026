@@ -7,16 +7,24 @@ public partial class UI : CanvasLayer
     public RichTextLabel moneyCounter;
     public RichTextLabel statusAlert;
 
+    public ColorRect fadeRect;
+
     public static UI Instance;
 
     public static string statusText;
     public static double statusTimer;
+
+    public double fadeTimer = 0;
+
+    [Signal] public delegate void GetHitEventHandler();
 
     public override void _Ready()
     {
         Instance = this;
         moneyCounter = GetNode<RichTextLabel>("Money");
         statusAlert = GetNode<RichTextLabel>("Status Alert");
+        fadeRect = GetNode<ColorRect>("FadeRect");
+        GetHit += GetHitByAttack;
         base._Ready();
     }
 
@@ -41,6 +49,23 @@ public partial class UI : CanvasLayer
             statusTimer -= delta;
             statusAlert.Modulate = new Color(1,1,1,Mathf.Clamp((float)statusTimer, 0, 1.0f));
         }
+
+        if(fadeTimer > 0)
+        {
+            fadeTimer -= delta;
+            fadeRect.Color = new Color(0,0,0,Mathf.Clamp((float)fadeTimer, 0, 1));
+            if(fadeTimer <= 0)
+            {
+                fadeTimer = 0;
+                fadeRect.Hide();
+            }
+        }
         base._Process(delta);
+    }
+
+    public void GetHitByAttack()
+    {
+        fadeTimer = 2.0;
+        fadeRect.Show();
     }
 }

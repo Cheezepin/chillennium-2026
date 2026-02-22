@@ -104,7 +104,7 @@ public partial class Deck : Node3D
 		card.rank = r;
 		card.showing = show;
 		hand.AddChild(card);
-		card.GlobalPosition = Deck.Instance == null ? new Vector3(0.5f, 1.0f, -1.0f) : Deck.Instance.GlobalPosition;
+		card.GlobalPosition = Instance.GlobalPosition;
 
         if(hand.handID == HandID.Dealer) card.GetNode<CollisionShape3D>("CollisionShape3D").Disabled = true;
     }
@@ -113,6 +113,8 @@ public partial class Deck : Node3D
     {
         ResetDeck();
 		ShuffleDeck();
+
+		Instance = this;
 
         base._Ready();
     }
@@ -131,7 +133,6 @@ public partial class Deck : Node3D
 
     public override void _Process(double delta)
     {
-        if(Input.IsActionJustPressed("ui_right")) DebugDealRound();
         base._Process(delta);
     }
 

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://d0s0roluhea4w"]
+
+[ext_resource type="Script" uid="uid://bdwnl84n4djrt" path="res://entities/sabotage_props/SabotageProp.cs" id="1_of853"]
+[ext_resource type="Material" uid="uid://bv22igm4kwbv7" path="res://global/global_shaders/Outline.tres" id="2_liabm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hybtw"]
+resource_local_to_scene = true
+next_pass = ExtResource("2_liabm")
+albedo_color = Color(0.28771654, 0.3071851, 0.2278654, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_y5uu2"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_hybtw")
+radius = 0.2
+height = 0.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6gou3"]
+radius = 0.2
+
+[node name="Rock" type="RigidBody3D" unique_id=1238349591]
+freeze = true
+script = ExtResource("1_of853")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=892126767]
+mesh = SubResource("SphereMesh_y5uu2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=792352648]
+shape = SubResource("SphereShape3D_6gou3")
+
+[connection signal="input_event" from="." to="." method="OnInputEvent"]
+[connection signal="mouse_entered" from="." to="." method="OnMouseEnter"]
+[connection signal="mouse_exited" from="." to="." method="OnMouseExit"]

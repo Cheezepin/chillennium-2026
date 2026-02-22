@@ -8,14 +8,27 @@ public partial class Global : Node
 	public static int money = 5000;
 	public static int quota = 5500;
 	public static bool screenShakeEnabled = true;
-	public static float AsymptoticApproach(float current, float target, float multiplier)
+	public static float AsymptoticApproach(float current, float target, float multiplier, float addOn = 0.0f)
     {
-        return current + ((target - current) * multiplier);
+        return current + ((target - current) * multiplier) + addOn;
     }
 
-	public static Vector3 AsymptoticApproach(Vector3 current, Vector3 target, float multiplier)
+	public static Vector3 AsymptoticApproach(Vector3 current, Vector3 target, float multiplier, float addOn = 0.0f)
     {
-        return current + ((target - current) * multiplier);
+        Vector3 dir = target - current;
+        float val = (dir.Length() * multiplier) + addOn;
+        return current + dir*val;
+    }
+
+    public static Color AsymptoticApproach(Color current, Color target, float multiplier, float addOn = 0.0f)
+    {
+        Vector3 currRGB = new Vector3(current.R, current.G, current.B);
+        Vector3 targRGB = new Vector3(target.R, target.G, target.B);
+        Vector3 move = AsymptoticApproach(currRGB, targRGB, multiplier);
+        return new Color(
+            move.X, move.Y, move.Z,
+            current.A + ((target.A - current.A) * multiplier) + addOn);
+
     }
 
 	public enum Suit

@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://botpfiw828nfc" path="res://global/Hand.cs" id="2_fq5x3"]
 [ext_resource type="PackedScene" uid="uid://658buqrne63l" path="res://entities/npc/NPCSpeechBubble.tscn" id="3_fq5x3"]
 [ext_resource type="Script" uid="uid://b4m5ch5xlgxfd" path="res://entities/npc/SpeechBubbleSprite.cs" id="4_x8luf"]
+[ext_resource type="PackedScene" uid="uid://b58m1mx3tpsl2" path="res://entities/attack/FishAttack.tscn" id="5_1seh5"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_fq5x3"]
 radius = 0.35
@@ -64,6 +65,9 @@ double_sided = false
 fixed_size = true
 texture = SubResource("ViewportTexture_fq5x3")
 script = ExtResource("4_x8luf")
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="." unique_id=642707125]
+resources = [PackedStringArray("FishAttack"), [ExtResource("5_1seh5")]]
 
 [connection signal="body_entered" from="Hitbox" to="." method="OnBodyEntered"]
 [connection signal="input_event" from="Hand/Area3D" to="Hand" method="OnInputEvent"]
