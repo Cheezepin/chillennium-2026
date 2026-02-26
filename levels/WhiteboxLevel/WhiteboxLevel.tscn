@@ -53,6 +53,8 @@
 [ext_resource type="AudioStream" uid="uid://tioer27lpfhm" path="res://sounds/band.wav" id="45_fgjpb"]
 [ext_resource type="Script" uid="uid://dy2ud4x46bam" path="res://levels/WhiteboxLevel/SeagullSound.cs" id="45_ianee"]
 [ext_resource type="AudioStream" uid="uid://dw84i7n2wvrp5" path="res://sounds/incorrect.mp3" id="46_u75xx"]
+[ext_resource type="Texture2D" uid="uid://egpo0eqfvqjd" path="res://models/boat/boat.png" id="54_cslpl"]
+[ext_resource type="Script" uid="uid://f22fc8o3bmmf" path="res://levels/WhiteboxLevel/Boat.cs" id="55_nfu6q"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l1kps"]
 size = Vector3(1, 0.6, 0.05)
@@ -1066,6 +1068,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.18074, 0.11108971, -6.1915
 [node name="underTableCover" parent="Env" unique_id=1166490127 instance=ExtResource("20_rfatf")]
 transform = Transform3D(-1.5298985e-08, 0, -0.35, 0, 0.35, 0, 0.35, 0, -1.5298985e-08, 0, 0.845, -0.6847513)
 
+[node name="SpotLight3D" type="SpotLight3D" parent="Env" unique_id=2125773842]
+transform = Transform3D(1, 0, 0, 0, 0.34454468, 0.93876994, 0, -0.93876994, 0.34454468, 0, 3.5737934, -0.599)
+light_color = Color(1, 0.78999996, 0.3, 1)
+light_energy = 13.592
+spot_angle = 64.55
+
+[node name="rimlight" type="SpotLight3D" parent="Env" unique_id=1597924179]
+transform = Transform3D(1, 0, 0, 0, -0.9428743, 0.3331487, 0, -0.3331487, -0.9428743, 0, 1.578706, -5.8918166)
+light_color = Color(1, 0.958, 0.58000004, 1)
+light_energy = 2.815
+
 [node name="UI" parent="." unique_id=1425285729 instance=ExtResource("1_lj2dc")]
 
 [node name="DealerHand" type="Node3D" parent="." unique_id=599761734]
@@ -1214,7 +1227,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53158, -4.7683716e-07, -1.
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=360804522]
 environment = SubResource("Environment_dqbfd")
 
-[node name="water_plane" parent="." unique_id=1475975502 instance=ExtResource("8_dqbfd")]
+[node name="water_plane" parent="." unique_id=828034868 instance=ExtResource("8_dqbfd")]
 transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 3, 0, -1.042, -28.165743)
 
 [node name="DistractionZone" type="Area3D" parent="." unique_id=1206204365 node_paths=PackedStringArray("npcs")]
@@ -1264,6 +1277,12 @@ script = ExtResource("45_ianee")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8197479, 0, -55.0831)
 stream = ExtResource("45_fgjpb")
 autoplay = true
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=82204106]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 1, -1.6928024, 2.605629, -60.573666)
+visible = false
+texture = ExtResource("54_cslpl")
+script = ExtResource("55_nfu6q")
 
 [connection signal="mouse_entered" from="DealerHand/Area3D" to="DealerHand" method="OnMouseEnter"]
 [connection signal="mouse_exited" from="DealerHand/Area3D" to="DealerHand" method="OnMouseExit"]

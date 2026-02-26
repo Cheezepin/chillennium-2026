@@ -5,3 +5,11 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_q62ot")
+shader_parameter/ShallowColor = Color(0.05849999, 0.19109996, 0.39, 1)
+shader_parameter/DeepColor = Color(0.29520002, 0.64212, 0.72, 1)
+shader_parameter/ParallaxSpeed = Vector2(0.1, 0.1)
+shader_parameter/Depth = -3.0
+shader_parameter/ParallaxTiling = Vector2(0.025, 0.025)
+shader_parameter/FoamColor = Color(0.77, 0.74536, 0.4004, 1)
+shader_parameter/FoamSpeed = Vector2(0.1, 0.1)
+shader_parameter/Foam_Tiling = Vector2(20, 20)
